@@ -7,10 +7,10 @@
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Strings} 
+\section{字符串} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Strings can as well be manipulated by array and sequence functions;
-see pages \pageref{section:Arrays} and \pageref{section:Sequences}.
+数组和序列函数也可用于操作字符串；参见第
+\pageref{section:数组} 页和第 \pageref{section:序列} 页。
 
 \begin{LIST}{1cm}
 
@@ -18,7 +18,7 @@ see pages \pageref{section:Arrays} and \pageref{section:Sequences}.
   \IT{\arrGOO{(\FU*{STRINGP} \VAR{ foo})\\
       (\FU*{SIMPLE-STRING-P} \VAR{ foo})}{.}}
   {
-    \retval{\T} if \VAR{foo} is of indicated type.
+    当 \VAR{foo} 为指定类型时为 \retval{\T}。
   }
 
   \IT{(\xorGOO{\FU*{STRING=}\\\FU*{STRING-EQUAL}}{\}} \VAR{foo}
@@ -57,7 +57,7 @@ see pages \pageref{section:Arrays} and \pageref{section:Sequences}.
   \IT{(\FU*{MAKE-STRING} \VAR{size} \orGOO{\kwd{:initial-element} \VAR{ char}\\
       \kwd{:element-type} \VAR{ type}\DF{\kwd{character}}}{\}})}
   {
-  Return \retval{string} of length \VAR{size}.
+  返回长度为 \VAR{size} 的 \retval{字符串}。
   }
 
   \IT{\arrGOO{%

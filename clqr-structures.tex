@@ -7,7 +7,7 @@
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Structures}
+\section{结构}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{LIST}{1cm}
@@ -74,7 +74,7 @@
     They can be
     created by (\LIT{MAKE-}\VAR{foo} \Goos{\kwd{:}\VAR{slot}
       \VAR{value}}) or, if \VAR{ord-$\lambda$} (see
-    page \pageref{section:Functions}) is given, by (\VAR{maker}
+    page \pageref{section:函数}) is given, by (\VAR{maker}
     \OPn{\VAR{arg}} \Goos{\kwd{:}\VAR{key} \VAR{value}}). In the latter
     case, \VAR{arg}s and \kwd{:}\VAR{key}s correspond to the positional
     and keyword parameters defined in \VAR{ord-$\lambda$} whose
@@ -89,7 +89,7 @@
 
   \IT{(\FU*{COPY-STRUCTURE} \VAR{structure})}
   {
-    Return \retval{copy of \VAR{structure}} with shared slot values.
+    返回共享槽值的 \retval{\VAR{structure} 副本}。
   }
 
 \end{LIST}

@@ -1,3 +1,8 @@
+Common Lisp Quick Reference 中文翻译版
+
+TeX 处理中文……呵呵，自己看着办吧。
+你要先 make，再 xelatex clqr.tex，这样才能有个勉强能看的 pdf。
+
 Common Lisp Quick Reference is a free (see file COPYING) booklet with
 short descriptions of the thousand or so symbols defined in the ANSI
 standard.

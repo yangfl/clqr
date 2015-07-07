@@ -7,21 +7,21 @@
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Hash Tables} 
+\section{散列表} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The Loop Facility provides additional hash table-related
-functionality; see \kwd{loop}, page \pageref{section:Loop Facility}.
+functionality; see \kwd{loop}, page \pageref{section:Loop 宏}.
 
 Key-value storage similar to hash tables can as well be achieved using
 association lists and property lists; see
-pages \pageref{section:Association Lists} and \pageref{:property_lists}. 
+pages \pageref{section:关联表} and \pageref{:property_lists}. 
 
 
 \begin{LIST}{1cm}
 
   \IT{(\FU*{HASH-TABLE-P} \VAR{foo})}
   {
-  Return \retval{\T} if \VAR{foo} is of type \kwd{hash-table}.
+  当 \VAR{foo} 为 \kwd{hash-table} 时返回 \retval{\T}。
   }
 
   \IT{(\FU*{MAKE-HASH-TABLE} 
@@ -31,7 +31,7 @@ pages \pageref{section:Association Lists} and \pageref{:property_lists}.
       \kwd{:rehash-size} \VAR{ num}\\
       \kwd{:rehash-threshold} \VAR{ num}}{\}})}
   {
-  Make a \retval{hash table}. 
+  创建 \retval{散列表}。
   }
 
   \IT{(\FU*{GETHASH} \VAR{key} \VAR{hash-table} \Op{\VAR{default}\DF{\NIL}})}
@@ -43,7 +43,7 @@ pages \pageref{section:Association Lists} and \pageref{:property_lists}.
 
   \IT{(\FU*{HASH-TABLE-COUNT} \VAR{hash-table})}
   {
-  \retval{Number of entries} in \VAR{hash-table}.
+  \VAR{hash-table} 内的 \retval{条目数}。
   }
 
   \IT{(\FU*{REMHASH} \VAR{key} \DES{\VAR{hash-table}})}
@@ -54,7 +54,7 @@ pages \pageref{section:Association Lists} and \pageref{:property_lists}.
 
   \IT{(\FU*{CLRHASH} \DES{\VAR{hash-table}})}
   {
-  Empty \retval{\VAR{hash-table}}.
+  清空 \retval{\VAR{hash-table}}。
   }
 
   \IT{(\FU*{MAPHASH} \VAR{function} \VAR{hash-table})}
@@ -73,7 +73,7 @@ pages \pageref{section:Association Lists} and \pageref{:property_lists}.
 
   \IT{(\FU*{HASH-TABLE-TEST} \VAR{hash-table})}
   {
-  \retval{Test function} used in \VAR{hash-table}.
+  \VAR{hash-table} 所使用的 \retval{测试函数}。
   }
 
   \IT{\arrGOO{(\FU*{HASH-TABLE-SIZE} \VAR{ hash-table})\\
@@ -86,7 +86,7 @@ pages \pageref{section:Association Lists} and \pageref{:property_lists}.
 
   \IT{(\FU*{SXHASH} \VAR{foo})}
      {
-       \retval{Hash code} unique for any argument \FU{equal} \VAR{foo}.
+       \retval{散列值}，对 \FU{equal} \VAR{foo} 的参数唯一。
      }
 
 \end{LIST}

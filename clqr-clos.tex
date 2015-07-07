@@ -11,19 +11,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Classes} 
+\subsection{类} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{LIST}{1cm}
 
   \IT{(\FU*{SLOT-EXISTS-P} \VAR{foo} \VAR{bar})\qquad\qquad}
   {
-    \retval{\T} if \VAR{foo} has a slot \VAR{bar}.
+    当 \VAR{foo} 含有槽 \VAR{bar} 时为 \retval{\T}。
   }
 
   \IT{(\FU*{SLOT-BOUNDP} \VAR{instance} \VAR{slot})}
   {
-    \retval{\T} if \VAR{slot} in \VAR{instance} is bound.
+    当 \VAR{instance} 的 \VAR{slot} 已绑定时为 \retval{\T}。
   }
 
   \IT{(\MC*{DEFCLASS} \VAR{foo} 
@@ -70,7 +70,7 @@
   \IT{(\GFU*{MAKE-INSTANCE} \VAR{class} \Goos{\kwd{:}\VAR{initarg}
       \VAR{value}} \OPn{\VAR{other-keyarg}})}
   {
-    Make new \retval{instance of \VAR{class}}.
+    生成新的 \retval{\VAR{class} 实例}。
   }
 
   \IT{(\GFU*{REINITIALIZE-INSTANCE} \VAR{instance} \Goos{\kwd{:}\VAR{initarg}
@@ -82,13 +82,13 @@
 
   \IT{(\FU*{SLOT-VALUE} \VAR{foo} \VAR{slot})}
   {
-    Return \retval{value
-      of \VAR{slot} in \VAR{foo}}.  \kwd{SETF}able.
+    返回 \retval{
+      \VAR{foo} 中 \VAR{slot} 的值}。可 \kwd{SETF}。
   }
 
   \IT{(\FU*{SLOT-MAKUNBOUND} \VAR{instance} \VAR{slot})}
   {
-    Make \VAR{slot} in \retval{\VAR{instance}} unbound.
+    将 \retval{\VAR{instance}} 中的 \VAR{slot} 解绑。
   }
 
   \IT{(\xorGOO{%
@@ -106,7 +106,7 @@
   \IT{\arrGOO{(\GFU*{CLASS-NAME } \VAR{class})\\
       ((\kwd{setf } \GFU*{CLASS-NAME}) \VAR{ new-name } \VAR{class})}{.}}
   {
-    Get/set \retval{name of \VAR{class}}.
+    获取/设置 \retval{\VAR{class} 的名称}。
   }
 
   \IT{(\FU*{CLASS-OF} \VAR{foo})}
@@ -200,7 +200,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection[Generic~Functns]{Generic Functions} 
+\subsection{广义函数} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{LIST}{1cm}
@@ -362,9 +362,9 @@
 \end{LIST}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection[Method Combi- nation Types]{Method Combination Types} 
+\subsection{方法组合类型} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{section:Method Combination Types}
+\label{section:方法组合类型}
 \begin{LIST}{1cm}
 
   \IT{\kwd*{STANDARD}}
@@ -454,7 +454,7 @@
     \VAR{qualifier}s match. Methods can be called via
     \MC{CALL-METHOD}. Lambda lists (\OPn{\VAR{ord-$\lambda$}}) and
     (\OPn{\VAR{method-combination-$\lambda$}}) according to
-    \VAR{ord-$\lambda$} on page \pageref{section:Functions}, the latter
+    \VAR{ord-$\lambda$} on page \pageref{section:函数}, the latter
     enhanced by an optional \kwd{\&whole} argument.
   }
 

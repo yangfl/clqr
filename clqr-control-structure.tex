@@ -7,24 +7,24 @@
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Control Structure}
+\section{控制结构}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Predicates}
+\subsection{谓词}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{LIST}{1cm}
 
   \IT{(\FU*{EQ} \VAR{foo bar})}
   {
-  \retval{\T} if \VAR{foo} and \VAR{bar} are identical.
+  当 \VAR{foo} 和 \VAR{bar} 相同（identical）时为 \retval{\T}。
   }
 
   \IT{(\FU*{EQL} \VAR{foo bar})}
   {
-  \retval{\T} if \VAR{foo} and \VAR{bar}
-  are identical, or the same \kwd{character}, or \kwd{number}s of the
-  same type and value. 
+  当 \VAR{foo} 和 \VAR{bar}
+  相同，或相等 \kwd{character}，或同类同值的
+  \kwd{number}s 时为 \retval{\T}。
   }
 
   \IT{(\FU*{EQUAL} \VAR{foo bar})}
@@ -49,28 +49,28 @@
 
   \IT{(\FU*{NOT} \VAR{foo})\qquad\qquad\qquad}
   {
-  \retval{\T} if \VAR{foo} is \NIL; \retval{\NIL} otherwise.
+  当 \VAR{foo} 为 \NIL 时为 \retval{\T}，否则为 \retval{\NIL}。
   }
 
   \IT{(\FU*{BOUNDP} \VAR{symbol})\qquad\qquad}
   {
-    \retval{\T} if \VAR{symbol} is a special variable.
+    当 \VAR{symbol} 为特殊变量时为 \retval{\T}。
   }
 
   \IT{(\FU*{CONSTANTP} \VAR{foo} \Op{\VAR{environment}\DF{\NIL}})}
   {
-  \retval{\T} if \VAR{foo} is a constant form.
+  当 \VAR{foo} 为常量时为 \retval{\T}。
   }
 
   \IT{(\FU*{FUNCTIONP} \VAR{foo})\qquad\qquad}
   {
-  \retval{\T} if \VAR{foo} is of type \kwd{function}.
+  当 \VAR{foo} 为 \kwd{function} 时为 \retval{\T}。
   }
 
   \IT{(\FU*{FBOUNDP} \xorGOO{\VAR{foo}\\
       (\kwd{setf } \VAR{foo})}{\}})}
   {
-  \retval{\T} if \VAR{foo} is a global function or macro.
+  当 \VAR{foo} 为全局函数或宏时为 \retval{\T}。
   }
 
 
@@ -78,7 +78,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Variables}
+\subsection{变量}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{LIST}{1cm}
@@ -214,9 +214,9 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Functions}
+\subsection{函数}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{section:Functions}
+\label{section:函数}
 
 \begin{flushleft}
   Below, ordinary lambda list (\OPn{\VAR{ord-$\lambda$}}) has the form\\
@@ -376,9 +376,9 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Macros}
+\subsection{宏}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{section:Macros}
+\label{section:宏}
 
 \begin{flushleft}
   Below, macro lambda list (\OPn{\VAR{macro-$\lambda$}}) has the form of
@@ -625,7 +625,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Control Flow}
+\subsection{控制流}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{LIST}{1cm}
 
@@ -777,7 +777,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Iteration}
+\subsection{迭代}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{LIST}{1cm}
@@ -823,9 +823,9 @@
 \end{LIST}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Loop Facility}
+\subsection{Loop 宏}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{section:Loop Facility}
+\label{section:Loop 宏}
 
 \begin{LIST}{1cm}
 

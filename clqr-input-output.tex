@@ -7,11 +7,11 @@
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Input/Output} 
+\section{输入/输出} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Predicates} 
+\subsection{谓词} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{LIST}{1cm}
@@ -20,7 +20,7 @@
       (\FU*{PATHNAMEP} \VAR{ foo})\\
       (\FU*{READTABLEP} \VAR{ foo})}{.}}
   {
-    \retval{\T} if \VAR{foo} is of indicated type.
+    当 \VAR{foo} 为指定类型时为 \retval{\T}。
   }
 
   \IT{\arrGOO{(\FU*{INPUT-STREAM-P} \VAR{ stream})\\
@@ -53,7 +53,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Reader} 
+\subsection{读取} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{LIST}{1cm}
@@ -238,7 +238,7 @@
 \end{LIST}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Character Syntax}
+\subsection{语法}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{LIST}{1cm}
@@ -273,12 +273,12 @@
   
   \IT{\KWD{"}\qquad\qquad}
   {\index{""}
-    Begin and end of a string.
+    字符串的开头和结尾。
   }
 
   \IT{\KWD*{'}\VAR{foo}\quad\qquad}
   {
-    (\SO*{quote} \VAR{foo}); \VAR{foo} unevaluated.
+    (\SO*{quote} \VAR{foo})，\VAR{foo} 未求值。
   }
 
   \IT{\KWD{\char18}(\Op{\VAR{foo}} \Op{\KWD*{,}\VAR{bar}} \Op{\KWD{,@}\VAR{baz}}
@@ -412,7 +412,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Printer} 
+\subsection{显示} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -1023,7 +1023,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Streams} 
+\subsection{流} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{LIST}{1cm}
@@ -1224,7 +1224,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection[Paths and Files]{Pathnames and Files} 
+\subsection{路径名及文件} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{LIST}{1cm}

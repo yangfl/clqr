@@ -7,7 +7,7 @@
 
 SEND-TO-LOG	= | tee -a lastbuild.log
 
-LATEX		= latex
+LATEX		= xelatex
 MAKEINDEX	= makeindex -c
 MPOST		= TEX=latex mpost
 DVIPS		= dvips

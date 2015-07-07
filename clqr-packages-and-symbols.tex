@@ -7,12 +7,12 @@
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Packages and Symbols}
+\section{包及符号}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The Loop Facility provides additional means of symbol handling; see \kwd{loop}, page \pageref{section:Loop Facility}.
+The Loop Facility provides additional means of symbol handling; see \kwd{loop}, page \pageref{section:Loop 宏}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Predicates}
+\subsection{谓词}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{LIST}{1cm}
 
@@ -27,7 +27,7 @@ The Loop Facility provides additional means of symbol handling; see \kwd{loop}, 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Packages}
+\subsection{包}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{LIST}{1cm}
 
@@ -117,12 +117,12 @@ The Loop Facility provides additional means of symbol handling; see \kwd{loop}, 
 
   \IT{(\FU*{PACKAGE-NAME} \VAR{package})}
   {
-    \retval{Name of \VAR{package}}.
+    \retval{\VAR{package} 的名称}。
   }
 
   \IT{(\FU*{PACKAGE-NICKNAMES} \VAR{package})}
   {
-    \retval{Nicknames} of \VAR{package}.
+    \VAR{package} 的 \retval{昵称}。
   }
 
   \IT{(\FU*{FIND-PACKAGE} \VAR{name})}
@@ -231,14 +231,14 @@ The Loop Facility provides additional means of symbol handling; see \kwd{loop}, 
 
   \IT{\V{\A modules\A}}
   {\index{*MODULES*@\A MODULES\A}
-    List of names of loaded modules.
+    已加载模块名称列表。
   }
 
 \end{LIST}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Symbols}
+\subsection{符号}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 A \kwd*{symbol} has the attributes \VAR{name}, home \kwd{package}, property
 list, and optionally value (of global constant or variable \VAR{name}) and
@@ -318,7 +318,7 @@ function (\kwd{function}, macro, or special operator \VAR{name}).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection[Std Packages]{Standard Packages}
+\subsection{标准包}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{LIST}{1cm}
 

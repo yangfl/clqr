@@ -7,18 +7,18 @@
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Compiler} 
+\section{编译器} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Predicates} 
+\subsection{谓词} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{LIST}{1cm}
 
   \IT{(\FU*{SPECIAL-OPERATOR-P} \VAR{foo})}
   {
-  \retval{\T} if \VAR{foo} is a special operator.
+  当 \VAR{foo} 为特殊操作符时为 \retval{\T}。
   }
 
   \IT{(\FU*{COMPILED-FUNCTION-P} \VAR{foo})}
@@ -30,7 +30,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Compilation} 
+\subsection{编译} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{LIST}{1cm}
@@ -130,7 +130,7 @@
 
   \IT{(\SO*{QUOTE} \NEV{\VAR{foo}})}
   {
-  Return \retval{unevaluated \VAR{foo}}.
+  返回 \retval{未经求值的 \VAR{foo}}。
   }
 
   \IT{(\GFU*{MAKE-LOAD-FORM} \VAR{foo} \Op{\VAR{environment}})}
@@ -172,7 +172,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection[REPL~\&~Debug]{REPL and Debugging} 
+\subsection{REPL 及调试} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{LIST}{1cm}
@@ -209,7 +209,7 @@
 
   \IT{(\FU*{ED} \Op{\VAR{file-or-function}\DF{\NIL}})}
   {
-  Invoke editor if possible.
+  如果可能，调用编辑器。
   }
 
   \IT{(\xorGOO{\FU*{MACROEXPAND-1}\\
@@ -299,38 +299,22 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Declarations}
+\subsection{声明}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{LIST}{1cm}
 
   \IT{\arrGOO{(\FU*{PROCLAIM} \VAR{ decl})\\
       (\MC*{DECLAIM } \OPn{\NEV{\VAR{decl}}})}{.}}
   {
-  Globally make declaration(s) \VAR{decl}. \VAR{decl} can be:
-  \kwd{declaration},      
-  \kwd{type},
-  \kwd{ftype},           
-  \kwd{inline},   
-  \kwd{notinline},
-  \kwd{optimize}, or
-  \kwd{special}.
-  See below.
+  全局声明 \VAR{decl}。\VAR{decl}
+  可以是：\kwd{declaration}、\kwd{type}、\kwd{ftype}、\kwd{inline}、\kwd{notinline}、\kwd{optimize}、\kwd{special}。见下。
   }
 
   \IT{(\kwd*{DECLARE} \OPn{\NEV{\VAR{decl}}})}
   {
-    Inside certain forms, locally make declarations
-    \OPn{\VAR{decl}}. \VAR{decl} can be:
-    \kwd{dynamic-extent},
-    \kwd{type},
-    \kwd{ftype},           
-    \kwd{ignorable},       
-    \kwd{ignore},     
-    \kwd{inline},     
-    \kwd{notinline},  
-    \kwd{optimize}, or
-    \kwd{special}.
-    See below.      
+    在某些形式内，局部声明
+    \OPn{\VAR{decl}}. \VAR{decl}
+    可以是：\kwd{dynamic-extent}、\kwd{type}、\kwd{ftype}、\kwd{ignorable}、\kwd{ignore}、\kwd{inline}、\kwd{notinline}、\kwd{optimize}、\kwd{special}。见下。
   }
 
   \begin{LIST}{.5cm}
@@ -360,7 +344,7 @@
         \VAR{var}\\
         (\kwd{function} \VAR{ function})}{\}^{\!\!*}})}
     {
-    Suppress warnings about used/unused bindings.
+    关闭已使用/未使用绑定的警告。
   }
 
     \IT{\arrGOO{(\kwd*{INLINE} \OPn{\VAR{ function}})\\
@@ -383,7 +367,7 @@
 
     \IT{(\kwd*{SPECIAL} \OPn{\VAR{var}})}
     {
-    Declare \VAR{var}s to be dynamic.
+    声明 \VAR{var}s 为动态变量。
   }
 
   \end{LIST}

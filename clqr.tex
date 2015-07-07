@@ -7,7 +7,7 @@
 % no Back-Cover Texts. For details see file COPYING.
 %
 
-\newcommand{\maintitle}{Common\ Lisp\ Quick\ Reference}
+\newcommand{\maintitle}{Common\ Lisp\ 快速参考}
 \newcommand{\AUTHOR}{Bert\ Burgemeister}
 %
 %%%%%%%%%%%%%%%%%%
@@ -77,6 +77,7 @@
               {\hspace*{5.5em}}%
               {\hspace{.5ex plus .5ex minus .3ex}\titlerule*[1em]{.}\contentspage}%
 
+\input{clqr.chinese}
 \input{clqr.macros}
 %
 \begin{document}
@@ -94,7 +95,7 @@
     \begin{minipage}{\titlepagewidth}
       \begin{center}
         \rmfamily\mdseries\itshape\fontsize{20}{0}\selectfont
-        Quick Reference\index{CLQR}\\
+        快速参考\index{CLQR}\\
       \end{center}
     \end{minipage}
     \vfill
@@ -224,11 +225,11 @@
       \rmfamily\small
       \makebox[\textwidth][l]{\maintitle\
         \hfill
-        Revision \input{REVISION}
+        版本 \input{REVISION}
         [\input{DATE}\hspace{-.65ex}]}
       \makebox[\textwidth][l]{Copyright \copyright\ 2008 - 2014
         \AUTHOR\hfill}
-      \makebox[\textwidth][l]{\LaTeX\ source:
+      \makebox[\textwidth][l]{\LaTeX\ 源代码：
         \href{http://clqr.boundp.org}{http://clqr.boundp.org}
         \hfill
         \raisebox{-1mm}[0mm][0mm]{\includegraphics[origin=c,height=5mm,keepaspectratio,angle=-40]{housefly.eps}}
