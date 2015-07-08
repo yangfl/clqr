@@ -10,9 +10,9 @@
 \section{字符} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The \kwd*{standard-char} type comprises \LIT{a}-\LIT{z},
-\LIT{A}-\LIT{Z}, \LIT{0}-\LIT{9}, \LIT{Newline}, \LIT{Space}, and
-\LIT{!?\$"'`.:,;*+-/|{\tt\char`\\}\TLD\_\^{}<=>\#\%@\&()[]\{\}}.
+\kwd*{standard-char} 类型包括 \LIT{a}-\LIT{z},
+\LIT{A}-\LIT{Z}, \LIT{0}-\LIT{9}, \LIT{Newline}, \LIT{Space},\\
+\LIT{!?\$"'`.:,;*+-/|{\normalfont\ttfamily\char`\\}\TLD\_\^{}<=>\#\%@\&()[]\{\}}。
 \index{NEWLINE}\index{SPACE}
 
 \begin{LIST}{1cm}
@@ -20,46 +20,46 @@ The \kwd*{standard-char} type comprises \LIT{a}-\LIT{z},
   \IT{\arrGOO{(\FU*{CHARACTERP} \VAR{ foo})\\
       (\FU*{STANDARD-CHAR-P} \VAR{ char})}{.}}
   {
-    \retval{\T} if argument is of indicated type.
+    当 \VAR{foo} 为指定类型时为 \retval{\T}。
   }
 
   \IT{\arrGOO{(\FU*{GRAPHIC-CHAR-P} \VAR{ character})\\
       (\FU*{ALPHA-CHAR-P} \VAR{ character})\\
       (\FU*{ALPHANUMERICP} \VAR{ character})}{.}}
   {
-    \retval{\T} if \VAR{character} is visible, alphabetic, or
-    alphanumeric, respectively.
+    当 \VAR{character} 为可见字符、字母、字母及数字时为
+    \retval{\T}。
   }
 
   \IT{\arrGOO{(\FU*{UPPER-CASE-P} \VAR{ character})\\
       (\FU*{LOWER-CASE-P} \VAR{ character})\\
       (\FU*{BOTH-CASE-P} \VAR{ character})}{.}}
   {
-  Return \retval{\T} if \VAR{character} is uppercase, lowercase, or
-  able to be in another case, respectively.
+  当 \VAR{character} 为大写、小写或其中某一种情况时返回
+  \retval{\T}。
   }
 
   \IT{(\FU*{DIGIT-CHAR-P} \VAR{character}
     \Op{\VAR{radix}\DF{\LIT{10}}})}
   {
-    Return \retval{its weight} if \VAR{character} is a digit, or
-    \retval{\NIL} otherwise.
+    如果 \VAR{character} 为数字，则返回其
+    \retval{值}，否则返回 \retval{\NIL}。
   }
 
   \IT{\arrGOO{(\FU*{CHAR=}\RP{\VAR{
           character}})\\(\FU*{CHAR/=}\RP{\VAR{
           character}})}{.}}
   {
-    Return \retval{\T} if all \VAR{character}s, or
-    none, respectively,  are equal.
+    当所有 \VAR{character}s 均相等或不等时返回
+    \retval{\T} 。
   }
 
   \IT{\arrGOO{(\FU*{CHAR-EQUAL}\RP{\VAR{
           character}})\\(\FU*{CHAR-NOT-EQUAL}\RP{\VAR{
           character}})}{.}}
   {
-    Return \retval{\T} if all \VAR{character}s, or
-    none, respectively,  are equal ignoring case.
+    无论大小写，当所有 \VAR{character}s 均相等或不等时返回
+    \retval{\T} 。
   }
 
   \IT{\arrGOO{(\FU{CHAR\boldmath$>$}\RP{\VAR{
@@ -72,9 +72,9 @@ The \kwd*{standard-char} type comprises \LIT{a}-\LIT{z},
   \index{CHAR>=@CHAR$>$=}%
   \index{CHAR<@CHAR$<$}%
   \index{CHAR<=@CHAR$<$=}%
-  Return \retval{\T} if \VAR{character}s are
-  monotonically decreasing, monotonically non-increasing, monotonically
-  increasing, or monotonically non-decreasing, respectively.
+  当 \VAR{character}s
+  严格单调减、非严格单调减、严格单调增、非严格单调增时为
+  \retval{\T}。
   }
 
   \IT{\arrGOO{
@@ -83,55 +83,55 @@ The \kwd*{standard-char} type comprises \LIT{a}-\LIT{z},
       (\FU*{CHAR-LESSP}\RP{\VAR{ character}})\\ 
       (\FU*{CHAR-NOT-GREATERP}\RP{\VAR{ character}})}{.}}
   {
-    Return \retval{\T} if \VAR{character}s are monotonically
-    decreasing, monotonically non-increasing, monotonically
-    increasing, or monotonically non-decreasing, respectively,
-    ignoring case.
+    无论大小写，当
+    \VAR{character}s
+    严格单调减、非严格单调减、严格单调增、非严格单调增时为
+    \retval{\T}。
   }
 
   \IT{\arrGOO{(\FU*{CHAR-UPCASE} \VAR{ character})\\
       (\FU*{CHAR-DOWNCASE} \VAR{ character})}{.}}
   {
-    Return corresponding uppercase/lowercase \retval{character},
-    respectively.
+    返回相应的大/小写
+    \retval{character}。
   }
 
   \IT{(\FU*{DIGIT-CHAR} \VAR{i} \Op{\VAR{radix}\DF{\LIT{10}}})}
   {
-    \retval{Character} representing digit \VAR{i}.
+    \VAR{i} 对应的 \retval{字符}。
   }
 
   \IT{(\FU*{CHAR-NAME} \VAR{char})}
   {
-    \VAR{char}'s \retval{name} if any, or
-    \retval{\NIL}. 
+    如有，则为 \VAR{char} 的 \retval{名称}，否则
+    \retval{\NIL}。
   }
 
   \IT{(\FU*{NAME-CHAR} \VAR{foo})\qquad\qquad}
   {
-    \retval{Character} named \VAR{foo} if any, or
-    \retval{\NIL}.
+    如有，则为名为 \VAR{foo} 的 \retval{字符}，否则
+    \retval{\NIL}。
   }
 
   \IT{\arrGOO{(\FU*{CHAR-INT} \VAR{ character})\\
       (\FU*{CHAR-CODE} \VAR{ character})}{.}}
   {
-    \retval{Code} of \VAR{character}.
+    \VAR{character} 的 \retval{代码}。
   }
 
   \IT{(\FU*{CODE-CHAR} \VAR{code})\qquad\qquad}
   {
-    \retval{Character} with \VAR{code}.
+    代码为 \VAR{code} 的 \retval{字符}。
   }
 
   \IT{\CNS*{CHAR-CODE-LIMIT}}
   {
-    Upper bound of (\FU{CHAR-CODE} \VAR{char}); $\geq 96$.
+    (\FU{CHAR-CODE} \VAR{char}) 的上界，$\geq 96$。
   }
 
   \IT{(\FU*{CHARACTER} \VAR{c})}
   {
-    Return \retval{\kwd{\#$\backslash$}\VAR{c}}.
+    返回 \retval{\kwd{\#$\backslash$}\VAR{c}}。
   }
 
 \end{LIST}

@@ -23,19 +23,19 @@
       (\FU*{BIT-VECTOR-P} \VAR{ foo})\\
       (\FU*{SIMPLE-BIT-VECTOR-P} \VAR{ foo})}{.}}
   {
-  \retval{\T} if \VAR{foo} is of indicated type.
+  当 \VAR{foo} 为指定类型时为 \retval{\T}。
   }
 
   \IT{\arrGOO{(\FU*{ADJUSTABLE-ARRAY-P} \VAR{ array})\\
       (\FU*{ARRAY-HAS-FILL-POINTER-P} \VAR{ array})}{.}}
   {
-  \retval{\T} if \VAR{array} is adjustable/has a fill pointer,
-  respectively. 
+  当 \VAR{array} 可变长/有填充指针时为
+  \retval{\T}。
   }
 
   \IT{(\FU*{ARRAY-IN-BOUNDS-P} \VAR{array} \Op{\VAR{subscripts}})}
   {
-  Return \retval{\T} if \VAR{subscripts} are in \VAR{array}'s bounds.
+  当下标在数组边界内时返回 \retval{\T}。
   }
   % No default subscripts in standard.
 
@@ -59,20 +59,20 @@
         \kwd{:displaced-to } \VAR{array}\DF{\NIL}\text{ }
         \Op{\kwd{:displaced-index-offset } \VAR{i}\DF{\LIT{0}}}}{.}}{\}})}
   { 
-  Return fresh, or readjust, respectively, \retval{vector} or \retval{array}. 
+  返回新的或可变长的 \retval{向量} 或 \retval{数组}。
   }
 
   \IT{(\FU*{AREF} \VAR{array} \OP{\VAR{subscripts}})}
   {
-  Return
-  \retval{array element} pointed to by \VAR{subscripts}. \kwd{setf}able.
+  返回
+  \VAR{subscripts} 指向的 \retval{数组元素}。可 \kwd{setf}。
   }
   % No subscripts means sole element of rank zero array.
 
   \IT{(\FU*{ROW-MAJOR-AREF} \VAR{array} \VAR{i})}
   {
-  Return \retval{\VAR{i}th element} of \VAR{array} in row-major
-  order. \kwd{setf}able.
+  返回以行优先顺序的 \VAR{array}
+  \retval{第 \VAR{i} 个元素}。可 \kwd{setf}。
   }
 
   \IT{(\FU*{ARRAY-ROW-MAJOR-INDEX} \VAR{array} \Op{\VAR{subscripts}})}
@@ -87,17 +87,17 @@
 
   \IT{(\FU*{ARRAY-DIMENSION} \VAR{array} \VAR{i})}
   {
-  \retval{Length of \VAR{i}th dimension} of \VAR{array}.
+  \VAR{array} \retval{第 \VAR{i} 维的长度}。
   }
 
   \IT{(\FU*{ARRAY-TOTAL-SIZE} \VAR{array})}
   {
-    \retval{Number of elements} in \VAR{array}.
+    \VAR{array} 中的 \retval{元素数}。
   }
 
   \IT{(\FU*{ARRAY-RANK} \VAR{array})}
   {
-    \retval{Number of dimensions} of \VAR{array}.
+    \VAR{array} 的 \retval{维数}。
   }
 
   \IT{(\FU*{ARRAY-DISPLACEMENT} \VAR{array})}

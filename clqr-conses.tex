@@ -18,23 +18,23 @@
   \IT{\arrGOO{(\FU*{CONSP} \VAR{ foo})\\
       (\FU*{LISTP} \VAR{ foo})}{.}}
   {
-    Return \retval{\T} if \VAR{foo} is of indicated type.
+    当 \VAR{foo} 为指定类型时为 \retval{\T}。
     }
 
   \IT{\arrGOO{(\FU*{ENDP} \VAR{ list})\\
       (\FU*{NULL} \VAR{ foo})}{.}\qquad\qquad}
   {
-  Return \retval{\T} if \VAR{list}/\VAR{foo} is \NIL.
+  当 \VAR{list}/\VAR{foo} 为 \NIL 时为 \retval{\T}。
   }
 
   \IT{(\FU*{ATOM} \VAR{foo})\qquad}
-  {Return \retval{\T} if \VAR{foo} is not a
-  \kwd{cons}. 
+  {当 \VAR{list}/\VAR{foo} 不为 \kwd{cons} 时返回
+  \retval{\T}。
   }
 
   \IT{(\FU*{TAILP} \VAR{foo} \VAR{list})}
   {
-  Return \retval{\T} if \VAR{foo} is a tail of \VAR{list}.
+  当 \VAR{foo} 为 \VAR{list} 的尾部时返回 \retval{\T}。
   }
 
   \IT{(\FU*{MEMBER} \VAR{foo} \VAR{list}
@@ -43,9 +43,9 @@
         \kwd{:test-not} \VAR{ function}}{.}\\
       \kwd{:key} \VAR{ function}}{\}})}
   {
-  Return \retval{tail of \VAR{list}} starting with
-  its first element matching \VAR{foo}. Return \retval{\NIL} if
-  there is no such element.
+  返回第一个元素匹配 \VAR{foo} 的
+  \retval{\VAR{list} 尾部}。如果不存在这样的元素，返回
+  \retval{\NIL}。
   }
 
   \IT{(\xorGOO{\FU*{MEMBER-IF}\\
@@ -53,9 +53,9 @@
     \VAR{test} \VAR{list}
     \Op{\kwd{:key} \VAR{function}})}
   {
-  Return \retval{tail of \VAR{list}} starting with
-  its first element satisfying \VAR{test}. Return \retval{\NIL} if
-  there is no such element.
+  返回第一个元素满足 \VAR{test} 的
+  \retval{\VAR{list} 尾部}。如果不存在这样的元素，返回
+  \retval{\NIL}。
   }
 
   \IT{(\FU*{SUBSETP} \VAR{list-a} \VAR{list-b} 
@@ -64,8 +64,8 @@
         \kwd{:test-not} \VAR{ function}}{.}\\
       \kwd{:key} \VAR{ function}}{\}})}
   {
-  Return \retval{\T} if \VAR{list-a} is a subset of
-  \VAR{list-b}.
+  当 \VAR{list-a} 为 \VAR{list-b} 的子集时返回
+  \retval{\T}。
   }
 
 \end{LIST}
@@ -94,12 +94,12 @@
   \IT{(\FU*{MAKE-LIST} \VAR{num} \Op{\kwd{:initial-element}
       \VAR{foo}\DF{\NIL}})}
   {
-    New \retval{list} with \VAR{num} elements set to \VAR{foo}.
+    有 \VAR{num} 个 \VAR{foo} 元素的新 \retval{list}。
   }
 
   \IT{(\FU*{LIST-LENGTH} \VAR{list})}
-  {\retval{Length} of \VAR{list};
-  \retval{\NIL} for circular \VAR{list}.
+  {\VAR{list} 的 \retval{长度}，循环（circular）
+  \VAR{list} 为 \retval{\NIL}。
   }
 
   \IT{(\FU*{CAR} \VAR{list})\qquad\qquad}
@@ -184,13 +184,13 @@
 
   \IT{(\MC*{POP} \DES{\VAR{place}})}
   {
-    Set \VAR{place} to (\FU{CDR} \VAR{place}), return
-    \retval{(\FU{CAR} \VAR{place})}.
+    将 \VAR{place} 设为 (\FU{CDR} \VAR{place})，返回
+    \retval{(\FU{CAR} \VAR{place})}。
   }
 
   \IT{(\MC*{PUSH} \VAR{foo} \DES{\VAR{place}})}
   {
-    Set \VAR{place} to \retval{(\FU{cons} \VAR{foo} \VAR{place})}.
+    将 \VAR{place} 设为 \retval{(\FU{cons} \VAR{foo} \VAR{place})}。
   }
 
   \IT{(\MC*{PUSHNEW} \VAR{foo} \DES{\VAR{place}}  
@@ -215,8 +215,8 @@
       (\FU*{NRECONC }
       \DES{\VAR{list}} \VAR{ foo})}{.}}
   {
-    Return \retval{concatenated list} after reversing order in
-    \VAR{list}.
+    在反转 \VAR{list} 的顺序后返回
+    \retval{串接的列表}。
   }
 
   \IT{(\xorGOO{\FU*{MAPCAR}\\
@@ -251,7 +251,7 @@
 
   \IT{(\FU*{COPY-LIST} \VAR{list})}
   {
-    Return \retval{copy} of \VAR{list} with shared elements.
+    返回共享元素的 \VAR{list} \retval{副本}。
   }
 
 \end{LIST}
@@ -271,8 +271,8 @@
 
   \IT{(\FU*{ACONS} \VAR{key} \VAR{value} \VAR{alist})}
   {
-    Return \retval{\VAR{alist}} with a (\VAR{key} \kwd{.} \VAR{value})
-    pair added.
+    返回添加了 (\VAR{key} \kwd{.} \VAR{value}) 对的
+    \retval{\VAR{alist}}。
   }
 
   \IT{\arrGOO{(\xorGOO{\FU*{ASSOC}\\
@@ -293,7 +293,7 @@
 
   \IT{(\FU*{COPY-ALIST} \VAR{alist})}
   {
-    Return \retval{copy} of \VAR{alist}.
+    返回 \VAR{alist} 的 \retval{副本}。
   }
 
 \end{LIST}
@@ -350,7 +350,7 @@
 
   \IT{(\FU*{COPY-TREE} \VAR{tree})} 
   {
-    \retval{Copy of \VAR{tree}} with same shape and leaves.
+    返回具有相同形状和叶子的 \retval{\VAR{tree} 副本}。
   }
 
 \end{LIST}
@@ -382,8 +382,8 @@
         \kwd{:test-not} \VAR{ function}}{.}\\
       \kwd{:key} \VAR{ function}}{\}})}
   {
-  Return \retval{$a\cap b$}, \retval{$a\setminus b$}, \retval{$a\cup b$}, or
-  \retval{$a\,\triangle\, b$}, respectively, of lists \VAR{a} and \VAR{b}.
+  返回 \VAR{a} 和 \VAR{b} 的
+  \retval{$a\cap b$}、\retval{$a\setminus b$}、\retval{$a\cup b$} 或 \retval{$a\,\triangle\, b$}。
   }
 
 \end{LIST}

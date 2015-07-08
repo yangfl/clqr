@@ -233,7 +233,7 @@
   \IT{\arrGOO{(\FU*{NUMERATOR} \VAR{ rational})\\
       (\FU*{DENOMINATOR} \VAR{ rational})}{.}}
   {
-  既约 \VAR{分数} 的
+  \VAR{rational} 既约形式的
   \retval{分子} 或 \retval{分母}。
   }
 
@@ -387,49 +387,49 @@
 
   \IT{(\FU*{LDB-TEST} \VAR{byte-spec} \VAR{integer})}
   {
-  Return \retval{\T} if any bit specified by \VAR{byte-spec} in
-  \VAR{integer} is set.
+  当 \VAR{integer} 在 \VAR{byte-spec}
+  指定的位上为 1 时返回 \retval{\T}。
   }
 
   \IT{(\FU*{ASH} \VAR{integer} \VAR{count})}
   {
-  Return copy of \retval{\VAR{integer}} arithmetically shifted left by
-  \VAR{count} adding zeros
-  at the right, or, for $\VAR{count}<0$, shifted right discarding
-  bits. 
+  返回 \retval{\VAR{integer}}
+  副本的左移结果，以零补齐，当
+  $\VAR{count}<0$
+  时，右移并丢弃多余的位。
   }
 
   \IT{(\FU*{LDB} \VAR{byte-spec} \VAR{integer})}
   {
-  Extract \retval{byte} denoted by \VAR{byte-spec} from
-  \VAR{integer}. \kwd{setf}able. 
+  从 \VAR{integer} 中提取 \VAR{byte-spec} 指定的
+  \retval{byte}。可 \kwd{setf}。
   }
 
   \IT{(\xorGOO{\FU*{DEPOSIT-FIELD}\\
       \FU*{DPB}}{\}}
     \VAR{int-a} \VAR{byte-spec} \VAR{int-b})}
   {
-  Return \retval{\VAR{int-b}} with bits denoted by \VAR{byte-spec} replaced
-  by corresponding bits of \VAR{int-a}, or by the low (\FU{byte-size}
-  \VAR{byte-spec}) bits of \VAR{int-a}, respectively. 
+  返回 \retval{\VAR{int-b}}，其中 \VAR{byte-spec}
+  指定的位用 \VAR{int-a} 相应的位，或用 \VAR{int-a} 的低 (\FU{byte-size}
+  \VAR{byte-spec}) 位替换。
   }
 
   \IT{(\FU*{MASK-FIELD} \VAR{byte-spec} \VAR{integer})}
   {
-  Return copy of \retval{\VAR{integer}} with all bits unset but those denoted by
-  \VAR{byte-spec}. \kwd{setf}able.
+  返回 \retval{\VAR{integer}} 副本，其中除 \VAR{byte-spec}
+  指定的位外全为 0。可 \kwd{setf}。
   }
 
   \IT{(\FU*{BYTE} \VAR{size} \VAR{position})}
   {
-  \retval{Byte specifier} for a byte of \VAR{size} bits starting at a
-  weight of $2^{\VAR{position}}$. 
+  \retval{字节说明符}，指定从
+  \VAR{position} 起的 \VAR{size} 位。
   }
 
   \IT{\arrGOO{(\FU*{BYTE-SIZE} \VAR{ byte-spec})\\
       (\FU*{BYTE-POSITION} \VAR{ byte-spec})}{.}}
   {
-  \retval{Size} or \retval{position}, respectively,  of \VAR{byte-spec}.
+  \VAR{byte-spec} 的 \retval{大小} 或 \retval{位置}。
   }
 
 \end{LIST}
@@ -455,7 +455,7 @@
   \index{SINGLE-FLOAT-NEGATIVE-EPSILON}%
   \index{DOUBLE-FLOAT-NEGATIVE-EPSILON}%
   \index{LONG-FLOAT-NEGATIVE-EPSILON}%
-  Smallest possible number making a difference when added or subtracted, respectively.
+  数字加减时的最小分度值。
   }
 
   \IT{\arrGOO{%
@@ -486,7 +486,7 @@
   \index{LEAST-POSITIVE-NORMALIZED-DOUBLE-FLOAT}%
   \index{LEAST-POSITIVE-LONG-FLOAT}%
   \index{LEAST-POSITIVE-NORMALIZED-LONG-FLOAT}%
-  Available numbers closest to $-0$ or $+0$, respectively.
+  最接近 $-0$ 或 $+0$ 的数字。
   }
 
   \IT{\arrGOO{\CNS{MOST-NEGATIVE}\\
@@ -509,19 +509,19 @@
   \index{MOST-POSITIVE-SHORT-FLOAT}%
   \index{MOST-POSITIVE-SINGLE-FLOAT}%
   \index{MOST-POSITIVE-FIXNUM}%
-  Available numbers closest to $-\infty$ or $+\infty$, respectively.
+  最接近 $-\infty$ 或 $+\infty$ 的数字。
   }
 
   \IT{\arrGOO{(\FU*{DECODE-FLOAT} \VAR{ n})\\
       (\FU*{INTEGER-DECODE-FLOAT} \VAR{ n})}{.}}
   {
-  Return \retval{significand}, \retvalii{exponent}, and
-  \retvaliii{sign} of \kwd{float} \VAR{n}.
+  返回 \kwd{float} \VAR{n} 的
+  \retval{尾数}、\retvalii{指数}及\retvaliii{符号}。
   }
 
   \IT{(\FU*{SCALE-FLOAT} \VAR{n} \Op{\VAR{i}})}
   {
-  With \VAR{n}'s radix $b$, return $n b^{i}$.
+  用 \VAR{n} 的基数 $b$ 返回 $n b^{i}$。
   }
 
   \IT{\arrGOO{
@@ -529,13 +529,13 @@
       (\FU*{FLOAT-DIGITS} \VAR{ n})\\
       (\FU*{FLOAT-PRECISION} \VAR{ n})}{.}}
   {
-  \retval{Radix}, \retval{number of digits} in that radix, or
-  \retval{precision} in that radix, respectively, of float \VAR{n}.
+  float \VAR{n} 的
+  \retval{基数}、\retval{位数} 或 \retval{精度}。
   }
 
   \IT{(\FU*{UPGRADED-COMPLEX-PART-TYPE} \VAR{foo} \Op{\VAR{environment}\DF{\NIL}})}
-  {\retval{Type} of most specialized \kwd{complex} number able to hold
-    parts of type \VAR{foo}. 
+  {可持有类型 \VAR{foo} 的最具体
+    \kwd{complex} \retval{类型}。
   }
 
 \end{LIST}

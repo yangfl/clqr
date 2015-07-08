@@ -66,25 +66,25 @@
     }{\}^{\!\!*}}%
     )}
   {
-    Define structure \retval{\VAR{foo}} together with functions
-    \LIT{MAKE-}\VAR{foo}, \LIT{COPY-}\VAR{foo} and
-    \VAR{foo}\LIT{-P}; and \kwd{setf}able accessors
-    \VAR{foo}\LIT{-}\VAR{slot}. Instances are of class \VAR{foo} or, if 
-    \kwd{defstruct} option \kwd{:type} is given, of the specified type.
-    They can be
-    created by (\LIT{MAKE-}\VAR{foo} \Goos{\kwd{:}\VAR{slot}
-      \VAR{value}}) or, if \VAR{ord-$\lambda$} (see
-    page \pageref{section:函数}) is given, by (\VAR{maker}
-    \OPn{\VAR{arg}} \Goos{\kwd{:}\VAR{key} \VAR{value}}). In the latter
-    case, \VAR{arg}s and \kwd{:}\VAR{key}s correspond to the positional
-    and keyword parameters defined in \VAR{ord-$\lambda$} whose
-    \VAR{var}s in turn correspond to \VAR{slot}s.
-    \kwd{:print-object}/\kwd{:print-function} generate a
-    \GFU{print-object} method for an instance \VAR{bar} of \VAR{foo}
-    calling (\VAR{o-printer} \VAR{bar} \VAR{stream}) or (\VAR{f-printer}
-    \VAR{bar} \VAR{stream} \VAR{print-level}), respectively.
-    If \kwd{:type} without \kwd{:named} is given, no \VAR{foo}\LIT{-P}
-    is created.
+    定义结构 \retval{\VAR{foo}}，函数
+    \LIT{MAKE-}\VAR{foo}、\LIT{COPY-}\VAR{foo}、\VAR{foo}\LIT{-P}，可
+    \kwd{setf} 的存取器
+    \VAR{foo}\LIT{-}\VAR{slot}。实例为类 \VAR{foo} 的实例，如果指定了
+    \kwd{defstruct} 选项
+    \kwd{:type}，则为指定的类型。可通过
+    (\LIT{MAKE-}\VAR{foo} \Goos{\kwd{:}\VAR{slot}
+      \VAR{value}}) 创建实例，当指定 \VAR{ord-$\lambda$}（参见第
+    \pageref{section:函数} 页）时，也可使用 (\VAR{maker}
+    \OPn{\VAR{arg}} \Goos{\kwd{:}\VAR{key}
+    \VAR{value}})。在后一种情况中，\VAR{arg}s 与 \kwd{:}\VAR{key}s 对应
+    \VAR{ord-$\lambda$} 中定义的位置和关键字参数，其
+    \VAR{var}s 对应
+    \VAR{slot}s。\kwd{:print-object}/\kwd{:print-function} 分别为
+    \VAR{foo} 的实例 \VAR{bar} 生成 \GFU{print-object} 方法
+    (\VAR{o-printer} \VAR{bar} \VAR{stream}) 或 (\VAR{f-printer}
+    \VAR{bar} \VAR{stream} \VAR{print-level})。如果
+    \kwd{:type} 不带 \kwd{:named}，则不会创建
+    \VAR{foo}\LIT{-P}。
 }
 
   \IT{(\FU*{COPY-STRUCTURE} \VAR{structure})}

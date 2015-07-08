@@ -9,7 +9,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{包及符号}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The Loop Facility provides additional means of symbol handling; see \kwd{loop}, page \pageref{section:Loop 宏}.
+Loop 宏提供了额外的符合处理方式，参见第 \pageref{section:Loop 宏} 页 \kwd{loop}。
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{谓词}
@@ -20,7 +20,7 @@ The Loop Facility provides additional means of symbol handling; see \kwd{loop}, 
       (\FU*{PACKAGEP} \VAR{ foo})\\
       (\FU*{KEYWORDP} \VAR{ foo})}{.}}
   {
-    \retval{\T} if \VAR{foo} is of indicated type.
+    当 \VAR{foo} 为指定类型时为 \retval{\T}。
   }
 
 \end{LIST}
@@ -33,17 +33,17 @@ The Loop Facility provides additional means of symbol handling; see \kwd{loop}, 
 
   \IT{\kwd*{:}\VAR{bar}\XOR\kwd*{keyword}\kwd{:}\VAR{bar}}
   {
-    Keyword, evaluates to \retval{:\VAR{bar}}.
+    关键字，结果为 \retval{:\VAR{bar}}。
   }
 
   \IT{\VAR{package}\kwd*{:}\VAR{symbol}}
   {
-    Exported \VAR{symbol} of \VAR{package}.
+    \VAR{package} 的导出符号 \VAR{symbol}。
   }
 
   \IT{\VAR{package}\kwd*{::}\VAR{symbol}}
   {
-    Possibly unexported \VAR{symbol} of \VAR{package}.
+    \VAR{package} 的（未）导出符号 \VAR{symbol}。
   }
 
   \IT{(\MC*{DEFPACKAGE}\VAR{ foo} 
@@ -69,18 +69,18 @@ The Loop Facility provides additional means of symbol handling; see \kwd{loop}, 
     \orGOO{\kwd{:nicknames }(\OPn{\VAR{nick}})\DF{\NIL}\\
       \kwd{:use }(\OPn{\VAR{used-package}})}{\}})}
   {
-    Create \retval{package \VAR{foo}}.
+    创建 \retval{包 \VAR{foo}}。
   }
 
   \IT{(\FU*{RENAME-PACKAGE} \VAR{package} \VAR{new-name}
     \Op{\VAR{new-nicknames}\DF{\NIL}})}
   {
-    Rename \VAR{package}. Return \retval{renamed package}.
+    重命名 \VAR{package}。返回 \retval{重命名的包}。
   }
 
   \IT{(\MC*{IN-PACKAGE }\NEV{\VAR{foo}})}
   {
-    Make \retval{package \VAR{foo}} current.
+    指定当前 \retval{包 \VAR{foo}}。
   }
 
   \IT{(\xorGOO{\FU*{USE-PACKAGE}\\
@@ -102,17 +102,17 @@ The Loop Facility provides additional means of symbol handling; see \kwd{loop}, 
 
   \IT{(\FU*{DELETE-PACKAGE} \DES{\VAR{package}})}
   {
-    Delete \VAR{package}. Return \retval{\T} if successful.
+    删除 \VAR{package}。成功时返回 \retval{\T}。
   }
 
   \IT{\V{\A package\A}\DF{\kwd{common-lisp-user}}\qquad\qquad}
   {\index{*PACKAGE*@\A PACKAGE\A}
-    The current package.
+    当前包。
   }
 
   \IT{(\FU*{LIST-ALL-PACKAGES})\qquad\qquad\qquad}
   {
-    \retval{List of registered packages}.
+    \retval{已注册包列表}。
   }
 
   \IT{(\FU*{PACKAGE-NAME} \VAR{package})}
@@ -127,7 +127,7 @@ The Loop Facility provides additional means of symbol handling; see \kwd{loop}, 
 
   \IT{(\FU*{FIND-PACKAGE} \VAR{name})}
   {
-    \retval{Package} with \VAR{name} (case-sensitive). 
+    \VAR{name} \retval{包}（大小写敏感）。
   }
 
   \IT{(\FU*{FIND-ALL-SYMBOLS} \VAR{foo})}
@@ -248,7 +248,7 @@ function (\kwd{function}, macro, or special operator \VAR{name}).
 
   \IT{(\FU*{MAKE-SYMBOL} \VAR{name})}
   {
-    Make fresh, uninterned \retval{symbol \VAR{name}}.
+    生成新的未进入 \retval{符号 \VAR{name}}。
   }
 
   \IT{(\FU*{GENSYM} \Op{\VAR{s}\DF{\LIT{G}}})}
@@ -278,9 +278,9 @@ function (\kwd{function}, macro, or special operator \VAR{name}).
       (\FU*{SYMBOL-VALUE} \VAR{ symbol})\\
       (\FU*{SYMBOL-FUNCTION} \VAR{ symbol})}{.}}
   {
-  \retval{Name}, \retval{package}, \retval{property list},
-  \retval{value}, or \retval{function}, respectively,
-  of \VAR{symbol}. \kwd{setf}able. 
+  \VAR{symbol} 的
+  \retval{名称}、\retval{包}、\retval{属性表}、
+  \retval{值}、\retval{函数}。可 \kwd{setf}。
   }
 
   \IT{(\xorGOO{%
@@ -297,8 +297,8 @@ function (\kwd{function}, macro, or special operator \VAR{name}).
       \kwd{'setf}\XOR
       \T}{\}})}
   {\index{VARIABLE}\index{FUNCTION}\index{COMPILER-MACRO}\index{METHOD-COMBINATION}\index{STRUCTURE}\index{TYPE}\index{SETF}
-    Get/set \retval{documentation string} of \VAR{foo} of given
-    type.
+    获取/设置给定类型
+    \VAR{foo} 的 \retval{文档字符串}。
   }
 
   \IT{\CNS*{T}}
@@ -330,12 +330,12 @@ function (\kwd{function}, macro, or special operator \VAR{name}).
 
   \IT{\kwd*{COMMON-LISP-USER}\XOR\kwd*{CL-USER}}
   {
-    Current package after startup; uses package \kwd{common-lisp}. 
+    启动后的当前包，使用包 \kwd{common-lisp}。
   }
 
   \IT{\kwd*{KEYWORD}}
   {
-    Contains symbols which are defined to be of type \kwd{KEYWORD}.
+    含有定义为类型 \kwd{KEYWORD} 的符号。
   }
 
 \end{LIST}

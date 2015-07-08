@@ -1,10 +1,15 @@
 \XeTeXlinebreaklocale "zh"
 \XeTeXlinebreakskip = 0pt plus 1pt
 
-\usepackage{fontspec}
-\setmainfont{WenQuanYi Micro Hei}
-\setsansfont{WenQuanYi Micro Hei}
+%\usepackage{fontspec}
+%\RequirePackage[slantfont,boldfont]{xeCJK}
+\RequirePackage[boldfont]{xeCJK}
+\setCJKmainfont[Mapping=tex-text]{WenQuanYi Micro Hei}
+\setCJKsansfont{WenQuanYi Micro Hei}
+\setCJKromanfont{WenQuanYi Micro Hei}
+\setCJKmonofont{WenQuanYi Micro Hei Mono}
+
 \let\T\undefined
 
 \renewcommand{\contentsname}{目录}
-\renewcommand{\indexname}{索引}
+\renewcommand{\figurename}{图}

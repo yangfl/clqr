@@ -247,22 +247,22 @@
       \KWD{\#\boldmath$|$ }\OPn{\VAR{multi-line-comment}}\KWD{ \boldmath$|$\#}\\
       \KWD*{; }\OPn{\VAR{one-line-comment}}}{.}}
   {\index{\#{$"|$} {$"|$}\#}
-    Comments. There are stylistic conventions:
+    注释。样式约定：
   }
   \begin{LIST}{.5cm}
     \IT{\KWD{;;;;} \VAR{title}\qquad\qquad}
-    {Short title for a block of code.}
+    {代码块标题。}
     
     \IT{\KWD{;;;} \VAR{intro}\qquad\qquad}
-    {Description before a block of code.}
+    {代码块前描述。}
     
     \IT{\KWD{;;} \VAR{state}\qquad\qquad}
-    {State of program or of following code.}
+    {程序或以下代码的状态。}
     
     \IT{\arrGOO{%
         \KWD{;}\VAR{explanation}\\
         \KWD{;}\VAR{ continuation}}{.}}
-    {Regarding line on which it appears.}
+    {与它出现的行有关。}
     
   \end{LIST}
   
@@ -292,19 +292,19 @@
 
   \IT{\KWD{\#\boldmath{$\backslash$}}\VAR{c}}
   {
-    (\FU*{character} \LIT{"}\VAR{c}\LIT{"}), the character \VAR{c}.
+    (\FU*{character} \LIT{"}\VAR{c}\LIT{"})，字符 \VAR{c}。
   }
   \index{\#@\#$\backslash$}%
 
   \IT{\KWD*{\#b}\VAR{n}; \KWD*{\#o}\VAR{n}; \VAR{n}\kwd{.};
     \KWD*{\#x}\VAR{n}; \KWD{\#}\VAR{r}\KWD{R}\VAR{n}}
   {\index{\#R}%
-    Integer of radix 2, 8, 10, 16, or \VAR{r}; $2\le r \le 36$.
+    整数，基数为 2、8、10、16，或 \VAR{r}; $2\le r \le 36$。
   }
 
   \IT{\VAR{n}\kwd*{/}\VAR{d}\quad\qquad}
   {
-    The \kwd*{ratio} $\frac{n}{d}$.
+    \kwd*{ratio} $\frac{n}{d}$。
   }
 
   \IT{\GOO{\Op{\VAR{m}}\kwd{.}\VAR{n}%
@@ -321,18 +321,18 @@
 
   \IT{\KWD*{\#C(}\VAR{a b}\kwd{)}\qquad\qquad}
   {
-    (\FU*{complex} \VAR{a} \VAR{b}), the complex number
-    $\VAR{a}+\VAR{b}\text{i}$.
+    (\FU*{complex} \VAR{a} \VAR{b})，复数
+    $\VAR{a}+\VAR{b}\text{i}$。
   }
 
   \IT{\KWD*{\#'}\VAR{foo}\qquad\qquad\qquad}
   {
-    (\SO*{function} \VAR{foo}); the function named \VAR{foo}.
+    (\SO*{function} \VAR{foo})，函数 \VAR{foo}。
   }
 
   \IT{\KWD{\#}\VAR{n}\KWD{A}\VAR{sequence}}
   {\index{\#A}%
-  \VAR{n}-dimensional array.
+  \VAR{n} 维数组。
   }
 
   \IT{\KWD{\#}\Op{\VAR{n}}\kwd{(}\OPn{\VAR{foo}}\kwd{)}}
@@ -349,22 +349,22 @@
 
   \IT{\KWD*{\#S(}\VAR{type} \Goos{\VAR{slot} \VAR{value}}\kwd{)}}
   {
-    Structure of \VAR{type}.
+    \VAR{type} 的结构。
   }
 
   \IT{\KWD*{\#P}\VAR{string}\qquad\qquad}
   {
-    A pathname.
+    路径名。
   }
 
   \IT{\KWD*{\#:}\VAR{foo}\qquad\qquad\qquad}
   {
-    Uninterned symbol \VAR{foo}.
+    未进入（uninterned）符号 \VAR{foo}。
   }
 
   \IT{\KWD*{\#.}\VAR{form}\qquad\qquad}
   {
-    Read-time value of \VAR{form}.
+    \VAR{form} 的读取期值。
   }
 
   \IT{\V{\A read-eval\A}\DF{\T}}
@@ -1057,7 +1057,7 @@
       \kwd{:external-format } \VAR{format}\DF{\kwd{:default}}%
     }{\}})}
   {\label{open}
-    Open \retval{\kwd{file-stream} to \VAR{path}}.
+    打开到 \VAR{path} 的 \retval{\kwd{file-stream}}。
   }
 
   \IT{\arrGOO{%
@@ -1067,7 +1067,7 @@
       (\FU*{MAKE-ECHO-STREAM } \VAR{from-input-stream } \VAR{to-output-stream})\\
       (\FU*{MAKE-SYNONYM-STREAM } \VAR{variable-bound-to-stream})}{.}}
   {
-    Return \retval{stream} of indicated type.
+    返回指定类型的 \retval{stream}。
   }
 
   \IT{(\FU*{MAKE-STRING-INPUT-STREAM} \VAR{string}

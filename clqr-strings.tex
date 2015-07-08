@@ -9,7 +9,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{字符串} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-数组和序列函数也可用于操作字符串；参见第
+数组和序列函数也可用于操作字符串，参见第
 \pageref{section:数组} 页和第 \pageref{section:序列} 页。
 
 \begin{LIST}{1cm}
@@ -28,8 +28,8 @@
       \kwd{:end1} \VAR{ end-foo}\DF{\NIL}\\
       \kwd{:end2} \VAR{ end-bar}\DF{\NIL}}{\}})}
   {
-    Return \retval{\T} if subsequences of \VAR{foo} and \VAR{bar} are
-    equal.  Obey/ignore, respectively, case.
+    当 \VAR{foo} 和 \VAR{bar} 的子序列相等时返回
+    \retval{\T}。分别检查/忽略大小写。
   }
 
   \IT{(\xorGOO{%
@@ -48,10 +48,10 @@
     \index{STRING>=@STRING$>$=}\index{STRING-NOT-LESSP}%
     \index{STRING<@STRING$<$}\index{STRING-LESSP}%
     \index{STRING<=@STRING$<$=}\index{STRING-NOT-GREATERP}%
-    If \VAR{foo} is lexicographically not equal, greater, not less,
-    less, or not greater, respectively, then return \retval{position}
-    of first mismatching character in \VAR{foo}.  Otherwise return
-    \retval{\NIL}.  Obey/ignore, respectively, case.
+    测试 \VAR{foo} 的字典序是否不等于、大于、不小于、小于、不大于
+    \VAR{bar}，返回在 \VAR{foo} 第一次命中的
+    \retval{位置}，否则返回
+    \retval{\NIL}。分别检查/忽略大小写。
   }
 
   \IT{(\FU*{MAKE-STRING} \VAR{size} \orGOO{\kwd{:initial-element} \VAR{ char}\\
@@ -70,10 +70,9 @@
       \orGOO{\kwd{:start} \VAR{ start}\DF{\LIT{0}}\\
         \kwd{:end} \VAR{ end}\DF{\NIL}}{\}})}{.}}
   {
-    Convert \VAR{x} (\kwd{symbol}, \kwd{string}, or \kwd{character})
-    into a \retval{string}, a \retval{string with capitalized words},
-    an \retval{all-uppercase string}, or an \retval{all-lowercase
-      string}, respectively.
+    将
+    \VAR{x}（\kwd{symbol}、\kwd{string}、\kwd{character}）转换为
+    \retval{字符串}、\retval{单词首字母大写字符串}、\retval{全大写字符串}、\retval{全小写字符串}。
   }
 
   \IT{(\xorGOO{%
@@ -84,25 +83,25 @@
     \orGOO{\kwd{:start} \VAR{ start}\DF{\LIT{0}}\\
       \kwd{:end} \VAR{ end}\DF{\NIL}}{\}})}
   {
-    Convert \VAR{string} into a \retval{string with capitalized
-      words}, an \retval{all-uppercase string}, or an
-    \retval{all-lowercase string}, respectively. 
+    将 \VAR{string}
+    转换为
+    \retval{单词首字母大写字符串}、\retval{全大写字符串}、\retval{全小写字符串}。
   }
 
   \IT{(\xorGOO{\FU*{STRING-TRIM}\\
       \FU*{STRING-LEFT-TRIM}\\
       \FU*{STRING-RIGHT-TRIM}}{\}} \VAR{char-bag} \VAR{string})}
   {
-    Return \retval{\VAR{string}} with all characters in sequence
-    \VAR{char-bag} removed from both ends, from the beginning, or from
-    the end, respectively. 
+    从两端、从头、从尾除去序列 \VAR{char-bag}
+    中的字符，并返回
+    \retval{\VAR{string}}。
   }
 
   \IT{\arrGOO{(\FU*{CHAR} \VAR{ string} \VAR{ i})\\
       (\FU*{SCHAR} \VAR{ string} \VAR{ i})}{.}}
   {
-    Return zero-indexed \retval{\VAR{i}th character} of string
-    ignoring/obeying, respectively, fill pointer. \kwd{setf}able.
+    忽略/检查填充指针，返回字符串中零索引的
+    \retval{第 \VAR{i} 个字符}。可 \kwd{setf}。
   }
 
   \IT{(\FU*{PARSE-INTEGER} \VAR{string}
@@ -111,8 +110,8 @@
       \kwd{:radix} \VAR{ int}\DF{\LIT{10}}\\
       \kwd{:junk-allowed} \VAR{ bool}\DF{\NIL}}{\}})}
   {
-    Return \retval{integer} parsed from \VAR{string} and
-    \retvalii{index} of parse end.
+    从 \VAR{string} 中解析并返回
+    \retval{整数} 和结束时的 \retvalii{索引}。
   }
 
 \end{LIST}
