@@ -64,7 +64,7 @@
   \IT{(\FU*{FIND-CLASS} \VAR{symbol} \OP{\VAR{errorp}\DF{\T}
       \Op{\VAR{environment}}})}
   {
-    Return \retval{class} named \VAR{symbol}. \kwd{setf}able.
+    返回名为 \VAR{symbol} 的 \retval{类}。可 \kwd{setf}。
   }
 
   \IT{(\GFU*{MAKE-INSTANCE} \VAR{class} \Goos{\kwd{:}\VAR{initarg}
@@ -111,7 +111,7 @@
 
   \IT{(\FU*{CLASS-OF} \VAR{foo})}
   {
-    \retval{Class} \VAR{foo} is a direct instance of.
+    \VAR{foo} 的直接基 \retval{类}。
   }
 
   \IT{(\GFU*{CHANGE-CLASS} \DES{\VAR{instance}} \VAR{new-class}
@@ -127,8 +127,8 @@
 
   \IT{(\GFU*{MAKE-INSTANCES-OBSOLETE} \VAR{class})}
   {
-    Update all existing instances of \VAR{class} using
-    \GFU{update-instance-for-redefined-class}.
+    使用 \GFU{update-instance-for-redefined-class}
+    更新 \VAR{class} 的所有实例。
   }
 
   \IT{(\xorGOO{%
@@ -236,7 +236,7 @@
     paramters \OPn{\VAR{required-var}} and \OPn{\VAR{var}} must be
     compatible with existing methods.  \VAR{defmethod-args}
     resemble those of \MC{defmethod}.  For \VAR{c-type} see section
-    \ref{section:方法组合类型}.
+    \ref{section:方法组合类型}。
   }
 
   \IT{(\FU*{ENSURE-GENERIC-FUNCTION}
@@ -256,7 +256,7 @@
     must be compatible with a pre-existing generic function or with
     existing methods, respectively. Changes to \VAR{method-class} do
     not propagate to existing methods. For \VAR{c-type} see section
-    \ref{section:方法组合类型}. 
+    \ref{section:方法组合类型}。
   }
 
   \IT{(\MC*{DEFMETHOD} 
@@ -293,7 +293,7 @@
     \OPn{\VAR{form}}. \VAR{form}s are enclosed in an implicit \SO{block}
     \VAR{foo}. Applicable \VAR{qualifier}s depend on the
     \kwd{method-combination} type; see
-    section \ref{section:方法组合类型}.
+    section \ref{section:方法组合类型}。
   }
 
   \IT{(\xorGOO{\GFU*{ADD-METHOD}\\

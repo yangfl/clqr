@@ -9,12 +9,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{散列表} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The Loop Facility provides additional hash table-related
-functionality; see \kwd{loop}, page \pageref{section:Loop 宏}.
+Loop 宏提供了额外的散列表相关功能，参见第
+\pageref{section:Loop 宏} 页 \kwd{loop}。
 
-Key-value storage similar to hash tables can as well be achieved using
-association lists and property lists; see
-pages \pageref{section:关联表} and \pageref{:property_lists}. 
+类似散列表的键-值存储也可用关联表和属性表实现，参见第
+\pageref{section:关联表} 页和第
+\pageref{:property_lists} 页。
 
 
 \begin{LIST}{1cm}
@@ -36,20 +36,20 @@ pages \pageref{section:关联表} and \pageref{:property_lists}.
 
   \IT{(\FU*{GETHASH} \VAR{key} \VAR{hash-table} \Op{\VAR{default}\DF{\NIL}})}
   {
-  Return \retval{object} with \VAR{key} if any or \retval{\VAR{default}}
-  otherwise; and \retvalii{\T} if found, \retvalii{\NIL}
-  otherwise. \kwd{setf}able. 
+  若存在，返回
+  \VAR{key} 的 \retval{对象} 及 \retvalii{\T}，否则返回
+  \retval{\VAR{default}} 及 \retvalii{\NIL}。可 \kwd{setf}。
   }
 
   \IT{(\FU*{HASH-TABLE-COUNT} \VAR{hash-table})}
   {
-  \VAR{hash-table} 内的 \retval{条目数}。
+  \VAR{hash-table} 内的 \retval{项数}。
   }
 
   \IT{(\FU*{REMHASH} \VAR{key} \DES{\VAR{hash-table}})}
   {
-  Remove from \VAR{hash-table} entry with \VAR{key} and return
-  \retval{\T} if it existed. Return \retval{\NIL} otherwise. 
+  若存在，从 \VAR{hash-table} 中删除 \VAR{key} 项并返回
+  \retval{\T}，否则返回 \retval{\NIL}。
   }
 
   \IT{(\FU*{CLRHASH} \DES{\VAR{hash-table}})}
@@ -59,16 +59,16 @@ pages \pageref{section:关联表} and \pageref{:property_lists}.
 
   \IT{(\FU*{MAPHASH} \VAR{function} \VAR{hash-table})}
   {
-  Iterate over \VAR{hash-table} calling \VAR{function} on key
-  and value. Return \retval{\NIL}.
+  遍历散列表，用键和值调用函数。返回
+  \retval{\NIL}。
   }
 
   \IT{(\MC*{WITH-HASH-TABLE-ITERATOR} (\VAR{foo} \VAR{hash-table})
     \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})} \PROGN{\VAR{form}})}
   {
-  Return \retval{values of \VAR{form}s}. In \VAR{form}s,
-  invocations of  (\VAR{foo}) return: \T\ if an entry is returned;
-  its key; its value.
+  返回 \retval{\VAR{form}s 的值}。在 \VAR{form}
+  内，调用 (\VAR{foo}) 返回：\T\
+  当有项返回时，其键及其值。
   }
 
   \IT{(\FU*{HASH-TABLE-TEST} \VAR{hash-table})}
@@ -80,8 +80,8 @@ pages \pageref{section:关联表} and \pageref{:property_lists}.
       (\FU*{HASH-TABLE-REHASH-SIZE} \VAR{ hash-table})\\
       (\FU*{HASH-TABLE-REHASH-THRESHOLD} \VAR{ hash-table})}{.}}
   {
-  Current \retval{size}, \retval{rehash-size}, or
-  \retval{rehash-threshold}, respectively, as used in \FU{make-hash-table}. 
+  当前 \retval{大小}、\retval{重散列大小}、\retval{重散列阈值}，如
+  \FU{make-hash-table} 所用参数。
   }
 
   \IT{(\FU*{SXHASH} \VAR{foo})}

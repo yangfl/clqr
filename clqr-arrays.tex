@@ -77,12 +77,12 @@
 
   \IT{(\FU*{ARRAY-ROW-MAJOR-INDEX} \VAR{array} \Op{\VAR{subscripts}})}
   {
-  \retval{Index} in row-major order of the element denoted by \VAR{subscripts}.
+  \VAR{subscripts} 所指定元素的行优先顺序 \retval{索引}。
   }
 
   \IT{(\FU*{ARRAY-DIMENSIONS} \VAR{array})}
   {
-  \retval{List} containing the lengths of \VAR{array}'s dimensions. 
+  包含 \VAR{array} 每维度长度的 \retval{列表}。
   }
 
   \IT{(\FU*{ARRAY-DIMENSION} \VAR{array} \VAR{i})}
@@ -102,21 +102,21 @@
 
   \IT{(\FU*{ARRAY-DISPLACEMENT} \VAR{array})}
   {
-  \retval{Target array} and \retvalii{offset}.
+  \retval{目标数组} 及 \retvalii{偏移量}。
   }
 
   \IT{\arrGOO{(\FU*{BIT} \VAR{ bit-array } \Op{\VAR{subscripts}})\\
       (\FU*{SBIT} \VAR{ simple-bit-array } \Op{\VAR{subscripts}})}{.}}
   {
-  Return \retval{element} of \VAR{bit-array} or of
-  \VAR{simple-bit-array}. \kwd{setf}\-able. 
+  返回 \VAR{bit-array} 或 \VAR{simple-bit-array} 的
+  \retval{element}。可 \kwd{setf}。
   }
 
   \IT{(\FU*{BIT-NOT} \DES{\VAR{bit-array}} \Op{\DES{\VAR{result-bit-array}}\DF{\NIL}})}
   {
-  Return \retval{result} of bitwise negation of \VAR{bit-array}. If \VAR{result-bit-array} is \T, put
-  result in \VAR{bit-array}; if it is \NIL, make a new array for
-  result. 
+  返回 \VAR{bit-array} 的按位反 \retval{结果}。若 \VAR{result-bit-array} 为 \T，将结果放入
+  \VAR{bit-array}，若为
+  \NIL，创建新的结果数组。
   }
 
   \IT{(\xorGOO{%
@@ -132,26 +132,26 @@
       \FU*{BIT-NOR}}{\}} \DES{\VAR{bit-array-a}} \VAR{bit-array-b}
     \Op{\DES{\VAR{result-bit-array}}\DF{\NIL}})}
   {
-  Return \retval{result} of bitwise logical operations
-  (cf.\ operations of \FU{boole}, page \pageref{section:逻辑函数}) on
-  \VAR{bit-array-a} and  \VAR{bit-array-b}.  If \VAR{result-bit-array} is \T, put result in
-  \VAR{bit-array-a}; if it is \NIL, make a new array for
-  result. 
+  返回 \VAR{bit-array-a} 与 \VAR{bit-array-b}
+  的按位逻辑运算结果（辨析：第 \pageref{section:逻辑函数}
+  页 \FU{boole} 操作）。若 \VAR{result-bit-array} 为 \T，将结果放入
+  \VAR{bit-array-a}，若为
+  \NIL，创建新的结果数组。
   }
 
   \IT{\CNS*{ARRAY-RANK-LIMIT}}
   {
-  Upper bound of array rank; $\geq 8$.
+  数组阶数上界，$\geq 8$。
   }
 
   \IT{\CNS*{ARRAY-DIMENSION-LIMIT}}
   {
-  Upper bound of an array dimension; $\geq 1024$.
+  数组维数上界，$\geq 1024$。
   }
 
   \IT{\CNS*{ARRAY-TOTAL-SIZE-LIMIT}}
   {
-  Upper bound of array size; $\geq 1024$.
+  数组大小上界，$\geq 1024$。
   }
 
 \end{LIST}
@@ -161,47 +161,47 @@
 \subsection{向量函数} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Vectors can as well be manipulated by sequence functions; see
-section~\ref{section:序列}. 
+序列函数也可用于操作向量，参见第
+\ref{section:序列} 章。
 
 \begin{LIST}{1cm}
   
   \IT{(\FU*{VECTOR} \OPn{\VAR{foo}})}
   {
-    Return fresh \retval{simple vector of \VAR{foo}s}.
+    返回新的 \retval{\VAR{foo}s 的简单向量}。
   }
   % No default foo in standard.
 
   \IT{(\FU*{SVREF} \VAR{vector} \VAR{i})}
   {
-    \retval{Element \VAR{i}} of simple \VAR{vector}. \kwd{setf}able.
+    简单 \VAR{vector} 的 \retval{第\ \VAR{i} 个元素}。可 \kwd{setf}。
   }
 
   \IT{(\FU*{VECTOR-PUSH} \VAR{foo} \DES{\VAR{vector}})}
   {
-  Return \retval{\NIL} if \VAR{vector}'s fill pointer equals size of
-  \VAR{vector}. Otherwise replace element of \VAR{vector} pointed to
-  by \retval{fill pointer} with \VAR{foo}; then increment fill
-  pointer. 
+  若 \VAR{vector} 的填充指针等于
+  \VAR{vector} 大小，返回 \retval{\NIL}。
+  否则，以 \VAR{foo} 替换 \retval{填充指针}
+  指向的 \VAR{vector} 元素，然后增加填充指针。
   }
 
   \IT{(\FU*{VECTOR-PUSH-EXTEND} \VAR{foo} \DES{\VAR{vector}}
     \Op{\VAR{num}})}
   {
-  Replace element of \VAR{vector} pointed to by \retval{fill pointer} with
-  \VAR{foo}, then increment fill pointer. Extend \VAR{vector}'s size by
-  $\ge \VAR{num}$ if necessary.
+  以 \VAR{foo} 替换 \retval{填充指针}
+  指向的 \VAR{vector} 元素，然后增加填充指针。如有必要，将向量大小扩大
+  $\ge \VAR{num}$。
   }
 
   \IT{(\FU*{VECTOR-POP} \DES{\VAR{vector}})}
   {
-  Return \retval{element of \VAR{vector}} its fillpointer points to
-  after decrementation.
+  填充指针减 1，然后返回指向的
+  \retval{\VAR{vector} 元素}。
   }
 
   \IT{(\FU*{FILL-POINTER} \VAR{vector})}
   {
-  \retval{Fill pointer} of \VAR{vector}. \kwd{setf}able.
+  \VAR{vector} 的 \retval{填充指针}。可 \kwd{setf}。
   }
 
 \end{LIST}

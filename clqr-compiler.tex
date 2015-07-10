@@ -23,7 +23,7 @@
 
   \IT{(\FU*{COMPILED-FUNCTION-P} \VAR{foo})}
   {
-  \retval{\T} if \VAR{foo} is of type \kwd{compiled-function}.
+  当 \VAR{foo} 为类型 \kwd{compiled-function} 时为 \retval{\T}。
   }
 
 \end{LIST}
@@ -165,7 +165,7 @@
   
   \IT{(\FU*{EVAL} \VAR{arg})}
   {
-  Return \retval{values of value of \VAR{arg}} evaluated in global environment.
+  返回在全局环境中求 \retval{\VAR{arg} 的值所得到的值}。
   }
 
 \end{LIST}
@@ -181,14 +181,14 @@
       \V{\A}\text{ }\XOR\text{ }\V{\A\A}\text{ }\XOR\text{ }\V{\A\A\A}\\[1pt]
       \V*{/}\text{ }\XOR\text{ }\V*{//}\text{ }\XOR\text{ }\V*{///}}{.}}
   {\index{*@\A}\index{**@\A\A}\index{***@\A\A\A}
-  Last, penultimate, or antepenultimate \retval{form} evaluated in the REPL, or
-  their respective \retval{primary value}, or a \retval{list} of their respective
-  values. 
+  最后、倒数第二、倒数第三个在 REPL
+  中求值的 \retval{形式}，或其 \retval{主值}，或其值之
+  \retval{列表}。
   }
 
   \IT{\V*{--}}
   {
-  \retval{Form} currently being evaluated by the REPL.
+  当前在 REPL 中求值的 \retval{形式}。
   }
 
   \IT{(\FU*{APROPOS} \VAR{string} \Op{\VAR{package}\DF{\NIL}})}
@@ -243,7 +243,7 @@
 
   \IT{\V{\A trace-output\A}}
   {\index{*TRACE-OUTPUT*@\A TRACE-OUTPUT\A}
-    Output stream \MC{trace} and \MC{time} send their output to.
+    \MC{trace} 及 \MC{time} 所发送的输出流。
   }
 
   \IT{(\MC*{STEP} \VAR{form})}
@@ -272,19 +272,19 @@
   \IT{(\FU*{DESCRIBE} \VAR{foo}
     \Op{\DES{\VAR{stream}}\DF{\V{\A standard-output\A}}})}
   {
-  Send information about \VAR{foo} to \VAR{stream}.
+  向 \VAR{stream} 发送 \VAR{foo} 的信息。
   }
 
   \IT{(\GFU*{DESCRIBE-OBJECT} \VAR{foo} \Op{\DES{\VAR{stream}}})}
   {
-    Send information about \VAR{foo} to \VAR{stream}.  Called by
-    \FU{describe}.
+    向 \VAR{stream} 发送 \VAR{foo} 的信息。可由
+    \FU{describe} 调用。
   }
 
   \IT{(\FU*{DISASSEMBLE} \VAR{function})}
   {
-  Send disassembled representation of \VAR{function} to
-  \V{\A standard-output\A}. Return \retval{\NIL}.
+  发送 \VAR{function} 的反汇编结果至
+  \V{\A standard-output\A}。返回 \retval{\NIL}。
   }
 
   \IT{(\FU*{ROOM} \Op{\Goo{\NIL\XOR\kwd{:default}\XOR\T}\DF{\kwd{:default}}})}
@@ -306,14 +306,15 @@
   \IT{\arrGOO{(\FU*{PROCLAIM} \VAR{ decl})\\
       (\MC*{DECLAIM } \OPn{\NEV{\VAR{decl}}})}{.}}
   {
-  全局声明 \VAR{decl}。\VAR{decl}
+  全局声明
+  \VAR{decl}。\VAR{decl}
   可以是：\kwd{declaration}、\kwd{type}、\kwd{ftype}、\kwd{inline}、\kwd{notinline}、\kwd{optimize}、\kwd{special}。见下。
   }
 
   \IT{(\kwd*{DECLARE} \OPn{\NEV{\VAR{decl}}})}
   {
     在某些形式内，局部声明
-    \OPn{\VAR{decl}}. \VAR{decl}
+    \OPn{\VAR{decl}}。\VAR{decl}
     可以是：\kwd{dynamic-extent}、\kwd{type}、\kwd{ftype}、\kwd{ignorable}、\kwd{ignore}、\kwd{inline}、\kwd{notinline}、\kwd{optimize}、\kwd{special}。见下。
   }
 
@@ -361,8 +362,8 @@
         \kwd*{SPACE}\XOR(\kwd*{SPACE}\VAR{ n}\DF{\LIT{3}})\\
         \kwd*{SPEED}\XOR(\kwd*{SPEED}\VAR{ n}\DF{\LIT{3}})}{\}})}
     {
-    Tell compiler how to optimize. $n=0$ means unimportant, $n=1$ is
-    neutral, $n=3$ means important.
+    指定编译器优化方式。$n=0$ 代表不重要，$n=1$
+    代表一般，$n=3$ 代表重要。
   }
 
     \IT{(\kwd*{SPECIAL} \OPn{\VAR{var}})}

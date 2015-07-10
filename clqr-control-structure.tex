@@ -29,27 +29,27 @@
 
   \IT{(\FU*{EQUAL} \VAR{foo bar})}
   {
-  \retval{\T} if \VAR{foo} and \VAR{bar}
-  are \FU{EQL}, or are equivalent \kwd{pathname}s, or are \kwd{cons}es with
-  \FU{equal} cars and cdrs, or are \kwd{string}s or \kwd{bit-vector}s with
-  \FU{eql} elements below their fill pointers.
+  当 \VAR{foo} 和 \VAR{bar}
+  \FU{EQL}，或是等价的 \kwd{pathname}s，或是 cars 和 cdrs
+  \FU{equal} 的 \kwd{cons}es，或是在填充指针之内的元素 \FU{eql} 的
+  \kwd{string}s 或 \kwd{bit-vector}s 时为 \retval{\T}。
   }
 
   \IT{(\FU*{EQUALP} \VAR{foo bar})}
   {
-  \retval{\T} if \VAR{foo} and \VAR{bar} are identical; or are the
-  same \kwd{character} ignoring case; or are \kwd{number}s of the same
-  value ignoring type; or are equivalent \kwd{pathname}s; or are
-  \kwd{cons}es or \kwd{array}s of the same shape with \FU{equalp}
-  elements; or are structures of the same type with
-  \FU{equalp} elements; or are \kwd{hash-table}s of the same size
-  with the same \kwd{:test} function, the same keys in terms of
-  \kwd{:test} function, and \FU{equalp} elements.
+  当 \VAR{foo} 和 \VAR{bar} 相同，或是忽略大小写时相同的
+  \kwd{character}，或是忽略类型时值相等的
+  \kwd{number}s，或是等价的 \kwd{pathname}s，或是形状相同、元素 \FU{equalp}
+  的 \kwd{cons}es 或 \kwd{array}s，或是元素
+  \FU{equalp}、类型一致的结构，或是大小相等、\kwd{:test}
+  函数相同、键对 \kwd{:test}
+  函数相等、元素 \FU{equalp} 的
+  \kwd{hash-table}s 时为 \retval{\T}。
   }
 
   \IT{(\FU*{NOT} \VAR{foo})\qquad\qquad\qquad}
   {
-  当 \VAR{foo} 为 \NIL 时为 \retval{\T}，否则为 \retval{\NIL}。
+  当 \VAR{foo} 为 \NIL\ 时为 \retval{\T}，否则为 \retval{\NIL}。
   }
 
   \IT{(\FU*{BOUNDP} \VAR{symbol})\qquad\qquad}
@@ -88,58 +88,58 @@
       \MC*{DEFPARAMETER}}{\}} \NEV{\VAR{foo}} \VAR{form}
       \Op{\NEV{\VAR{doc}}})}
   {
-  Assign value of \VAR{form} to global constant/dynamic variable \retval{\VAR{foo}}.
+  将 \VAR{form} 的值赋给全局常量/动态变量 \retval{\VAR{foo}}。
   }
 
   \IT{(\MC*{DEFVAR} \NEV{\VAR{foo}} \OP{\VAR{form}
       \Op{\NEV{\VAR{doc}}}})}
   {
-  Unless bound already, assign value of \VAR{form} to dynamic variable
-  \retval{\VAR{foo}}. 
+  除非已绑定，将 \VAR{form} 的值赋给动态变量
+  \retval{\VAR{foo}}。
   }
 
   \IT{(\xorGOO{\MC*{SETF}\\
       \MC*{PSETF}}{\}} \Goos{\VAR{place}
       \VAR{form}})}
   {
-  Set \VAR{place}s to primary values of \VAR{form}s. Return \retval{values
-    of last \VAR{form}}/\retval{\NIL}; work sequentially/in parallel, respectively. 
+  顺序/平行将 \VAR{place}s 设为 \VAR{form}s 的主值。返回 \retval{最后一个\
+    \VAR{form} 的值}/\retval{\NIL}。
   }
 
   \IT{(\xorGOO{\SO*{SETQ}\\
       \MC*{PSETQ}}{\}} \Goos{\VAR{symbol}
       \VAR{form}})}
   {
-  Set \VAR{symbol}s to primary values of \VAR{form}s. Return \retval{value
-    of last \VAR{form}}/\retval{\NIL}; work sequentially/in parallel, respectively. 
+  顺序/平行将 \VAR{symbol}s 设为 \VAR{form}s 的主值。返回 \retval{最后一个\
+    \VAR{form} 的值}/\retval{\NIL}。
   }
 
   \IT{(\FU*{SET} \DES{\VAR{symbol}} \VAR{foo})}
   {
-  Set \VAR{symbol}'s value cell to \retval{\VAR{foo}}. Deprecated.
+  将 \VAR{symbol} 的值单元设为 \retval{\VAR{foo}}。已废弃。
   }
 
   \IT{(\MC*{MULTIPLE-VALUE-SETQ} \VAR{vars} \VAR{form})}
   {
-  Set elements of \VAR{vars} to the values of
-  \VAR{form}. Return \retval{\VAR{form}'s primary value}.
+  将 \VAR{vars} 的元素设为
+  \VAR{form} 的值。返回 \retval{\VAR{form} 的主值}。
   }
 
   \IT{(\MC*{SHIFTF} \RP{\DES{\VAR{place}}} \VAR{foo})}
   {
-  Store value of \VAR{foo} in rightmost \VAR{place} shifting values of
-  \VAR{place}s left, returning \retval{first \VAR{place}}. 
+  将 \VAR{place}s 的值左移，将 \VAR{foo} 设在
+  \VAR{place} 的最右位置，返回 \retval{第一个\ \VAR{place}}。
   }
 
   \IT{(\MC*{ROTATEF} \OPn{\DES{\VAR{place}}})}
   {
-  Rotate values of \VAR{place}s left, old first becoming new last
-  \VAR{place}'s value. Return \retval{\NIL}.
+  向左旋转 \VAR{place}s 的值，原来的第一个值变成
+  \VAR{place} 的最后一个值。返回 \retval{\NIL}。
   }
 
   \IT{(\FU*{MAKUNBOUND} \DES{\VAR{foo}})}
   {
-  Delete special variable \retval{\VAR{foo}} if any.
+  若存在，删除特殊变量 \retval{\VAR{foo}}。
   }
 
   \label{:property_lists}
@@ -148,33 +148,33 @@
       (\FU*{GETF} \VAR{ place} \VAR{ key }
       \OP{\VAR{default}\DF{\NIL}})}{.}}
   {
-  \retval{First entry \VAR{key}} from property list stored in
-  \VAR{symbol}/in \VAR{place}, respectively, or \retval{\VAR{default}} if
-  there is no \VAR{key}. \kwd{setf}able.
+  \VAR{symbol}/\VAR{place} 上的属性表中存储的 \retval{第一个\ \VAR{key} 项}，若不存在
+  \VAR{key}，则为 \retval{\VAR{default}}。可
+  \kwd{setf}。
   }
 
   \IT{(\FU*{GET-PROPERTIES} \VAR{property-list} \VAR{keys})}
   {
-  Return \retval{key} and \retvalii{value} of first entry from \VAR{property-list}
-  matching a key from \VAR{keys}, and \retvaliii{tail of
-    \VAR{property-list}} starting with that key. Return \retval{\NIL},
-  \retvalii{\NIL}, and  \retvaliii{\NIL} if there was no matching key
-  in \VAR{property-list}.
+  选择 \VAR{property-list} 中第一个匹配 \VAR{keys}
+  中键的项目，并返回其 \retval{键}、其 \retvalii{值}
+  及 \retvaliii{剩余的\
+    \VAR{property-list}}。若 \VAR{property-list} 中无匹配，返回
+  \retval{\NIL}、\retvalii{\NIL}、\retvaliii{\NIL}。
   }
 
   \IT{\arrGOO{(\FU*{REMPROP } \DES{\VAR{symbol}} \VAR{ key})\\
       (\MC*{REMF } \DES{\VAR{place}} \VAR{ key})}{.}}
   {
-    Remove first entry \VAR{key} from property list stored in
-    \VAR{symbol}/in \VAR{place}, respectively. Return \retval{\T} if \VAR{key}
-    was there, or \retval{\NIL} otherwise.
+    从 \VAR{symbol}/\VAR{place} 上的属性表中删除第一个
+    \VAR{key} 项。若存在 \VAR{key}，返回
+    \retval{\T}，否则返回 \retval{\NIL}。
   }
 
   \IT{(\SO*{PROGV} \VAR{symbols} \VAR{values} \PROGN{\VAR{form}})}
   {
-    Evaluate \VAR{form}s with locally established dynamic bindings of
-    \VAR{symbols} to \VAR{values} or \NIL. Return \retval{values of
-      \VAR{form}s}. 
+    将 \VAR{values} 或 \NIL 动态绑定至 \VAR{symbols}
+    并对 \VAR{form}s 求值。返回 \retval{\VAR{form}s
+      的值}。
   }
 
   \IT{(\xorGOO{%
@@ -185,29 +185,29 @@
     \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})} 
     \PROGN{\VAR{form}})}
   {
-    Evaluate \VAR{form}s with \VAR{name}s lexically bound (in parallel or
-    sequentially, respectively) to \VAR{value}s. Return
-    \retval{values of \VAR{form}s}. 
+    平行/顺序将 \VAR{values} 词法绑定至 \VAR{name}s
+    并对 \VAR{form}s 求值。返回
+    \retval{\VAR{form}s 的值}。
   }
 
   \IT{(\MC*{MULTIPLE-VALUE-BIND} (\OPn{\NEV{\VAR{var}}}) \VAR{values-form}
     \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})} \PROGN{\VAR{body-form}})}
   {
-    Evaluate \VAR{body-form}s with \VAR{var}s lexically bound to the
-    return values of \VAR{values-form}. Return \retval{values of
-      \VAR{body-form}s}.
+    将 \VAR{values-form} 的返回值词法绑定至 \VAR{var}s
+    并对 \VAR{body-form}s 求值。返回 \retval{\VAR{body-form}s
+      的值}。
   }
 
   \IT{(\MC*{DESTRUCTURING-BIND} \VAR{destruct-$\lambda$} \VAR{bar}
     \OPn{(\kwd{declare}
       \OPn{\NEV{\VAR{decl}}})} \PROGN{\VAR{form}})}
   {
-    Evaluate \VAR{form}s with variables from tree
-    \VAR{destruct-$\lambda$} bound to corresponding elements of tree
-    \VAR{bar}, and return \retval{their
-      values}. \VAR{destruct-$\lambda$} resembles \VAR{macro-$\lambda$}
-    (section \ref{section:宏}), but without any \kwd{\&environment}
-    clause. 
+    将树 \VAR{bar} 中元素绑定至树 \VAR{destruct-$\lambda$}
+    中的相应位置并对 \VAR{form}s 求
+    \retval{值}。\VAR{destruct-$\lambda$} 类似不带
+    \kwd{\&environment} 子句的
+    \VAR{macro-$\lambda$}（第 \ref{section:宏}
+    节）。
   }
 
 \end{LIST}
@@ -219,7 +219,7 @@
 \label{section:函数}
 
 \begin{flushleft}
-  Below, ordinary lambda list (\OPn{\VAR{ord-$\lambda$}}) has the form\\
+  下文中，一般 lambda 列表（\OPn{\VAR{ord-$\lambda$}}）具有以下形式\\
   % \VAR{var} referenced from DEFSTRUCT
   (\OPn{\VAR{var}}
   \OP{\kwd{\&optional} \xorGOO{%
@@ -241,9 +241,9 @@
       \VAR{var}\\
       (\VAR{var } \Op{\VAR{init}\DF{\NIL}})}{\}^{\!\!*}}}).
 \end{flushleft}
-  \VAR{supplied-p} is \T\ if there is a corresponding
-  argument. \VAR{init} forms can refer to any \VAR{init} and
-  \VAR{supplied-p} to their left.
+  若存在相应参数，则 \VAR{supplied-p} 为
+  \T。\VAR{init} 形式可引用任何位居其左的
+  \VAR{init} 及 \VAR{supplied-p}。
 
 \begin{LIST}{1cm}
 
@@ -254,10 +254,10 @@
     \Op{\NEV{\VAR{doc}}} 
     \PROGN{\VAR{form}})}
   {
-    Define a function named \retval{\VAR{foo}} or \retval{(\kwd{setf}
-      \VAR{foo})}, or an anonymous \retval{function}, respectively, which applies
-    \VAR{form}s to \VAR{ord-$\lambda$}s. For \MC{defun}, \VAR{form}s are
-    enclosed in an implicit \SO{block} named \VAR{foo}.
+    定义名为 \retval{\VAR{foo}} 或 \retval{(\kwd{setf}
+      \VAR{foo})} 或匿名 \retval{函数}，其中
+    \VAR{form}s 以 \VAR{ord-$\lambda$}s 解析。对 \MC{defun}，\VAR{form}s
+    包含于名为 \VAR{foo} 的隐式 \SO{block} 中。
   }
 
   \IT{(\xorGOO{\SO*{FLET}\\
@@ -269,107 +269,106 @@
       \PROGN{\VAR{local-form}})}) \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})}
     \PROGN{\VAR{form}})}
   {
-    Evaluate \VAR{form}s with
-    locally defined functions \VAR{foo}. Globally defined functions of
-    the same name are shadowed. Each \VAR{foo} is also the name of an
-    implicit \SO{block} around its corresponding \OPn{\VAR{local-form}}.
-    Only for \SO{LABELS}, functions \VAR{foo} are visible inside
-    \VAR{local-forms}. Return \retval{values of \VAR{form}s}. 
+    定义局部函数 \VAR{foo}
+    并对 \VAR{form}s 求值。将遮蔽同名的
+    全局函数。每个 \VAR{foo} 也是包含其所对应
+    \OPn{\VAR{local-form}} 隐式 \SO{block} 的名称。仅对
+    \SO{LABELS}，函数 \VAR{foo} 在
+    \VAR{local-forms} 内部可见。返回 \retval{\VAR{form}s 的值}。
   }
 
   \IT{(\SO*{FUNCTION} \xorGOO{%
       \VAR{foo}\\
       (\MC{lambda } \OPn{\VAR{form}})}{\}})}
   {
-    Return lexically innermost \retval{function} named \VAR{foo} or a
-    lexical closure of the \retval{\MC{lambda} expression}.
+    返回最内的名为 \VAR{foo} 的词法 \retval{函数}
+    或词法闭包中的 \retval{\MC{lambda} 表达式}。
   }
 
   \IT{(\FU*{APPLY} \xorGOO{\VAR{function}\\
       (\kwd{setf } \VAR{function})}{\}} \OPn{\VAR{arg}} \VAR{args})}
   {
-    \retval{Values of \VAR{function}} called with
-    \VAR{arg}s and the list elements of \VAR{args}. \kwd{setf}able if
-    \VAR{function} is one of \FU{aref}, \FU{bit}, and \FU{sbit}.
+    用 \VAR{arg}s 及 \VAR{args} 的列表元素调用
+    \retval{\VAR{function} 的值}。若 \VAR{function} 为
+    \FU{aref}、\FU{bit} 或 \FU{sbit}，则可 \kwd{setf}。
   }
 
   \IT{(\FU*{FUNCALL} \VAR{function} \OPn{arg})}
   {
-    \retval{Values of \VAR{function}} called with \VAR{arg}s.
+    用 \VAR{arg}s 调用 \retval{\VAR{function} 的值}。
   }
 
   \IT{(\SO*{MULTIPLE-VALUE-CALL} \VAR{function} \OPn{\VAR{form}})}
   {
-    Call \VAR{function} with all the values of each \VAR{form} as its
-    arguments. Return \retval{values returned by \VAR{function}}.
+    用每个 \VAR{form} 的所有值作为参数调用
+    \VAR{function}。返回 \retval{\VAR{function} 的返回值}。
   }
 
   \IT{(\FU*{VALUES-LIST} \VAR{list})}
   {
-    Return \retval{elements of \VAR{list}}.
+    返回 \retval{\VAR{list} 的元素}。
   }
 
   \IT{(\FU*{VALUES} \OPn{\VAR{foo}})}
   {
-  Return as multiple values the \retval{primary values} of the
-  \VAR{foo}s. \kwd{setf}able. 
+  将 \VAR{foo}s 的 \retval{主值}
+  作为多值返回。可 \kwd{setf}。
   }
 
   \IT{(\FU*{MULTIPLE-VALUE-LIST} \VAR{form})}
   {
-    \retval{List of the values of \VAR{form}}.
+    \retval{\VAR{form} 值列表}。
   }
 
   \IT{(\MC*{NTH-VALUE} \VAR{n} \VAR{form})}
   {
-  Zero-indexed \retval{\VAR{n}th return value} of \VAR{form}.
+  \VAR{form} 的零索引 \retval{第\ \VAR{n} 返回值}。
   }
 
   \IT{(\FU*{COMPLEMENT} \VAR{function})}
   {
-  Return \retval{new function} with same arguments and same side effects
-  as \VAR{function}, but with complementary truth value.
+  返回与 \VAR{function} 参数相同、副作用相同但真值互补的
+  \retval{新函数}。
   }
 
   \IT{(\FU*{CONSTANTLY} \VAR{foo})}
   {
-    \retval{Function} of any number of arguments returning \VAR{foo}.
+    接受任意数量参数、返回 \VAR{foo} 的 \retval{函数}。
   }
 
   \IT{(\FU*{IDENTITY} \VAR{foo})}
   {
-  Return \retval{\VAR{foo}}.
+  返回 \retval{\VAR{foo}}。
   }
 
   \IT{(\FU*{FUNCTION-LAMBDA-EXPRESSION} \VAR{function})}
   {
-  If available, return \retval{lambda expression} of \VAR{function},
-  \retvalii{\NIL} if \VAR{function} was defined in an environment
-  without bindings, and \retvaliii{name} of \VAR{function}. 
+  若可用，返回 \VAR{function} 的 \retval{lambda 表达式}，\retvalii{\NIL}
+  若函数定义于环境中而未绑定，及
+  \VAR{function} 的 \retvaliii{名称}。
   }
 
   \IT{(\FU*{FDEFINITION} \xorGOO{\VAR{foo}\\
       (\kwd{setf } \VAR{foo})}{\}})}
   {
-  \retval{Definition} of global function \VAR{foo}. \kwd{setf}able.
+  全局函数 \VAR{foo} 的 \retval{定义}。可 \kwd{setf}。
   }
 
   \IT{(\FU*{FMAKUNBOUND} \VAR{foo})}
   {
-  Remove global function or macro definition \retval{\VAR{foo}}.
+  移除全局函数或宏定义 \retval{foo}。
   }
 
   \IT{\arrGOO{\CNS*{CALL-ARGUMENTS-LIMIT}\\
       \CNS*{LAMBDA-PARAMETERS-LIMIT}}{.}}
   {
-  Upper bound of the number of function arguments or lambda list
-  parameters, respectively; $\geq50$. 
+  函数参数或 lambda
+  列表参数数目的上界，$\geq50$。
   }
 
   \IT{\CNS*{MULTIPLE-VALUES-LIMIT}}
   {
-  Upper bound of the number of values a multiple value can have;
-  $\geq20$. 
+  多值数目的上界，$\geq20$。
   }
 
 \end{LIST}
@@ -381,8 +380,8 @@
 \label{section:宏}
 
 \begin{flushleft}
-  Below, macro lambda list (\OPn{\VAR{macro-$\lambda$}}) has the form of
-  either
+  下文中，宏 lambda
+  列表（\OPn{\VAR{macro-$\lambda$}}）具有以下两种形式中的一种
   \penalty-5
   (\Op{\kwd{\&whole} \VAR{var}}
   \penalty-5
@@ -433,7 +432,7 @@
   \penalty-5
   \Op{\VAR{E}})
   \\
-  or
+  或
   \\
   \penalty-5
   (\Op{\kwd{\&whole}
@@ -460,10 +459,10 @@
   \VAR{rest-var}).
   \penalty-5
 \end{flushleft}
-  One toplevel \Op{\VAR{E}} may be replaced by \kwd{\&environment}
-  \VAR{var}. \VAR{supplied-p} is \T\ if there is a corresponding
-  argument.  \VAR{init} forms can refer to any \VAR{init} and
-  \VAR{supplied-p} to their left.
+  顶层 \Op{\VAR{E}} 可用 \kwd{\&environment} \VAR{var}
+  替换。若存在相应参数，则 \VAR{supplied-p} 为
+  \T。\VAR{init} 形式可引用任何位居其左的
+  \VAR{init} 及 \VAR{supplied-p}。
 
 \begin{LIST}{1cm}
 
@@ -475,17 +474,17 @@
     \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})} \Op{\NEV{\VAR{doc}}}
     \PROGN{\VAR{form}})}
   {
-  Define macro \retval{\VAR{foo}} which on evaluation as (\VAR{foo}
-  \VAR{tree}) applies expanded \VAR{form}s to arguments from
-  \VAR{tree}, which corresponds to \VAR{tree}-shaped
-  \VAR{macro-$\lambda$}s. \VAR{form}s are enclosed in an implicit
-  \SO{block} named \VAR{foo}.
+  定义宏 \retval{\VAR{foo}}，求值时以 (\VAR{foo}
+  \VAR{tree}) 将展开的、与 \VAR{tree} 形状相对应的
+  \VAR{macro-$\lambda$} \VAR{form}s 应用至参数
+  \VAR{tree}。\VAR{form}s 包含于名为 \VAR{foo}
+  的隐式 \SO{block} 中。
   }
 
   \IT{(\MC*{DEFINE-SYMBOL-MACRO} \VAR{foo} \VAR{form})}
   {
-  Define symbol macro \retval{\VAR{foo}} which on evaluation evaluates
-  expanded \VAR{form}. 
+  定义符号宏 \retval{\VAR{foo}}，求值时对已展开的
+  \VAR{form} 求值。
   }
 
   \IT{(\SO*{MACROLET} (\OPn{(\VAR{foo} (\OPn{\VAR{macro-$\lambda$}})
@@ -493,17 +492,17 @@
       \Op{\NEV{\VAR{doc}}} \PROGN{\VAR{macro-form}})}) \OPn{(\kwd{declare}
       \OPn{\NEV{\VAR{decl}}})} \PROGN{\VAR{form}})}
   {
-  Evaluate \retval{\VAR{form}s} with locally defined mutually
-  invisible macros \VAR{foo} which are enclosed in implicit \SO{block}s
-  of the same name.
+  局部定义互相不可见、包含于同名隐式
+  \SO{block}s 中的宏 \VAR{foo} 并对
+  \retval{\VAR{form}s} 求值。
   }
 
   \IT{(\SO*{SYMBOL-MACROLET} (\OPn{(\VAR{foo}
       \VAR{expansion-form})}) \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})}
     \PROGN{\VAR{form}})}
   {
-  Evaluate \retval{\VAR{form}s} with locally defined symbol macros
-  \VAR{foo}. 
+  局部定义符号宏 \VAR{foo} 并对
+  \retval{\VAR{form}s} 求值。
   }
 
   \IT{(\MC*{DEFSETF} \NEV{\VAR{function}} \xorGOO{%
@@ -512,7 +511,7 @@
         \OPn{(\kwd{declare } \OPn{\NEV{\VAR{decl}}})}\text{ }
         \Op{\NEV{\VAR{doc}}} \text{ } \PROGN{\VAR{form}}}{\}})
     \penalty-5
-  where defsetf lambda list (\OPn{\VAR{setf-$\lambda$}}) has the form
+  其中 defsetf lambda 列表（\OPn{\VAR{setf-$\lambda$}}）具有形式
   \penalty-5
   (\OPn{\VAR{var}}
   \OP{\kwd{\&optional} \xorGOO{%
@@ -534,18 +533,18 @@
   )
   }
   {
-    Specify how to \kwd{setf} a place accessed by
-    \retval{\VAR{function}}.
-    \EM{Short form:} (\kwd{setf} (\VAR{function} \OPn{\VAR{arg}}) \VAR{value-form}) is
-    replaced by (\VAR{updater} \OPn{\VAR{arg}} \VAR{value-form}); the
-    latter must return \VAR{value-form}.
-    \EM{Long form:} on invocation of (\kwd{setf} (\VAR{function}
-    \OPn{\VAR{arg}}) \VAR{value-form}), \VAR{form}s must expand
-    into code that sets the place accessed where \VAR{setf-$\lambda$}
-    and \OPn{\VAR{s-var}} describe the arguments of \VAR{function} and
-    the value(s) to be stored, respectively; and that returns
-    the value(s) of \OPn{\VAR{s-var}}. \VAR{form}s are enclosed in an
-    implicit \SO{block} named \VAR{function}.
+    指定如何通过
+    \retval{\VAR{function}} \kwd{setf}
+    位置。\EM{短形式：}用 (\VAR{updater} \OPn{\VAR{arg}} \VAR{value-form})
+    替换 (\kwd{setf} (\VAR{function} \OPn{\VAR{arg}}) \VAR{value-form})，后者须返回
+    \VAR{value-form}。\EM{长形式：}调用
+    (\kwd{setf} (\VAR{function}
+    \OPn{\VAR{arg}}) \VAR{value-form}) 时，\VAR{form}s
+    须展开成设置位置的代码，其中 \VAR{setf-$\lambda$}
+    和 \OPn{\VAR{s-var}} 分别指定 \VAR{function}
+    的参数及将储存的值，并返回
+    \OPn{\VAR{s-var}}的值。\VAR{form}s 包含于名为
+    \VAR{function} 的隐式 \SO{block} 中。
   }
 
   \IT{(\MC*{DEFINE-SETF-EXPANDER} \VAR{function}
@@ -553,26 +552,26 @@
     \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})} \Op{\NEV{\VAR{doc}}}
     \PROGN{\VAR{form}})}
   {
-  Specify how to \kwd{setf} a place accessed by
-  \retval{\VAR{function}}. On invocation of (\kwd{setf} (\VAR{function}
-    \OPn{\VAR{arg}}) \VAR{value-form}), \OPn{\VAR{form}} must expand
-    into code returning \VAR{arg-vars}, \VAR{args}, \VAR{newval-vars},
-    \VAR{set-form}, and \VAR{get-form} as described with
-    \FU{GET-SETF-EXPANSION} where the elements of macro
-    lambda list \OPn{\VAR{macro-$\lambda$}} are bound to corresponding
-    \VAR{arg}s. \VAR{form}s are enclosed in an implicit \SO{block}
-    named \VAR{function}.
+  指定如何通过 \retval{\VAR{function}}
+  \kwd{setf} 位置。调用 (\kwd{setf} (\VAR{function}
+    \OPn{\VAR{arg}}) \VAR{value-form}) 时，\OPn{\VAR{form}}
+    须展开为代码，其返回
+    \VAR{arg-vars}、\VAR{args}、\VAR{newval-vars}、\VAR{set-form} 及由
+    \FU{GET-SETF-EXPANSION} 所指定的 \VAR{get-form}，宏 lambda 列表
+    \OPn{\VAR{macro-$\lambda$}} 的元素绑定至对应的
+    \VAR{arg}s 上。\VAR{form}s 包含于名为
+    \VAR{function} 的隐式 \SO{block} 中。
   }
 
   \IT{(\FU*{GET-SETF-EXPANSION} \VAR{place} \Op{\VAR{environment}\DF{\NIL}})}
   {
-    Return lists of temporary variables \retval{\VAR{arg-vars}} and of
-    corresponding \retvalii{\VAR{args}} as given with \VAR{place},
-    list \retvaliii{\VAR{\VAR{newval-vars}}} with temporary variables
-    corresponding to the new values, and \retvaln{4}{\VAR{set-form}}
-    and \retvaln{5}{\VAR{get-form}} specifying in terms of \VAR{arg-vars}
-    and \VAR{newval-vars} how to \kwd{setf} and how to read
-    \VAR{place}. 
+    返回临时变量 \retval{\VAR{arg-vars}}
+    的列表，与
+    \VAR{place} 对应的
+    \retvalii{\VAR{args}}，对应新值的临时变量的列表
+    \retvaliii{\VAR{\VAR{newval-vars}}}，\retvaln{4}{\VAR{set-form}}，\VAR{arg-vars}、\VAR{newval-vars}
+    \kwd{setf} 及读取 \VAR{place} 方式
+    指定的 \retvaln{5}{\VAR{get-form}}。
   }
 
   \IT{(\MC*{DEFINE-MODIFY-MACRO} \VAR{foo} 
@@ -583,42 +582,42 @@
     \Op{\kwd{\&rest} \VAR{var}}) 
     \VAR{function} \Op{\NEV{\VAR{doc}}})}
   {
-  Define macro \retval{\VAR{foo}} able to modify a place. On
-  invocation of (\VAR{foo} \VAR{place} \OPn{\VAR{arg}}), the value of
-  \VAR{function} applied to \VAR{place} and \VAR{arg}s will be stored into
-  \VAR{place} and returned.
+  定义可修改位置的宏 \retval{\VAR{foo}}。调用
+  (\VAR{foo} \VAR{place} \OPn{\VAR{arg}}) 时，将
+  \VAR{function} 应用至 \VAR{place} 及
+  \VAR{arg}s，其值将储存至 \VAR{place} 并返回。
   } 
 
   \IT{\CNS*{LAMBDA-LIST-KEYWORDS}}
-  {List of macro lambda list keywords. These are at least:
+  {宏 lambda 列表的关键字列表。至少包含：
     }
     \begin{LIST}{.5cm}
 
       \IT{\kwd*{\&whole} \VAR{var}}
-      {Bind \VAR{var} to the entire macro call form.}
+      {将 \VAR{var} 绑定至整个宏调用形式。}
 
       \IT{\kwd*{\&optional} \OPn{\VAR{var}}}
-      {Bind \VAR{var}s to corresponding arguments if any.}
+      {若存在，将 \VAR{var}s 绑定至对应参数。}
 
       \IT{\Goo{%
           \kwd*{\&rest}\XOR
           \kwd*{\&body}} \VAR{var}}
-      {Bind \VAR{var} to a list of remaining arguments.}
+      {将 \VAR{var} 绑定至剩余参数列表。}
 
       \IT{\kwd*{\&key} \OPn{\VAR{var}}}
-      {Bind \VAR{var}s to corresponding keyword arguments.}
+      {将 \VAR{var}s 绑定至对应关键字参数。}
 
       \IT{\kwd*{\&allow-other-keys}}
       {
-      Suppress keyword argument checking. Callers can do so using
-      \kwd*{:allow-other-keys}~\T.
+      禁用关键字参数检查。调用者可以使用
+      \kwd*{:allow-other-keys}~\T。
       }
       
       \IT{\kwd*{\&environment} \VAR{var}}
-      {Bind \VAR{var} to the lexical compilation environment.}
+      {将 \VAR{var} 绑定至词法编译环境。}
 
       \IT{\kwd*{\&aux} \OPn{\VAR{var}}}
-      {Bind \VAR{var}s as in \SO{let\A}.}
+      {在 \SO{let\A} 内绑定 \VAR{var}s。}
           
     \end{LIST}
 \end{LIST}
@@ -631,23 +630,23 @@
 
   \IT{(\SO*{IF} \VAR{test} \VAR{then} \Op{\VAR{else}\DF{\NIL}})}
   {
-    Return values of \retval{\VAR{then}} if \VAR{test} returns \T;
-    return values of \retval{\VAR{else}} otherwise. 
+    若 \VAR{test} 返回 \T，则返回 \retval{\VAR{then}}
+    的值，否则返回 \retval{\VAR{else}} 的值。
   }
 
   \IT{(\MC*{COND} \OPn{(\VAR{test} \PROGN{\VAR{then}}\DF{\VAR{test}})})}
   {
-  Return the \retval{values} of the first \OPn{\VAR{then}} whose
-  \VAR{test} returns \T; return \retval{\NIL} if all \VAR{test}s
-  return \NIL.
+  返回第一个 \VAR{test} 返回 \T\ 的
+  \OPn{\VAR{then}} \retval{值}；若所有
+  \VAR{test}s 均返回 \NIL，返回 \NIL。
   }
 
   \IT{(\xorGOO{\MC*{WHEN}\\
       \MC*{UNLESS}}{\}} \VAR{test}
     \PROGN{\VAR{foo}})}
   {
-    Evaluate \VAR{foo}s and return \retval{their values} if \VAR{test}
-    returns \T\ or \NIL, respectively. Return \retval{\NIL} otherwise. 
+    若 \VAR{test} 返回 \T\ 或 \NIL，对 \VAR{foo}s
+    求值并返回 \retval{其值}，否则返回 \retval{\NIL}。
   }
 
   \IT{(\MC*{CASE} \VAR{test} \OPn{(\xorGOO{(\OPn{\NEV{\VAR{key}}})\\

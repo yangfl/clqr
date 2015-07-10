@@ -17,13 +17,13 @@
       \includegraphics{clqr-types-and-classes.1}
     \end{sideways}
   \end{center}
-  \caption[]{Precedence Order of System Classes
-    (\includegraphics{clqr-types-and-classes.3}),
-    Classes (\includegraphics{clqr-types-and-classes.4}),
-    Types (\includegraphics{clqr-types-and-classes.2}), and
-    Condition Types
-    (\includegraphics{clqr-types-and-classes.5}).\\
-    Every type is also a supertype of \NIL, the empty type.
+  \caption[]{
+    系统类（\includegraphics{
+    clqr-types-and-classes.3}）、类（\includegraphics{
+    clqr-types-and-classes.4}）、类型（\includegraphics{
+    clqr-types-and-classes.2}）、状况类型（\includegraphics{
+    clqr-types-and-classes.5})的优先级顺序。\\
+    每种类型也是空类型 \NIL 的超类型。
     \label{data-types}%
     %
     \index{*@\A}%
@@ -127,13 +127,13 @@
   }
 \end{figure}
 
-For any class, there is always a corresponding type of the same name.
+对任何类，总有相同名称的对应类型。
 
 \begin{LIST}{1cm}
 
   \IT{(\FU*{TYPEP} \VAR{foo} \VAR{type} \Op{\VAR{environment}\DF{\NIL}})}
   {
-    \retval{\T} if \VAR{foo} is of \VAR{type}.
+    当 \VAR{foo} 为 \VAR{type} 时为 \retval{\T}。
   }
 
   \IT{(\FU*{SUBTYPEP} \VAR{type-a} \VAR{type-b}
@@ -152,7 +152,7 @@ For any class, there is always a corresponding type of the same name.
 
   \IT{(\FU*{COERCE} \VAR{object} \VAR{type})}
   {
-    Coerce \retval{\VAR{object}} into \VAR{type}.
+    将 \retval{\VAR{object}} 强制转换为 \VAR{type}。
   }
 
   \IT{(\MC*{TYPECASE} \VAR{foo} \OPn{(\NEV{\VAR{type}} \PROGN{\VAR{a-form}})} 
@@ -183,7 +183,7 @@ For any class, there is always a corresponding type of the same name.
 
   \IT{(\FU*{TYPE-OF} \VAR{foo})}
   {
-    \retval{Type of \VAR{foo}}.
+    \retval{\VAR{foo} 的类型}。
   }
 
   \IT{(\MC*{CHECK-TYPE} \VAR{place} \VAR{type}
@@ -195,12 +195,12 @@ For any class, there is always a corresponding type of the same name.
 
   \IT{(\FU*{STREAM-ELEMENT-TYPE} \VAR{stream})}
   {
-    \retval{Type} of \VAR{stream} objects.
+    \VAR{stream} 对象的 \retval{类型}。
   }
 
   \IT{(\FU*{ARRAY-ELEMENT-TYPE} \VAR{array})}
   {
-  Element \retval{type} \VAR{array} can hold.
+  \VAR{array} 可包含的元素 \retval{类型}。
   }
 
   \IT{(\FU*{UPGRADED-ARRAY-ELEMENT-TYPE} \VAR{type}
@@ -231,33 +231,33 @@ For any class, there is always a corresponding type of the same name.
 
   \IT{(\kwd*{SATISFIES} \VAR{predicate})}
   {
-  Type specifier for all objects satisfying \VAR{predicate}. 
+  所有满足 \VAR{predicate} 对象的类型说明符。
   }
 
   \IT{(\kwd*{MOD} \VAR{n})}
   {
-  Type specifier for all non-negative integers $<n$.
+  所有 $<n$ 非负整数的类型说明符。
   }
 
   \IT{(\kwd*{NOT} \VAR{type})}
   {
-  Complement of type.
+  \VAR{type} 的补集。
   }
 
   \IT{(\kwd*{AND} \OPn{\VAR{type}}\DF{\T})}
   {
-  Type specifier for intersection of \VAR{type}s.
+  \VAR{type}s 交集的类型说明符。
   }
 
   \IT{(\kwd*{OR} \OPn{\VAR{type}}\DF{\NIL})}
   {
-  Type specifier for union of \VAR{type}s.
+  \VAR{type}s 并集的类型说明符。
   }
 
   \IT{(\kwd*{VALUES} \OPn{\VAR{type}} \OP{\OPn{\kwd{\&optional} \VAR{type}}
       \Op{\kwd{\&rest} \VAR{other-args}}})}
   {
-  Type specifier for multiple values.
+  多值的类型说明符。
   }
 
   \IT{\kwd{\A}}

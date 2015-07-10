@@ -28,13 +28,13 @@
       (\FU*{INTERACTIVE-STREAM-P} \VAR{ stream})\\
       (\FU*{OPEN-STREAM-P} \VAR{ stream})}{.}}
   {
-    Return \retval{\T} if \VAR{stream} is for input, for output,
-    interactive, or open, respectively.
+    当 \VAR{stream} 用于输入、输出、交互、开启时返回
+    \retval{\T}。
   }
 
   \IT{(\FU*{PATHNAME-MATCH-P} \VAR{path} \VAR{wildcard})}
   {
-    \retval{\T} if \VAR{path} matches \VAR{wildcard}.
+    当 \VAR{path} 匹配 \VAR{wildcard} 时为 \retval{\T}。
   }
 
   \IT{(\FU*{WILD-PATHNAME-P} \VAR{path}
@@ -650,18 +650,18 @@
 
   \IT{\V{\A print-pretty\A}}
   {\index{*PRINT-PRETTY*@\A PRINT-PRETTY\A}
-    If \T, print prettily.
+    若为 \T，漂亮打印。
   }
 
   \IT{\V{\A print-radix\A}\DF{\NIL}}
   {\index{*PRINT-RADIX*@\A PRINT-RADIX\A}
-    If \T, print rationals with a radix indicator.
+    若为 \T，有理数与其基数指示符一起打印。
   }
 
   \IT{\V{\A print-readably\A}\DF{\NIL}}
   {\index{*PRINT-READABLY*@\A PRINT-READABLY\A}
-    If \T, print \FU{read}ably or signal error
-    \kwd{print-not-readable}. 
+    若为 \T，打印可 \FU{read} 格式，若不能，产生错误
+    \kwd{print-not-readable}。
   }
 
   \IT{\V{\A print-right-margin\A}\DF{\NIL}}
@@ -712,9 +712,9 @@
 
   \IT{(\MC*{FORMATTER} \NEV{\VAR{control}})}
   {
-    Return \retval{function} of \VAR{stream} and \OPn{\VAR{arg}}
-    applying \FU{format} to \VAR{stream}, \VAR{control}, and
-    \OPn{\VAR{arg}} returning \NIL\ or any excess \VAR{arg}s.
+    返回 \VAR{stream} 的 \retval{函数}，其获取参数
+    \OPn{\VAR{arg}}，并用 \VAR{stream}、\VAR{control}、\OPn{\VAR{arg}}
+    调用 \FU{format}，返回 \NIL\ 或多余的 \VAR{arg}。
   }
 
   \IT{(\FU*{FORMAT} \Goo{\T\XOR\NIL\XOR\VAR{out-string}\XOR\VAR{out-stream}}
@@ -759,10 +759,7 @@
     \IT{\Goo{\KWD{\TLD R}\XOR\KWD{\TLD :R}\XOR\KWD{\TLD
           @R}\XOR\KWD{\TLD @:R}}}
     {
-      \EM{Roman. }
-      Take argument as number and print it as English cardinal number,
-      as English ordinal number, as Roman numeral, or as old Roman
-      numeral, respectively.
+      \EM{罗马数字。}获取一个数字参数，打印英语基数、英语序数、罗马数字、旧式罗马数字。
     }
 
     \IT{\KWD{\TLD} \Op{\VAR{width}}
@@ -771,9 +768,9 @@
           \OP{\KWD{,}\VAR{comma-interval}\DF{\LIT{3}}}}}
       \KWD{\Op{:} \Op{@} \Goo{D\XOR B\XOR O\XOR X}}}
     {\index{\~D@$\sim$D}\index{\~B@$\sim$B}\index{\~O@$\sim$O}\index{\~X@$\sim$X}%
-      \EM{Decimal/Binary/Octal/Hexadecimal. }
-      Print integer argument as number. With \kwd{:}, group digits 
-      \VAR{comma-interval} each; with \kwd{@}, always prepend a sign.
+      \EM{十进制/二进制/八进制/十六进制。}将整数参数打印为数字。有
+      \kwd{:}，以
+      \VAR{comma-interval} 个数字为一组添加分隔符；有 \kwd{@}，总是在前面加上符号。
     }
 
     \IT{\KWD{\TLD} \Op{\VAR{width}} \OP{\KWD{,}\Op{\VAR{dec-digits}}
@@ -782,8 +779,8 @@
             \OP{\KWD{,'}\VAR{pad-char}\DF{\textvisiblespace}}}}}
       \KWD{\Op{@} F}}
     {\index{\~F@$\sim$F}%
-      \EM{Fixed-Format Floating-Point. } With
-      \kwd{@}, always pre\-pend a sign. 
+      \EM{固定格式浮点。}有
+      \kwd{@}，总是在前面加上符号。
     }
 
     \IT{\KWD{\TLD} \Op{\VAR{width}} \OP{\KWD{,}\Op{\VAR{dec-digits}}
@@ -794,11 +791,11 @@
                 \OP{\KWD{,'}\VAR{exp-char}}}}}}}
       \KWD{\Op{@} \Goo{E\XOR  G}}}
     {\index{\~E@$\sim$E}\index{\~G@$\sim$G}%
-      \EM{Exponential/General Floating-Point. }
-      Print argument as floating-point number with \VAR{dec-digits}
-      after decimal point and \VAR{exp-digits} in the signed
-      exponent. With \KWD{\TLD G}, choose either \KWD{\TLD E} or
-      \KWD{\TLD F}. With \KWD{@}, always prepend a sign. 
+      \EM{指数/一般浮点。}将参数打印为浮点数，带
+      \VAR{dec-digits}
+      位小数位，并乘上有符号指数
+      \VAR{exp-digits}。有 \KWD{\TLD G}，自动选择 \KWD{\TLD E} 或
+      \KWD{\TLD F}。有 \KWD{@}，总是在前面加上符号。
     }
 
     \IT{\KWD{\TLD} \Op{\VAR{dec-digits}\DF{\LIT{2}}}
@@ -828,33 +825,32 @@
         \KWD{\TLD @(} \VAR{text} \KWD{\TLD)}\XOR
         \KWD{\TLD @:(} \VAR{text} \KWD{\TLD)}}}
     {\index{\~(\~)@$\sim$( $\sim$)}%
-      \EM{Case-Conversion. }
-      Convert \VAR{text} to lowercase, convert first letter of each word
-      to uppercase, capitalize first word and convert the rest to
-      lowercase, or convert to uppercase, respectively. 
+      \EM{大小写转换。}分别将
+      \VAR{text}
+      转为全小写、单词首字母大写、首字母大写、全大写。
     }
 
     \IT{\Goo{\KWD{\TLD P}\XOR\KWD{\TLD:P}
         \XOR\KWD{\TLD @P}\XOR\KWD{\TLD @:P}}}
     {\index{\~P@$\sim$P}%
-      \EM{Plural. }
-      If argument \kwd{eql} \LIT{1} print nothing, otherwise print \LIT{s};
-      do the same for the previous argument; if argument \kwd{eql} \LIT{1}
-      print \LIT{y}, otherwise print \LIT{ies}; do the same for the
-      previous argument, respectively.  
+      \EM{复数。}分别为：当参数
+      \kwd{eql} \LIT{1} 时不打印，否则打印
+      \LIT{s}；应用至前一个参数；当参数 \kwd{eql} \LIT{1}
+      时打印 \LIT{y}，否则打印
+      \LIT{ies}；应用至前一个参数。
     }
 
     \IT{\KWD{\TLD} \Op{\VAR{n}\DF{\LIT{1}}} \KWD{\%}}
     {\index{\~\%@$\sim$\%}%
-      \EM{Newline. }
-      Print \VAR{n} newlines.
+      \EM{换行。}打印
+      \VAR{n} 个换行。
     }
 
     \IT{\KWD{\TLD} \Op{\VAR{n}\DF{\LIT{1}}} \KWD{\&}}
     {\index{\~\&@$\sim$\&}%
-      \EM{Fresh-Line. }
-      Print $n-1$ newlines if output stream is at the
-      beginning of a line, or \VAR{n} newlines otherwise.
+      \EM{新行。}若输出流已在行首，打印
+      $n-1$ 个换行，否则打印
+      \VAR{n} 个换行。
     }
 
     \IT{\Goo{%
@@ -863,27 +859,26 @@
         \KWD{\TLD@\_}\XOR
         \KWD{\TLD @:\_}}}
     {\index{\~\_{}@$\sim$\_{}}%
-      \EM{Conditional Newline. }
-      Print a newline like \kwd{pprint-newline} with argument
-      \kwd{:linear}, \kwd{:fill}, \kwd{:miser}, or \kwd{:mandatory}, respectively.
+      \EM{条件换行。}类似
+      \kwd{pprint-newline} 打印换行，参数分别类似其中的
+      \kwd{:linear}、\kwd{:fill}、\kwd{:miser}、\kwd{:mandatory}。
     }
 
     \IT{\Goo{\KWD{\TLD:$\hookleftarrow$}\XOR\KWD{\TLD@$\hookleftarrow$}\XOR\KWD{\TLD$\hookleftarrow$}}}
     {\index{\~\~bogus-ordering{}@$\sim\hookleftarrow$}%
-      \EM{Ignored Newline. } Ignore newline, or whitespace following
-      newline, or both, respectively.
+      \EM{忽略换行。}忽略换行，换行后的空格，或两者皆有。
     }
 
     \IT{\KWD{\TLD} \Op{\VAR{n}\DF{\LIT{1}}} \KWD{\boldmath$|$}}
     {\index{\~\textbar@$\sim${$"|$}}%
-      \EM{Page. }
-      Print \VAR{n} page separators.
+      \EM{分页。}打印
+      \VAR{n} 个分页符。
     }
 
     \IT{\KWD{\TLD} \Op{\VAR{n}\DF{\LIT{1}}} \KWD{\TLD}}
     {\index{\~\~@$\sim$$\sim$}%
-      \EM{Tilde. }
-      Print \VAR{n} tildes.
+      \EM{波浪号。}打印
+      \VAR{n} 个波浪号。
     }
 
     \IT{\KWD{\TLD} \Op{\VAR{min-col}\DF{\LIT{0}}}
@@ -921,9 +916,8 @@
     \IT{\Goo{\KWD{\TLD} \Op{\VAR{n}\DF{\LIT{0}}}
         \kwd{I}\XOR\KWD{\TLD} \Op{\VAR{n}\DF{\LIT{0}}} \kwd{:I}}}
     {\index{\~I@$\sim$I}%
-      \EM{Indent. }
-      Set indentation to \VAR{n} relative to leftmost/to current
-      position. 
+      \EM{缩进。}相对最左边/当前位置，设置缩进为
+      \VAR{n}。
     }
 
     \IT{\KWD{\TLD} \Op{\VAR{c}\DF{\LIT{1}}}
@@ -941,8 +935,8 @@
         \KWD{\TLD} \Op{\VAR{m}\DF{\LIT{1}}} \KWD{:}\KWD{\A}\XOR
         \KWD{\TLD} \Op{\VAR{n}\DF{\LIT{0}}} \KWD{@}\KWD{\A}}}
     {\index{\~*@$\sim$\A}%
-      \EM{Go-To. }
-      Jump \VAR{m} arguments forward, or backward, or to argument \VAR{n}.
+      \EM{Go-To。}向前或向后跳转
+      \VAR{m} 个参数，或跳至第 \VAR{n} 个参数。
     }
 
     \IT{\KWD{\TLD} \Op{\VAR{limit}} \Op{\KWD{{:}}} \Op{\kwd{@}}
@@ -959,12 +953,12 @@
     \IT{\KWD{\TLD} \OP{\VAR{x} \OP{\kwd{,}\VAR{y} \Op{\kwd{,}\VAR{z}}}}
       \KWD{\^{}}}
     {\index{\~\^{}@$\sim$\^{}}%
-      \EM{Escape Upward. }
-      Leave immediately \kwd{\TLD\boldmath{$<$} \TLD\boldmath{$>$}},
-      \kwd{\TLD\boldmath{$<$} \TLD:\boldmath{$>$}}, 
-      \kwd{\TLD\boldmath{$\{$} \TLD\boldmath{$\}$}}, \kwd{\TLD?}, or the
-      entire \FU{format} operation. With one to three prefixes, act only
-      if $x=0$, $x=y$, or $x\leq y \leq z$, respectively.
+      \EM{跳出循环。}立即退出
+      \kwd{\TLD\boldmath{$<$} \TLD\boldmath{$>$}}、\kwd{\TLD\boldmath{$<$} \TLD:\boldmath{$>$}}、\kwd{\TLD\boldmath{$\{$} \TLD\boldmath{$\}$}}、\kwd{\TLD?}
+      或整个 \FU{format}
+      操作。有一至三个前缀时，仅当满足
+      $x=0$、$x=y$、$x\leq y \leq z$
+      时才作用。
     }
 
     \IT{\KWD{\TLD} \Op{\VAR{i}} \Op{\KWD{:}} \Op{\KWD{@}}
@@ -985,10 +979,7 @@
         \KWD{\TLD @?}}
     }
     {\index{\~?@$\sim$?}%
-      \EM{Recursive Processing. }
-      Process two arguments as control string and argument list, or
-      take one argument as control string and use then the rest of the
-      original arguments.
+      \EM{递归处理。}获取两个参数，将其作为控制字符串和参数列表，或获取一个参数作为控制字符串，然后以此处理原始参数中的剩余部分。
     }
 
     \IT{\KWD{\TLD} \OP{\VAR{prefix} \Goos{\kwd{,}%
@@ -997,24 +988,22 @@
       \KWD{/}\OP{\VAR{package}
         \Op{\LIT{:}}\LIT{:}\DF{\LIT{cl-user:}}}\VAR{function}\KWD{/}}
     {\index{\~/ /@$\sim$/ /}%
-      \EM{Call Function. }
-      Call all-uppercase \VAR{package\KWD{::}function} with the
-      arguments stream, format-ar\-gu\-ment, colon-p, at-sign-p and
-      \VAR{prefix}es for printing format-argument.
+      \EM{函数调用。}使用参数
+      stream、format-argument、colon-p、at-sign-p、及
+      \VAR{prefix}es 作为 printing format-argument
+      调用全大写的 \VAR{package\KWD{::}function}。
     }
 
     \IT{\KWD{\TLD} \Op{\KWD{:}} \Op{\KWD{@}} \KWD{W}}
     {\index{\~W@$\sim$W}%
-      \EM{Write. }
-      Print argument of any type obeying every printer control
-      variable. With \kwd{:}, pretty-print. With \kwd{@}, print
-      without limits on length or depth.
+      \EM{写入。}打印遵守打印控制变量的任意类型参数。有
+      \kwd{:}，漂亮打印。有
+      \kwd{@}，不限制长度及深度。
     }
 
     \IT{\Goo{\KWD{V}\XOR\KWD{\#}}}
     {\index{V}\index{\#}
-      In place of the comma-separated prefix parameters: use next
-      argument or number of remaining unprocessed arguments, respectively.
+      替换逗号分隔的前缀参数：下一个参数，或剩余未处理的参数数。
     }
 
   \end{LIST}
@@ -1067,7 +1056,7 @@
       (\FU*{MAKE-ECHO-STREAM } \VAR{from-input-stream } \VAR{to-output-stream})\\
       (\FU*{MAKE-SYNONYM-STREAM } \VAR{variable-bound-to-stream})}{.}}
   {
-    返回指定类型的 \retval{stream}。
+    返回指定类型的 \retval{流}。
   }
 
   \IT{(\FU*{MAKE-STRING-INPUT-STREAM} \VAR{string}
@@ -1104,37 +1093,37 @@
 
   \IT{(\FU*{SYNONYM-STREAM-SYMBOL} \VAR{synonym-stream})}
   {
-    Return \retval{symbol} of \VAR{synonym-stream}.
+    返回 \VAR{synonym-stream} 的 \retval{符号}。
   }
 
   \IT{(\FU*{GET-OUTPUT-STREAM-STRING} \DES{\VAR{string-stream}})}
   {
-    Clear and return as a \retval{string} characters on
-    \VAR{string-stream}.
+    清除 \VAR{string-stream} 并返回
+    \retval{字符串}。
   }
 
   \IT{(\FU*{FILE-POSITION} \VAR{stream} \Op{\xorGOO{\kwd{:start}\\
         \kwd{:end}\\
         \VAR{position}}{\}}})}
   {
-    Return \retval{position within stream}, or set it to
-    \retval{\VAR{position}} and return \retval{\T} on success. 
+    返回 \retval{流的位置}，或将其设为
+    \retval{\VAR{position}}，若成功，返回 \retval{\T}。
   }
 
   \IT{(\FU*{FILE-STRING-LENGTH} \VAR{stream} \VAR{foo})}
   {
-    \retval{Length} \VAR{foo} would have in \VAR{stream}.
+    \VAR{foo} 在 \VAR{stream} 中将有的 \retval{长度}。
   }
 
   \IT{(\FU*{LISTEN} \Op{\VAR{stream}\DF{\V{\A standard-input\A}}})}
   {
-  \retval{\T} if there is a character in input \VAR{stream}.
+  当 \VAR{stream} 的输入中存在字符时为 \retval{\T}。
   }
 
   \IT{(\FU*{CLEAR-INPUT}
     \Op{\DES{\VAR{stream}}\DF{\V{\A standard-input\A}}})}
   {
-    Clear input from \VAR{stream}, return \retval{\NIL}.
+    清除 \VAR{stream} 的输入，返回 \retval{\NIL}。
   }
 
   \IT{(\xorGOO{\FU*{CLEAR-OUTPUT}\\
@@ -1150,24 +1139,24 @@
   \IT{(\FU*{CLOSE} \DES{\VAR{stream}} \Op{\kwd{:abort}
       \VAR{bool}\DF{\NIL}})}
   {
-    Close \VAR{stream}. Return \retval{\T} if \VAR{stream} had been
-    open. If \kwd{:abort} is \T, delete associated file. 
+    关闭 \VAR{stream}。如果 \VAR{stream} 已打开，返回
+    \retval{\T}。如果 \kwd{:abort} 为 \T，删除相关文件。
   }
 
   \IT{(\MC*{WITH-OPEN-FILE} (\VAR{stream} \VAR{path}
     \OPn{\VAR{open-arg}}) \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})}
     \PROGN{\VAR{form}})}
   {
-    Use \FU{OPEN} with \VAR{open-arg}s to temporarily create
-    \VAR{stream} to \VAR{path}; return \retval{values of
-      \VAR{form}s}.
+    用参数 \VAR{open-arg}s 调用 \FU{OPEN} 临时创建至
+    \VAR{path} 的 \VAR{stream}，返回 \retval{\VAR{form}s
+      的值}。
   }
 
   \IT{(\MC*{WITH-OPEN-STREAM} (\VAR{foo} \DES{\VAR{stream}})
     \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})} \PROGN{\VAR{form}})}
   {
-    Evaluate \VAR{form}s with \VAR{foo} locally bound to
-    \VAR{stream}. Return \retval{values of \VAR{form}s}. 
+    局部绑定 \VAR{foo} 至 \kwd{stream} 并求值
+    \VAR{form}s。返回 \retval{\VAR{form}s 的值}。
   }
 
   \IT{(\MC*{WITH-INPUT-FROM-STRING} (\VAR{foo} \VAR{string} 
@@ -1176,9 +1165,9 @@
       \kwd{:end} \VAR{ end}\DF{\NIL}}{\}}) \OPn{(\kwd{declare}
       \OPn{\NEV{\VAR{decl}}})} \PROGN{\VAR{form}})}
   {
-    Evaluate \VAR{form}s with \VAR{foo} locally bound to input
-    \kwd{string-stream} from \VAR{string}. Return \retval{values of
-      \VAR{form}s}; store next reading position into \VAR{index}.
+    局部绑定 \VAR{foo} 至输入 \kwd{string-stream} 并求值
+    \VAR{form}s。返回 \retval{\VAR{form}s
+      的值}，将下个读取位置储存至 \VAR{index}。
   }
 
   \IT{(\MC*{WITH-OUTPUT-TO-STRING} (\VAR{foo} 
@@ -1188,20 +1177,20 @@
     \OPn{(\kwd{declare}
       \OPn{\NEV{\VAR{decl}}})} \PROGN{\VAR{form}})}
   {
-    Evaluate \VAR{form}s with \VAR{foo} locally bound to an output
-    \kwd{string-stream}. Append output to \VAR{string} and return
-    \retval{values of \VAR{form}s} if \VAR{string} is given. Return
-    \retval{string containing output} otherwise. 
+    局部绑定 \VAR{foo} 至输出 \kwd{string-stream} 并求值
+    \VAR{form}s。若给定 \VAR{string}，追加至 \VAR{string} 并返回
+    \retval{\VAR{form}s 的值}。否则返回
+    \retval{输出字符串}。
   }
 
   \IT{(\FU*{STREAM-EXTERNAL-FORMAT} \VAR{stream})}
   {
-    \retval{External file format designator}.
+    \retval{外部文件格式指示符}。
   }
 
   \IT{\V{\A terminal-io\A}}
   {\index{*TERMINAL-IO*@\A TERMINAL-IO\A}
-    Bidirectional stream to user terminal.
+    用户终端双向流。
   }
 
   \IT{\arrGOO{\V{\A standard-input\A}\\
@@ -1210,14 +1199,13 @@
   {\index{*STANDARD-INPUT*@\A STANDARD-INPUT\A}%
     \index{*STANDARD-OUTPUT*@\A STANDARD-OUTPUT\A}%
     \index{*ERROR-OUTPUT*@\A ERROR-OUTPUT\A}
-    Standard input stream, standard output stream, 
-    or standard error output stream, respectively.
+    标准输入流、标准输出流、标准错误输出流。
   }
 
   \IT{\arrGOO{\V{\A debug-io\A}\\
       \V{\A query-io\A}}{.}}
   {\index{*DEBUG-IO*@\A DEBUG-IO\A}\index{*QUERY-IO*@\A QUERY-IO\A}
-    Bidirectional streams for debugging and user interaction.
+    调试及用户交互双向流。
   }
 
 \end{LIST}
@@ -1257,12 +1245,11 @@
       \kwd{:case
         \Goo{\kwd{:local}\XOR\kwd{:common}}\DF{\kwd{:local}}}}{\}})}
   {
-    Construct a \retval{logical pathname} if there is a logical
-    pathname translation for \VAR{host}, otherwise construct a
-    \retval{physical pathname}.  For \kwd{:case :local}, leave case of
-    components unchanged.  For \kwd{:case :common}, leave mixed-case
-    components unchanged; convert all-uppercase components into local
-    customary case; do the opposite with all-lowercase components.
+    如果主机支持逻辑路径名转换，构造
+    \retval{逻辑路径名}，否则构造
+    \retval{物理路径名}。对于
+    \kwd{:case :local}，保留部件大小写不变。对于
+    \kwd{:case :common}，保留部件混合大小写不变，将所有大写组件转换为本地常见写法，对小写组件做法相反。
   }
 
   \IT{\arrGOO{%
@@ -1276,7 +1263,7 @@
           \kwd{:common}}{\}}\DF{\kwd{:local}}})\\
       (\FU*{PATHNAME-VERSION } \VAR{path-or-stream})}{.}}
   {
-    Return \retval{pathname component}.
+    返回 \retval{路径名组件}。
   }
 
   \IT{(\FU*{PARSE-NAMESTRING} \VAR{foo} 
@@ -1286,9 +1273,9 @@
       \kwd{:end} \VAR{ end}\DF{\NIL}\\
       \kwd{:junk-allowed} \VAR{ bool}\DF{\NIL}}{\}}}})}
   {
-    Return \retval{pathname} converted from
-    string, pathname, or stream \VAR{foo};  and \retvalii{position}
-    where parsing stopped.
+    返回从字符串、路径名或流 \VAR{foo} 转换得的
+    \retval{路径名}，及解析停止时的
+    \retvalii{位置}。
   }
 
   \IT{(\FU*{MERGE-PATHNAMES} \VAR{path-or-stream}
@@ -1301,12 +1288,12 @@
 
   \IT{\V{\A default-pathname-defaults\A}}
   {\index{*DEFAULT-PATHNAME-DEFAULTS*@\A DEFAULT-PATHNAME-DEFAULTS\A}
-  Pathname to use if one is needed and none supplied.
+  当需要却没有提供路径名时使用的路径名。
   }
 
   \IT{(\FU*{USER-HOMEDIR-PATHNAME} \Op{\VAR{host}})}
   {
-    User's \retval{home directory}.
+    用户的 \retval{家目录}。
   }
 
   \IT{(\FU*{ENOUGH-NAMESTRING} \VAR{path-or-stream}
@@ -1336,14 +1323,14 @@
 
   \IT{(\FU*{PATHNAME} \VAR{path-or-stream})}
   {
-    \retval{Pathname} of \VAR{path-or-stream}.
+    \VAR{path-or-stream} 的 \retval{路径名}。
   }
 
   \IT{(\FU*{LOGICAL-PATHNAME} \VAR{logical-path-or-stream})}
   {
-    \retval{Logical pathname} of \VAR{logical-path-or-stream}.
-    Logical pathnames are represented as all-uppercase
-    \LIT{"}%
+    \VAR{logical-path-or-stream} 的
+    \retval{逻辑路径名}。逻辑路径名以以下格式表示
+    \LIT{“}%
     \Op{\VAR{host}\LIT{:}}%
     \Op{\LIT{;}}%
     \Goos{\xorGOO{%
@@ -1358,7 +1345,7 @@
       \Op{\LIT{.}%
         \Goo{%
           \VAR{version}\XOR\LIT{*}\XOR\LIT{newest}\XOR\LIT{NEWEST}}}}%
-    \LIT{"}.
+    \LIT{”}。
     \index{*@\A}\index{**@\A\A}%
   }
 
@@ -1389,17 +1376,17 @@
 
   \IT{(\FU*{FILE-WRITE-DATE} \VAR{file})}
   {
-    \retval{Time} at which \VAR{file} was last written.
+    \VAR{file} 最后修改 \retval{时间}。
   }
 
   \IT{(\FU*{FILE-AUTHOR} \VAR{file})\qquad\qquad}
   {
-    Return \retval{name of \VAR{file} owner}.
+    返回 \retval{\VAR{file} 所有者名称}。
   }
 
   \IT{(\FU*{FILE-LENGTH} \VAR{stream})}
   {
-    Return \retval{length of \VAR{stream}}.
+    返回 \retval{\VAR{stream} 的长度}。
   }
 
   \IT{(\FU*{RENAME-FILE} \VAR{foo} \VAR{bar})}
@@ -1412,12 +1399,12 @@
 
   \IT{(\FU*{DELETE-FILE} \VAR{file})}
   {
-    Delete \VAR{file}. Return \retval{\T}.
+    删除 \VAR{file}。返回 \retval{\T}。
   }
 
   \IT{(\FU*{DIRECTORY} \VAR{path})}
   {
-    \retval{List of pathnames} matching \VAR{path}.
+    匹配 \VAR{path} \retval{路径名列表}。
   }
 
   \IT{(\FU*{ENSURE-DIRECTORIES-EXIST} \VAR{path} \Op{\kwd{:verbose}

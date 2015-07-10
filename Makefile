@@ -32,65 +32,29 @@ GIT_ARCHIVE	= git archive --format=tar --prefix=clqr/ HEAD | $(GZIP)
 GIT_LOG		= git log
 DATE		= git log HEAD^..HEAD --date=short | awk '/Date:/{print $$2}' | tr -d '\n\\'
 
-all: letter a4
+all: a4-colorful
 
-letter:
-	$(MAKE) letter-booklets
-	$(MAKE) clqr-letter-consec.pdf
+a4-colorful: clqr.ind clqr-a4-colorful.pdf
 
-a4:
-	$(MAKE) a4-booklets
-	$(MAKE) clqr-a4-consec.pdf
+a4-black: clqr.ind clqr-a4-black.pdf
 
-letter-booklets: clqr-letter-booklet-all.pdf clqr-letter-booklet-four.pdf
+letter-colorful: clqr.ind clqr-letter-colorful.pdf
 
-a4-booklets:  clqr-a4-booklet-all.pdf clqr-a4-booklet-four.pdf
+letter-black: clqr.ind clqr-letter-black.pdf
 
-clqr-letter-consec.pdf: clqr-letter-consec.ps
-	$(PS2PDF) $< $@ $(SEND-TO-LOG)
-
-clqr-a4-consec.pdf: clqr-a4-consec.ps
-	$(PS2PDF) $< $@ $(SEND-TO-LOG)
-
-clqr-letter-booklet-%.pdf: clqr-letter-booklet-%.ps paper-letter.flag
-	$(PS2PDF) -sPAPERSIZE=letter $< $@ $(SEND-TO-LOG)
-
-clqr-a4-booklet-%.pdf: clqr-a4-booklet-%.ps paper-a4.flag
-	$(PS2PDF) -sPAPERSIZE=a4 $< $@ $(SEND-TO-LOG)
-
-clqr-letter-booklet-%.ps: clqr-letter-signature-%.ps
-	$(PSNUP-LETTER) $< > $@ $(SEND-TO-LOG)
-
-clqr-a4-booklet-%.ps: clqr-a4-signature-%.ps
-	$(PSNUP-A4) $< > $@ $(SEND-TO-LOG)
-
-clqr-%-signature-all.ps: clqr-%-consec-black.ps
-	$(PSBOOK-ALL) $< $@ $(SEND-TO-LOG)
-
-clqr-%-signature-four.ps: clqr-%-consec-black.ps
-	$(PSBOOK-FOUR) $< $@ $(SEND-TO-LOG)
-
-clqr-%-consec.ps: clqr-%-colorful.dvi
-	$(DVIPS) -o $@ $< $(SEND-TO-LOG)
-
-clqr-%-consec-black.ps: clqr-%-black.dvi
-	$(DVIPS) -o $@ $< $(SEND-TO-LOG)
-
-clqr-%-colorful.dvi: clqr.tex clqr-*.tex clqr.*.tex clqr-types-and-classes.1 paper-%.flag revision-number color-colorful.flag
+clqr.ind: clqr.tex clqr-*.tex clqr.*.tex clqr-types-and-classes.1 paper-a4.flag revision-number.flag color-colorful.flag
 	$(TOUCH) clqr.ind $(SEND-TO-LOG)
 	$(LATEX) clqr.tex $(SEND-TO-LOG)
-	$(LATEX) clqr.tex $(SEND-TO-LOG)
 	$(MAKEINDEX) -s clqr.ist clqr.idx $(SEND-TO-LOG)
-	$(LATEX) clqr.tex $(SEND-TO-LOG)
-	$(MV) clqr.dvi $@ $(SEND-TO-LOG)
+	$(RM) clqr.pdf
 
-clqr-%-black.dvi: clqr.tex clqr-*.tex clqr.*.tex clqr-types-and-classes.1 paper-%.flag revision-number color-black.flag
-	$(TOUCH) clqr.ind $(SEND-TO-LOG)
+clqr-%-colorful.pdf: paper-%.flag color-colorful.flag
 	$(LATEX) clqr.tex $(SEND-TO-LOG)
+	$(MV) clqr.pdf $@
+
+clqr-%-black.pdf: paper-%.flag color-black.flag
 	$(LATEX) clqr.tex $(SEND-TO-LOG)
-	$(MAKEINDEX) -s clqr.ist clqr.idx $(SEND-TO-LOG)
-	$(LATEX) clqr.tex $(SEND-TO-LOG)
-	$(MV) clqr.dvi $@ $(SEND-TO-LOG)
+	$(MV) clqr.pdf $@
 
 clqr-types-and-classes.1 clqr-types-and-classes.2 \
 clqr-types-and-classes.3 clqr-types-and-classes.4 \
@@ -117,9 +81,10 @@ color-black.flag:
 	$(RM) color-colorful.flag $(SEND-TO-LOG)
 	$(TOUCH) $@
 
-revision-number:
+revision-number.flag:
 	$(GIT_REVISION) | tee REVISION.tex > release-revision.txt
 	$(DATE) | tee DATE.tex > release-date.txt
+	$(TOUCH) $@
 
 clean:
 	$(RM) *.dvi *.toc *.aux *.log *.idx *.ilg *.ind *.out *.ps *.pdf *~ \

@@ -12,7 +12,7 @@
 \label{section:序列}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{序列谓词} 
+\subsection{谓词} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{LIST}{1cm}
 
@@ -20,17 +20,17 @@
       \FU*{NOTEVERY}}{\}} \VAR{test}
     \RP{\VAR{sequence}})}
   {
-  Return \retval{\NIL} or \retval{\T}, respectively, as soon as \VAR{test} on
-  any set of corresponding elements of \VAR{sequence}s returns \NIL. 
+  一旦 \VAR{test} 对 \VAR{sequence} 中的某个元素为
+  \NIL，返回 \retval{\NIL} 或 \retval{\T}。
   }
 
   \IT{(\xorGOO{\FU*{SOME}\\
       \FU*{NOTANY}}{\}} \VAR{test}
     \RP{\VAR{sequence}})}
   {
-  Return \retval{value of \VAR{test}} or \retval{\NIL}, respectively, as soon
-  as \VAR{test} on any set of corresponding elements of
-  \VAR{sequence}s returns non-\NIL. 
+  一旦 \VAR{test} 对 \VAR{sequence}
+  中的某个元素非
+  \NIL，返回 \retval{\VAR{test} 的值} 或 \retval{\NIL}。
   }
 
   \IT{(\FU*{MISMATCH} \VAR{sequence-a} \VAR{sequence-b} 
@@ -44,10 +44,10 @@
       \kwd{:end2} \VAR{ end-b}\DF{\NIL}\\
       \kwd{:key} \VAR{ function}}{\}})}
   {
-  Return \retval{position in \VAR{sequence-a}} where
-  \VAR{sequence-a} and \VAR{sequence-b} begin to
-  mismatch. Return \retval{\NIL} if
-  they match entirely.
+  若 \VAR{sequence-a} 和 \VAR{sequence-b}
+  有所不同，返回
+  \retval{\VAR{sequence-a} 中位置}，否则返回
+  \retval{\NIL}。
   }
 
 \end{LIST}
@@ -61,33 +61,33 @@
   \IT{(\FU*{MAKE-SEQUENCE} \VAR{sequence-type} \VAR{size}
     \Op{\kwd{:initial-element} \VAR{foo}})} % default: implementation-dependent
   {
-  Make \retval{sequence} of \VAR{sequence-type} with \VAR{size} elements.
+  生成 \VAR{size} 个元素的 \VAR{sequence-type} \retval{序列}。
   }
 
   \IT{(\FU*{CONCATENATE} \VAR{type} \OPn{\VAR{sequence}})}
   {
-  Return \retval{concatenated sequence} of \VAR{type}.
+  返回类型 \VAR{type} 的 \retval{串接序列}。
   }
 
   \IT{(\FU*{MERGE} \VAR{type} \DES{\VAR{sequence-a}} \DES{\VAR{sequence-b}}
     \VAR{test} \Op{\kwd{:key} \VAR{function}\DF{\NIL}})}
   {
-  Return \retval{interleaved sequence} of \VAR{type}. Merged sequence
-  will be sorted if both  \VAR{sequence-a} and \VAR{sequence-b} are
-  sorted. 
+  返回 \VAR{type} 的 \retval{交错序列}。若
+  \VAR{sequence-a} 和 \VAR{sequence-b}
+  已排序，则合并序列也将有序。
   }
 
   \IT{(\FU*{FILL} \DES{\VAR{sequence}} \VAR{foo} 
     \orGOO{\kwd{:start} \VAR{ start}\DF{\LIT{0}}\\
       \kwd{:end} \VAR{ end}\DF{\NIL}}{\}})}
   {
-  Return \retval{\VAR{sequence}} after setting elements between \VAR{start}
-  and \VAR{end} to \VAR{foo}.
+  将介于 \VAR{start} 及 \VAR{end} 中的元素设为
+  \VAR{foo} 后返回 \retval{\VAR{sequence}}。
   }
 
   \IT{(\FU*{LENGTH} \VAR{sequence})}
-  {Return \retval{length of
-    \VAR{sequence}} (being value of fill pointer if applicable).
+  {返回 \retval{\VAR{sequence}
+    的长度}（如果可用，即填充指针的值）。
     }
 
   \IT{(\FU*{COUNT} \VAR{foo} \VAR{sequence} 
@@ -99,8 +99,8 @@
       \kwd{:end} \VAR{ end}\DF{\NIL}\\
       \kwd{:key} \VAR{ function}}{\}})}
   {
-  Return \retval{number of elements} in \VAR{sequence} which match
-  \VAR{foo}.
+  返回 \VAR{sequence} 中匹配 \VAR{foo} 的
+  \retval{元素个数}。
   }
 
   \IT{(\xorGOO{\FU*{COUNT-IF}\\
@@ -110,35 +110,35 @@
       \kwd{:end} \VAR{ end}\DF{\NIL}\\
       \kwd{:key} \VAR{ function}}{\}})}
   {
-  Return \retval{number of elements} in \VAR{sequence} which satisfy
-  \VAR{test}.
+  返回 \VAR{sequence} 中满足 \VAR{test} 的
+  \retval{元素个数}。
   }
 
   \IT{(\FU*{ELT} \VAR{sequence} \VAR{index})}
-  {Return \retval{element of
-    \VAR{sequence}} pointed to by zero-indexed
-    \VAR{index}. \kwd{setf}able. 
+  {返回零索引 \VAR{index} 所指的 \retval{\VAR{sequence}
+    元素}。可
+    \kwd{setf}。
     }
 
   \IT{(\FU*{SUBSEQ} \VAR{sequence} \VAR{start}
     \Op{\VAR{end}\DF{\NIL}})}
   {
-  Return \retval{subsequence of \VAR{sequence}} between \VAR{start}
-    and \VAR{end}. \kwd{setf}able.
+  返回介于 \VAR{start} 及 \VAR{end} 的
+    \retval{\VAR{sequence} 子序列}。可 \kwd{setf}。
     }
 
   \IT{(\xorGOO{\FU*{SORT}\\
       \FU*{STABLE-SORT}}{\}} \DES{\VAR{sequence}} \VAR{test}
     \Op{\kwd{:key} \VAR{function}})}
   {
-  Return \retval{\VAR{sequence} sorted}. Order
-  of elements considered equal is not guaranteed/retained, respectively.
+  返回 \retval{排序后的\
+  \VAR{sequence}}。不保证/保证相等元素的顺序不变。
   }
 
   \IT{\arrGOO{(\FU*{REVERSE} \VAR{ sequence})\\
       (\FU*{NREVERSE } \DES{\VAR{sequence}})}{.}}
   {
-  Return \retval{\VAR{sequence} in reverse order}.
+  返回 \retval{\VAR{sequence} 的逆序}。
   }
 
   \IT{(\xorGOO{\FU*{FIND}\\
@@ -151,9 +151,9 @@
       \kwd{:end} \VAR{ end}\DF{\NIL}\\
       \kwd{:key} \VAR{ function}}{\}})}
   {
-  Return \retval{first element} in \VAR{sequence} which
-  matches \VAR{foo}, or its \retval{position} relative to the begin
-  of \VAR{sequence}, respectively.
+  返回 \VAR{sequence} 匹配 \VAR{foo} 的
+  \retval{第一个元素}，或其相对 \VAR{sequence} 开头的
+  \retval{位置}。
   }
 
   \IT{(\xorGOO{\FU*{FIND-IF}\\
@@ -164,8 +164,9 @@
       \kwd{:end} \VAR{ end}\DF{\NIL}\\
       \kwd{:key} \VAR{ function}}{\}})}
   {
-  Return \retval{first element} in \VAR{sequence} which satisfies \VAR{test}, or
-  its \retval{position} relative to the begin of \VAR{sequence}, respectively.
+  返回 \VAR{sequence} 满足 \VAR{test} 的
+  \retval{第一个元素}，或其相对 \VAR{sequence} 开头的
+  \retval{位置}。
   }
 
   \IT{(\FU*{SEARCH} \VAR{sequence-a} \VAR{sequence-b} 
@@ -179,9 +180,9 @@
       \kwd{:end2} \VAR{ end-b}\DF{\NIL}\\
       \kwd{:key} \VAR{ function}}{\}})}
   {
-  Search \VAR{sequence-b} for a subsequence matching
-  \VAR{sequence-a}. Return \retval{position} in \VAR{sequence-b}, or
-  \retval{\NIL}. 
+  在 \VAR{sequence-b} 中搜索匹配 \VAR{sequence-a}
+  的子序列。返回其在 \VAR{sequence-b} 中的 \retval{位置}，或
+  \retval{\NIL}。
   }
 
   \IT{(\xorGOO{\FU*{REMOVE} \VAR{ foo } \VAR{sequence}\\
@@ -195,8 +196,8 @@
       \kwd{:key} \VAR{ function}\\
       \kwd{:count} \VAR{ count}\DF{\NIL}}{\}})}
   {
-  Make \retval{copy of \VAR{sequence}} without elements matching
-  \VAR{foo}.
+  生成不含有满足 \VAR{foo} 的元素的
+  \retval{\VAR{sequence} 副本}。
   }
 
   \IT{(\xorGOO{%
@@ -213,8 +214,8 @@
       \kwd{:key} \VAR{ function}\\
       \kwd{:count} \VAR{ count}\DF{\NIL}}{\}})}
   {
-  Make \retval{copy of \VAR{sequence}} with all (or \VAR{count}) elements
-  satisfying \VAR{test} removed.
+  生成移除了所有（或 \VAR{count} 个）满足 \VAR{test} 的元素的
+  \retval{\VAR{sequence} 副本}。
   }
 
   \IT{(\xorGOO{\FU*{REMOVE-DUPLICATES} \VAR{ sequence }\\
@@ -227,7 +228,7 @@
       \kwd{:end} \VAR{ end}\DF{\NIL}\\
       \kwd{:key} \VAR{ function}}{\}})}
   {
-  Make \retval{copy of \VAR{sequence}} without duplicates.
+  生成不含重复元素的 \retval{\VAR{sequence} 副本}。
   }
 
   \IT{(\xorGOO{%
@@ -242,8 +243,8 @@
       \kwd{:key} \VAR{ function}\\
       \kwd{:count} \VAR{ count}\DF{\NIL}}{\}})}
   {
-  Make \retval{copy of \VAR{sequence}} with all (or \VAR{count})
-  \VAR{old}s replaced by \VAR{new}.
+  生成以 \VAR{new} 取代了所有（或 \VAR{count} 个）\VAR{old}s 的
+  \retval{\VAR{sequence} 副本}。
   }
 
   \IT{(\xorGOO{%
@@ -262,9 +263,9 @@
       \kwd{:key} \VAR{ function}\\
       \kwd{:count} \VAR{ count}\DF{\NIL}}{\}})}
   {
-    Make \retval{copy of \VAR{sequence}} with all (or \VAR{count})
-    elements satisfying \VAR{test} replaced by
-    \VAR{new}.
+    生成以 \VAR{new} 取代了所有（或 \VAR{count} 个）满足
+    \VAR{test} 的元素的
+    \retval{\VAR{sequence} 副本}。
   }
 
   \IT{(\FU*{REPLACE} \DES{\VAR{sequence-a}} \VAR{sequence-b}
@@ -273,22 +274,22 @@
       \kwd{:end1} \VAR{ end-a}\DF{\NIL}\\
       \kwd{:end2} \VAR{ end-b}\DF{\NIL}}{\}})}
   {
-    Replace elements of \retval{\VAR{sequence-a}} with elements of
-    \VAR{sequence-b}.
+    用 \VAR{sequence-b} 中元素取代
+    \retval{\VAR{sequence-a}} 中元素。
     }
 
   \IT{(\FU*{MAP} \VAR{type} \VAR{function} \RP{\VAR{sequence}})}
   {
-  Apply \VAR{function} successively to corresponding elements of the
-  \VAR{sequence}s. Return values as a \retval{sequence} of
-    \VAR{type}. If \VAR{type} is \NIL, return \retval{\NIL}.
+  用 \VAR{sequence}s 的相应元素依次调用 \VAR{function}，返回
+  \VAR{type} 的 \retval{序列}。若
+    \VAR{type} 为 \NIL，返回 \retval{\NIL}。
   }
 
   \IT{(\FU*{MAP-INTO} \DES{\VAR{result-sequence}} \VAR{function}
     \OPn{\VAR{sequence}})}
   {
-  Store into \retval{\VAR{result-sequence}} successively values of
-  \VAR{function} applied to corresponding elements of the \VAR{sequence}s. 
+  用 \VAR{sequence}s 的相应元素依次调用
+  \VAR{function}，将值存储至 \retval{\VAR{result-sequence}}。
   }
 
   \IT{(\FU*{REDUCE} \VAR{function} \VAR{sequence} 
@@ -298,14 +299,14 @@
       \kwd{:end} \VAR{ end}\DF{\NIL}\\ 
       \kwd{:key} \VAR{ function}}{\}})}
   {
-  Starting with the first two elements of \VAR{sequence}, apply
-  \VAR{function} successively to its last return value together with the next
-  element of \VAR{sequence}. Return \retval{last value} of {function}.
+  以 \VAR{sequence} 前两个元素开始，用上个返回值及
+  \VAR{sequence} 下个元素依次调用 \VAR{function}，返回
+  \VAR{function} 的 \retval{最后返回值}。
   }
 
   \IT{(\FU*{COPY-SEQ} \VAR{sequence})}
   {
-    \retval{Copy of \VAR{sequence}} with shared elements.
+    共享元素的 \retval{\VAR{sequence} 副本}。
   }
 
 

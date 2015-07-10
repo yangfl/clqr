@@ -24,7 +24,7 @@
   \IT{\arrGOO{(\FU*{ENDP} \VAR{ list})\\
       (\FU*{NULL} \VAR{ foo})}{.}\qquad\qquad}
   {
-  当 \VAR{list}/\VAR{foo} 为 \NIL 时为 \retval{\T}。
+  当 \VAR{list}/\VAR{foo} 为 \NIL\ 时为 \retval{\T}。
   }
 
   \IT{(\FU*{ATOM} \VAR{foo})\qquad}
@@ -86,9 +86,9 @@
     }
 
   \IT{(\FU*{LIST\A} \RP{\VAR{foo}})}
-  {Return \retval{list of \VAR{foo}s}
-  with last \VAR{foo} becoming cdr of last cons. Return
-  \retval{\VAR{foo}} if only one \VAR{foo} given.
+  {返回 \retval{\VAR{foo}s 的列表}，其中最后一个的
+  \VAR{foo} 是最后一个点对的 cdr。如果只有一个
+  \VAR{foo}，返回 \retval{\VAR{foo}}。
   }
 
   \IT{(\FU*{MAKE-LIST} \VAR{num} \Op{\kwd{:initial-element}
@@ -104,19 +104,19 @@
 
   \IT{(\FU*{CAR} \VAR{list})\qquad\qquad}
   {
-  \retval{Car of \VAR{list}} or \retval{\NIL} if \VAR{list} is
-  \NIL. \kwd{SETF}able. 
+  \retval{\VAR{list} 的 car}，如果 \VAR{list} 为 \retval{\NIL}，则为
+  \NIL。可 \kwd{SETF}。
   }
 
   \IT{\arrGOO{(\FU*{CDR} \VAR{ list})\qquad\\
       (\FU*{REST} \VAR{ list})}{.}}
   {
-  \retval{Cdr of \VAR{list}} or \retval{\NIL} if \VAR{list}
-  is \NIL. \kwd{SETF}able. 
+  \retval{\VAR{list} 的 cdr}，如果 \VAR{list} 为 \retval{\NIL}，则为
+  \NIL。可 \kwd{SETF}。
   }
 
   \IT{(\FU*{NTHCDR} \VAR{n list})}
-  {Return \retval{tail of \VAR{list}} after calling \FU{cdr} \VAR{n} times.
+  {在调用 \FU{cdr} \VAR{n} 次后返回 \retval{\VAR{list} 的尾部}。
     }
 
   \IT{(\Goo{\FU*{FIRST}\XOR\FU*{SECOND}\XOR\FU*{THIRD}\XOR\FU*{FOURTH}\XOR\FU*{FIFTH}\XOR\FU*{SIXTH}\XOR\dots\XOR\FU*{NINTH}\XOR\FU*{TENTH}}
@@ -124,13 +124,13 @@
   {
   \index{SEVENTH}%
   \index{EIGHTH}%
-  Return \retval{nth element of \VAR{list}} if any,
-  or \retval{\NIL} otherwise. \kwd{SETF}able.
+  若存在，返回 \retval{\VAR{list} 的第 n 个元素}，否则返回
+  \retval{\NIL}。可 \kwd{SETF}。
   }
 
   \IT{(\FU*{NTH} \VAR{n list})}
   {
-    Zero-indexed \retval{\VAR{n}th element} of \VAR{list}. \kwd{setf}able.
+    \VAR{list} 的零索引 \retval{第\ \VAR{n} 个元素}。可 \kwd{setf}。
   }
 
   \IT{(\FU{C}\VAR{X}\kwd{R} \VAR{list})}
@@ -139,37 +139,37 @@
   \index{CADR}%
   \index{CDAR}%
   \index{CDDR}%
-  With \VAR{X} being one to four
-  \kwd{a}s and \kwd{d}s representing \FU{CAR}s and \FU{CDR}s, e.g.
-  (\FU{CADR} \VAR{bar}) is equivalent to (\FU{CAR} (\FU{CDR}
-  \VAR{bar})).
-  \kwd{SETF}able.
+  \VAR{X} 可以是一至四个
+  \kwd{a} 和 \kwd{d}，分别表示\FU{CAR} 和 \FU{CDR}。如
+  (\FU{CADR} \VAR{bar}) 等价于 (\FU{CAR} (\FU{CDR}
+  \VAR{bar}))。可
+  \kwd{SETF}。
   }
 
   \IT{(\FU*{LAST} \VAR{list} \Op{\VAR{num}\DF{\LIT{1}}})}
   {
-  Return list of \retval{last \VAR{num}
-    conses} of \VAR{list}.
+  返回 \VAR{list} \retval{最后\ \VAR{num}
+    个点对} 的列表。
   }
 
   \IT{(\xorGOO{\FU*{BUTLAST }  \VAR{list}\\
       \FU*{NBUTLAST }  \DES{\VAR{list}}}{\}}
     \Op{\VAR{num}\DF{\LIT{1}}})}
   {
-    \retval{\VAR{list}} excluding last \VAR{num}
-    conses.
+    \retval{\VAR{list}}，排除最后 \VAR{num}
+    个点对。
   }
 
   \IT{(\xorGOO{\FU*{RPLACA}\\
     \FU*{RPLACD}}{\}} \DES{\VAR{cons}} \VAR{object})}
   {
-  Replace car, or cdr, respectively, of \retval{\VAR{cons}} with \VAR{object}.
+  用 \VAR{object} 替换 \retval{\VAR{cons}} 的 car 或 cdr。
   }
 
   \IT{(\FU*{LDIFF} \VAR{list} \VAR{foo})}
   {
-  If \VAR{foo} is a tail of \VAR{list}, return \retval{preceding
-    part of \VAR{list}}. Otherwise return \retval{\VAR{list}}.
+  如果 \VAR{foo} 是 \VAR{list} 的尾部，返回 \retval{\VAR{list}
+    的前一部分}。否则，返回 \retval{\VAR{list}}。
   }
 
   \IT{(\FU*{ADJOIN} \VAR{foo} \VAR{list} 
@@ -177,9 +177,9 @@
         \kwd{:test} \VAR{ function}\DF{\kwd{\#'eql}}\\
         \kwd{:test-not} \VAR{ function}}{.}\\
       \kwd{:key} \VAR{ function}}{\}})}
-  {Return \retval{\VAR{list}} if \VAR{foo} is
-  already member of \VAR{list}. If not, return \retval{(\FU{CONS}
-    \VAR{foo} \VAR{list})}.
+  {如果 \VAR{foo} 已经在 \VAR{list} 中，返回
+  \retval{\VAR{list}}。如果不存在，返回 \retval{(\FU{CONS}
+    \VAR{foo} \VAR{list})}。
   }
 
   \IT{(\MC*{POP} \DES{\VAR{place}})}
@@ -199,7 +199,7 @@
         \kwd{:test-not} \VAR{ function}}{.}\\
       \kwd{:key} \VAR{ function}}{\}})}
   {
-    Set \VAR{place} to \retval{(\FU{adjoin} \VAR{foo} \VAR{place})}.
+    将 \VAR{place} 设为 \retval{(\FU{adjoin} \VAR{foo} \VAR{place})}。
   }
 
   \IT{\arrGOO{(\FU*{APPEND } \Op{\OPn{\VAR{proper-list}} 
@@ -207,8 +207,8 @@
       (\FU*{NCONC } \Op{\OPn{\DES{\VAR{non-circular-list}}} 
         \VAR{ foo}\DF{\NIL}})}{.}}
   {
-    Return \retval{concatenated list} or, with only one argument,
-    \retval{\VAR{foo}}. \VAR{foo} can be of any type.
+    返回 \retval{串接列表}，只有一个参数时，返回
+    \retval{\VAR{foo}}。\VAR{foo} 可以是任意类型。
   }
 
   \IT{\arrGOO{(\FU*{REVAPPEND} \VAR{ list} \VAR{ foo})\\
@@ -222,9 +222,9 @@
   \IT{(\xorGOO{\FU*{MAPCAR}\\
       \FU*{MAPLIST}}{\}} \VAR{function} \RP{\VAR{list}})}
   {
-    Return \retval{list of return values} of \VAR{function}
-    successively invoked with corresponding arguments, either cars or
-    cdrs, respectively, from each \VAR{list}.
+    用 \VAR{list}s 的相应 car 或 cdr 依次调用
+    \VAR{function}，返回
+    \retval{返回值的列表}。
   }
 
   \IT{(\xorGOO{\FU*{MAPCAN}\\
@@ -234,19 +234,19 @@
   %       (mapcan #'identity list)
   %       list)
   {
-    Return list of \retval{concatenated return values} of
-    \VAR{function} successively invoked with corresponding arguments,
-    either cars or cdrs, respectively, from each
-    \VAR{list}. \VAR{function} should return a list.
+    用 \VAR{list}s 的相应 car 或 cdr 依次调用
+    \VAR{function}，返回
+    \retval{串接的返回值列表}。\VAR{function}
+    应返回列表。
   }
 
   \IT{(\xorGOO{\FU*{MAPC}\\
       \FU*{MAPL}}{\}} \VAR{function} \RP{\VAR{list}})}
   {
-    Return \retval{first \VAR{list}} after successively applying
-    \VAR{function} to corresponding arguments, either cars or cdrs,
-    respectively, from each \VAR{list}. \VAR{function} should have
-    some side effects.
+    用 \VAR{list}s 的相应 car 或 cdr 依次调用
+    \VAR{function}，返回
+    \retval{第一个 \VAR{list}}。\VAR{function}
+    应有一定的副作用。
   }
 
   \IT{(\FU*{COPY-LIST} \VAR{list})}
@@ -265,13 +265,13 @@
 
   \IT{(\FU*{PAIRLIS} \VAR{keys} \VAR{values} \Op{\VAR{alist}\DF{\NIL}})}
   {
-    Prepend to \retval{\VAR{alist}} an association list made from
-    lists \VAR{keys} and \VAR{values}.
+    向 \retval{\VAR{alist}} 前加上从列表
+    \VAR{keys} 和 \VAR{values} 生成的关联表。
   }
 
   \IT{(\FU*{ACONS} \VAR{key} \VAR{value} \VAR{alist})}
   {
-    返回添加了 (\VAR{key} \kwd{.} \VAR{value}) 对的
+    返回加上了 (\VAR{key} \kwd{.} \VAR{value}) 对的
     \retval{\VAR{alist}}。
   }
 
@@ -287,8 +287,8 @@
       \FU*{RASSOC-IF}\Op{\kwd{-NOT}}}{\}} \VAR{ test} \VAR{ alist }
       \Op{\kwd{:key} \VAR{ function}})}{.}}
   {\index{ASSOC-IF-NOT}\index{RASSOC-IF-NOT}%
-    First \retval{cons} whose car, or cdr, respectively, satisfies
-    \VAR{test}.
+    第一个其 car 或 cdr 满足
+    \VAR{test} 的 \retval{cons}。
   }
 
   \IT{(\FU*{COPY-ALIST} \VAR{alist})}
@@ -308,8 +308,8 @@
     \xorGOO{\kwd{:test} \VAR{ test}\DF{\kwd{\#'eql}}\\
       \kwd{:test-not} \VAR{ test}}{\}})}
   {
-    Return \retval{\T} if trees \VAR{foo} and \VAR{bar} have same
-    shape and leaves satisfying \VAR{test}.
+    当树 \VAR{foo} 和 \VAR{bar} 有满足
+    \VAR{test} 的相同形状和叶子时返回 \retval{\T}。
   }
 
   \IT{(\xorGOO{\FU*{SUBST} \VAR{ new} \VAR{ old } \VAR{tree}\\
@@ -320,8 +320,8 @@
       \kwd{:key} \VAR{ function}%
     }{\}})}
   {
-    Make \retval{copy of \VAR{tree}} with each subtree or leaf
-    matching \VAR{old} replaced by \VAR{new}.
+    生成 \retval{\VAR{tree} 的副本}，其中用
+    \VAR{new} 替换了匹配 \VAR{old} 的子树或叶子。
   }
 
   \IT{(\xorGOO{\FU{SUBST-IF\Op{-NOT}} \VAR{ new} \VAR{ test } \VAR{tree}\\
@@ -332,8 +332,8 @@
   \index{SUBST-IF-NOT}%
   \index{NSUBST-IF}%
   \index{NSUBST-IF-NOT}%
-  Make \retval{copy of \VAR{tree}} with each subtree or leaf
-  satisfying \VAR{test} replaced by \VAR{new}. 
+  生成 \retval{\VAR{tree} 的副本}，其中用
+  \VAR{new} 替换了满足 \VAR{test} 的子树或叶子。
   }
 
   \IT{(\xorGOO{\FU*{SUBLIS} \VAR{ association-list } \VAR{tree} \\
@@ -344,8 +344,8 @@
       \kwd{:key} \VAR{ function}%
     }{\}})}
   {
-  Make \retval{copy of \VAR{tree}} with each subtree or leaf matching
-  a key in \VAR{association-list} replaced by that key's value.
+  生成 \retval{\VAR{tree} 的副本}，其中用
+  \VAR{association-list} 中的值替换了匹配其键的子树或叶子。
   }
 
   \IT{(\FU*{COPY-TREE} \VAR{tree})} 
