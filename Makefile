@@ -42,7 +42,7 @@ letter-colorful: clqr.ind clqr-letter-colorful.pdf
 
 letter-black: clqr.ind clqr-letter-black.pdf
 
-clqr.ind: clqr.tex clqr-*.tex clqr.*.tex clqr-types-and-classes.1 paper-a4.flag revision-number.flag color-colorful.flag
+clqr.ind: clqr.tex clqr-*.tex clqr.*.tex clqr-types-and-classes.1 paper-a4.flag release-revision.txt color-colorful.flag
 	$(TOUCH) clqr.ind $(SEND-TO-LOG)
 	$(LATEX) clqr.tex $(SEND-TO-LOG)
 	$(MAKEINDEX) -s clqr.ist clqr.idx $(SEND-TO-LOG)
@@ -81,7 +81,7 @@ color-black.flag:
 	$(RM) color-colorful.flag $(SEND-TO-LOG)
 	$(TOUCH) $@
 
-revision-number.flag:
+release-revision.txt:
 	$(GIT_REVISION) | tee REVISION.tex > release-revision.txt
 	$(DATE) | tee DATE.tex > release-date.txt
 	$(TOUCH) $@
@@ -154,7 +154,7 @@ gh-pages/sample-%.jpg: sample-%.jpg
 gh-pages/index.html: html-template/index.html latest-changes.html
 	sed -e "/<h3>Latest Changes<\/h3>/ r latest-changes.html" html-template/index.html > $@
 
-gh-pages/download.html: html-template/download.html revision-number
+gh-pages/download.html: html-template/download.html release-revision.txt
 	sed -e "/This is revision/ r REVISION.tex" -e "/<!- date of commit \/>/ r DATE.tex" html-template/download.html > $@
 
 gh-pages/%.tar.gz: %.tar.gz

@@ -359,7 +359,7 @@
 
   \IT{\KWD*{\#:}\VAR{foo}\qquad\qquad\qquad}
   {
-    未进入（uninterned）符号 \VAR{foo}。
+    未持有符号 \VAR{foo}。
   }
 
   \IT{\KWD*{\#.}\VAR{form}\qquad\qquad}
@@ -1156,7 +1156,7 @@
     \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})} \PROGN{\VAR{form}})}
   {
     局部绑定 \VAR{foo} 至 \kwd{stream} 并求值
-    \VAR{form}s。返回 \retval{\VAR{form}s 的值}。
+    \VAR{form}s。返回 \retval{\VAR{form}s 的所有值}。
   }
 
   \IT{(\MC*{WITH-INPUT-FROM-STRING} (\VAR{foo} \VAR{string} 
@@ -1167,7 +1167,7 @@
   {
     局部绑定 \VAR{foo} 至输入 \kwd{string-stream} 并求值
     \VAR{form}s。返回 \retval{\VAR{form}s
-      的值}，将下个读取位置储存至 \VAR{index}。
+      的所有值}，将下个读取位置储存至 \VAR{index}。
   }
 
   \IT{(\MC*{WITH-OUTPUT-TO-STRING} (\VAR{foo} 
@@ -1179,7 +1179,7 @@
   {
     局部绑定 \VAR{foo} 至输出 \kwd{string-stream} 并求值
     \VAR{form}s。若给定 \VAR{string}，追加至 \VAR{string} 并返回
-    \retval{\VAR{form}s 的值}。否则返回
+    \retval{\VAR{form}s 的所有值}。否则返回
     \retval{输出字符串}。
   }
 

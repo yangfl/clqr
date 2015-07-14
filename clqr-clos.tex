@@ -50,15 +50,15 @@
       (\kwd{:documentation} \VAR{ class-doc})\\
       (\kwd{:metaclass} \VAR{ name}\DF{\kwd{standard-class}})}{\}})}
   {
-    Define or modify \retval{class \VAR{foo}} as a subclass of
-    \VAR{superclass}es.  Transform existing instances, if any,
-    by \GFU{make-instances-obsolete}.  In a new instance \VAR{i} of
-    \VAR{foo}, a \VAR{slot}'s value defaults to \VAR{form} unless set
-    via \kwd{:}\VAR{initarg-name}; it is readable via (\VAR{reader}
-    \VAR{i}) or (\VAR{accessor} \VAR{i}), and writable via
-    (\VAR{writer} \VAR{value} \VAR{i}) or (\kwd{setf} (\VAR{accessor}
-    \VAR{i}) \VAR{value}).  \VAR{slot}s with \kwd{:allocation :class}
-    are shared by all instances of class \VAR{foo}.
+    定义或修改 \VAR{superclass}es 的子类
+    \retval{类 \VAR{foo}}。将用 \GFU{make-instances-obsolete}
+    修改已存在的实例。在 \VAR{foo} 的新实例 \VAR{i}
+    中，\VAR{slot} 的值默认为 \VAR{form}，或用
+    \kwd{:}\VAR{initarg-name} 设置。此值可通过 (\VAR{reader}
+    \VAR{i}) 或 (\VAR{accessor} \VAR{i}) 读取，(\VAR{writer}
+    \VAR{value} \VAR{i}) 或 (\kwd{setf} (\VAR{accessor}
+    \VAR{i}) \VAR{value}) 写入。带 \kwd{:allocation :class}
+    的 \VAR{slot}s 在 \VAR{foo} 的所有实例间共享。
   }
 
   \IT{(\FU*{FIND-CLASS} \VAR{symbol} \OP{\VAR{errorp}\DF{\T}
@@ -76,8 +76,8 @@
   \IT{(\GFU*{REINITIALIZE-INSTANCE} \VAR{instance} \Goos{\kwd{:}\VAR{initarg}
       \VAR{value}} \OPn{\VAR{other-keyarg}})}
   {
-    Change local slots of \retval{\VAR{instance}} according to
-    \VAR{initarg}s by means of \GFU{shared-initialize}.
+    用 \GFU{shared-initialize} 修改 \retval{\VAR{instance}}
+    的本地槽 \VAR{initarg}s。
   }
 
   \IT{(\FU*{SLOT-VALUE} \VAR{foo} \VAR{slot})}
@@ -97,10 +97,10 @@
     \VAR{instance}  \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})}
     \PROGN{\VAR{form}})}
   {
-    Return \retval{values of \VAR{form}s} after evaluating them in a
-    lexical environment with slots of \VAR{instance} visible as
-    \kwd{setf}able \VAR{slot}s or \VAR{var}s/with \VAR{accessor}s of
-    \VAR{instance} visible as \kwd{setf}able \VAR{var}s. 
+    在 \VAR{instance} 的槽作为可 \kwd{setf} 的
+    \VAR{slot}s 或 \VAR{var}s / \VAR{instance}
+    的 \VAR{accessor}s 作为可 \kwd{setf} 的 \VAR{var}s
+    的词法环境中求值并返回 \retval{\VAR{form}s 的所有值}。
   }
 
   \IT{\arrGOO{(\GFU*{CLASS-NAME } \VAR{class})\\
@@ -117,12 +117,12 @@
   \IT{(\GFU*{CHANGE-CLASS} \DES{\VAR{instance}} \VAR{new-class}
     \Goos{\kwd{:}\VAR{initarg} \VAR{value}} \OPn{\VAR{other-keyarg}})} 
   {
-    Change class of \retval{\VAR{instance}} to \VAR{new-class}.
-    Retain the status of any slots that are common between
-    \VAR{instance}'s original class and \VAR{new-class}.  Initialize
-    any newly added slots with the \VAR{value}s of the corresponding
-    \VAR{initarg}s if any, or with the values of their
-    \kwd{:initform} forms if not.
+    将 \retval{\VAR{instance}} 的类更改为
+    \VAR{new-class}。保留 \VAR{instance}
+    原始类和新类相同槽的状态。用相应的
+    \VAR{initarg}s 或
+    \kwd{:initform} 的值
+    给出的值初始化新添加的槽。
   }
 
   \IT{(\GFU*{MAKE-INSTANCES-OBSOLETE} \VAR{class})}
@@ -138,8 +138,8 @@
     \Goos{\kwd{:}\VAR{initarg}
       \VAR{value}} \OPn{\VAR{other-keyarg}})}
   {
-    Set slots on behalf of \GFU{make-instance}/of
-    \GFU{change-class} by means of \GFU{shared-initialize}. 
+    类似 \GFU{make-instance}/\GFU{change-class}，但用
+    \GFU{shared-initialize} 设置槽。
   }
 
   \IT{(\GFU*{UPDATE-INSTANCE-FOR-REDEFINED-CLASS}
@@ -152,18 +152,18 @@
       \VAR{value}}
     \OPn{\VAR{other-keyarg}})}
   {
-    On behalf of \GFU{make-instances-obsolete} and by means of
-    \GFU{shared-initialize}, set any \VAR{initarg} slots to their
-    corresponding \VAR{value}s; set any remaining \VAR{added-slots} to
-    the values of their \kwd{:initform} forms.  Not to be called by
-    user.
+    类似 \GFU{make-instances-obsolete}，但使用
+    \GFU{shared-initialize} 设置槽 \VAR{initarg}
+    为对应的 \VAR{value}s，设置剩余的
+    \VAR{added-slots} 为 \kwd{:initform}
+    形式的值。不应由用户调用。
   }
 
   \IT{(\GFU*{ALLOCATE-INSTANCE} \VAR{class} \Goos{\kwd{:}\VAR{initarg}
       \VAR{value}} \OPn{\VAR{other-keyarg}})}
   {
-    Return uninitialized \retval{instance} of \VAR{class}. Called by
-    \GFU{make-instance}. 
+    返回 \VAR{class} 的未初始化 \retval{实例}。由
+    \GFU{make-instance} 调用。
   }
 
   \IT{(\GFU*{SHARED-INITIALIZE} \VAR{instance} 
@@ -206,7 +206,7 @@
 \begin{LIST}{1cm}
   \IT{(\FU*{NEXT-METHOD-P})}
   {
-    \retval{\T} if enclosing method has a next method.
+    当方法存在下一方法时为 \retval{\T}。
   }
 
   \IT{(\MC*{DEFGENERIC}
@@ -306,13 +306,13 @@
   \IT{(\GFU*{FIND-METHOD} \VAR{generic-function} \VAR{qualifiers}
     \VAR{specializers} \Op{\VAR{error}\DF{\T}})}
   {
-    Return suitable \retval{method}, or signal \kwd{error}.
+    返回合适的 \retval{方法}，或产生 \kwd{error}。
   }
 
   \IT{(\GFU*{COMPUTE-APPLICABLE-METHODS} \VAR{generic-function}
     \VAR{args})}
   {
-    \retval{List of methods} suitable for \VAR{args}, most specific first.
+    \VAR{args} 合适的 \retval{方法列表}，最具体的在前。
   }
 
   \IT{(\FU*{CALL-NEXT-METHOD} \OPn{\VAR{arg}}\DF{current args})}
@@ -355,7 +355,7 @@
 
   \IT{(\GFU*{METHOD-QUALIFIERS} \VAR{method})}
   {
-    \retval{List of qualifiers} of \VAR{method}.
+    \VAR{method} 的 \retval{限定符列表}。
   }
 
 

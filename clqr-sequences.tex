@@ -165,8 +165,7 @@
       \kwd{:key} \VAR{ function}}{\}})}
   {
   返回 \VAR{sequence} 满足 \VAR{test} 的
-  \retval{第一个元素}，或其相对 \VAR{sequence} 开头的
-  \retval{位置}。
+  \retval{第一个元素}，或其相对 \VAR{sequence} 开头的 \retval{位置}。
   }
 
   \IT{(\FU*{SEARCH} \VAR{sequence-a} \VAR{sequence-b} 
@@ -280,8 +279,8 @@
 
   \IT{(\FU*{MAP} \VAR{type} \VAR{function} \RP{\VAR{sequence}})}
   {
-  用 \VAR{sequence}s 的相应元素依次调用 \VAR{function}，返回
-  \VAR{type} 的 \retval{序列}。若
+  用 \VAR{sequence}s 的相应元素依次调用 \VAR{function}，将返回值作为
+  \VAR{type} 的 \retval{序列} 返回。若
     \VAR{type} 为 \NIL，返回 \retval{\NIL}。
   }
 

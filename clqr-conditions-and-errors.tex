@@ -10,8 +10,8 @@
 \section{状况及错误} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-For standardized condition types cf.\ Figure \ref{data-types} on
-page \pageref{data-types}.
+标准状况类型参照第 \pageref{data-types}
+页图 \ref{data-types}。
 
 \begin{LIST}{1cm}
   \IT{(\MC*{DEFINE-CONDITION}
@@ -49,7 +49,7 @@ page \pageref{data-types}.
   \IT{(\FU*{MAKE-CONDITION} 
     \VAR{condition-type} \Goos{\kwd{:}\VAR{initarg-name} \VAR{value}})}
   {
-  Return new \retval{instance of \VAR{condition-type}}.
+  返回新 \retval{\VAR{condition-type} 实例}。
   }
 
   \IT{(\xorGOO{%
@@ -89,13 +89,13 @@ page \pageref{data-types}.
 
   \IT{(\MC*{IGNORE-ERRORS} \PROGN{\VAR{form}})}
   {
-  Return \retval{values of \VAR{form}s} or, in case of \kwd{error}s,
-  \retval{\NIL} and the \retvalii{condition}.
+  返回 \retval{\VAR{form}s 的值}。若发生
+  \kwd{error}s，\retval{\NIL} 及 \retvalii{状况}。
   }
 
   \IT{(\FU*{INVOKE-DEBUGGER} \VAR{condition})}
   {
-  Invoke debugger with \VAR{condition}.
+  以 \VAR{condition} 调用调试器。
   }
 
   \IT{(\MC*{ASSERT} \VAR{test} \OP{(\OPn{\VAR{place}}) 
@@ -225,7 +225,7 @@ page \pageref{data-types}.
 
   \IT{(\FU*{RESTART-NAME} \VAR{restart})}
   {
-  \retval{Name of \VAR{restart}}.
+  \retval{\VAR{restart} 名称}。
   }
 
   \IT{(\xorGOO{\FU*{ABORT}\\

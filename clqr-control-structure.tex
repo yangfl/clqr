@@ -103,7 +103,7 @@
       \VAR{form}})}
   {
   顺序/平行将 \VAR{place}s 设为 \VAR{form}s 的主值。返回 \retval{最后一个\
-    \VAR{form} 的值}/\retval{\NIL}。
+    \VAR{form} 的所有值}/\retval{\NIL}。
   }
 
   \IT{(\xorGOO{\SO*{SETQ}\\
@@ -121,8 +121,8 @@
 
   \IT{(\MC*{MULTIPLE-VALUE-SETQ} \VAR{vars} \VAR{form})}
   {
-  将 \VAR{vars} 的元素设为
-  \VAR{form} 的值。返回 \retval{\VAR{form} 的主值}。
+  将 \VAR{vars} 的各元素分别设为
+  \VAR{form} 的所有值。返回 \retval{\VAR{form} 的主值}。
   }
 
   \IT{(\MC*{SHIFTF} \RP{\DES{\VAR{place}}} \VAR{foo})}
@@ -172,9 +172,9 @@
 
   \IT{(\SO*{PROGV} \VAR{symbols} \VAR{values} \PROGN{\VAR{form}})}
   {
-    将 \VAR{values} 或 \NIL 动态绑定至 \VAR{symbols}
+    将 \VAR{values} 或 \NIL\ 动态绑定至 \VAR{symbols}
     并对 \VAR{form}s 求值。返回 \retval{\VAR{form}s
-      的值}。
+      的所有值}。
   }
 
   \IT{(\xorGOO{%
@@ -187,15 +187,15 @@
   {
     平行/顺序将 \VAR{values} 词法绑定至 \VAR{name}s
     并对 \VAR{form}s 求值。返回
-    \retval{\VAR{form}s 的值}。
+    \retval{\VAR{form}s 的所有值}。
   }
 
   \IT{(\MC*{MULTIPLE-VALUE-BIND} (\OPn{\NEV{\VAR{var}}}) \VAR{values-form}
     \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})} \PROGN{\VAR{body-form}})}
   {
-    将 \VAR{values-form} 的返回值词法绑定至 \VAR{var}s
+    将 \VAR{values-form} 的返回所有值词法绑定至 \VAR{var}s
     并对 \VAR{body-form}s 求值。返回 \retval{\VAR{body-form}s
-      的值}。
+      的所有值}。
   }
 
   \IT{(\MC*{DESTRUCTURING-BIND} \VAR{destruct-$\lambda$} \VAR{bar}
@@ -219,7 +219,7 @@
 \label{section:函数}
 
 \begin{flushleft}
-  下文中，一般 lambda 列表（\OPn{\VAR{ord-$\lambda$}}）具有以下形式\\
+  下文中，一般 lambda 列表（\OPn{\VAR{ord-$\lambda$}}）的形式为\\
   % \VAR{var} referenced from DEFSTRUCT
   (\OPn{\VAR{var}}
   \OP{\kwd{\&optional} \xorGOO{%
@@ -274,7 +274,7 @@
     全局函数。每个 \VAR{foo} 也是包含其所对应
     \OPn{\VAR{local-form}} 隐式 \SO{block} 的名称。仅对
     \SO{LABELS}，函数 \VAR{foo} 在
-    \VAR{local-forms} 内部可见。返回 \retval{\VAR{form}s 的值}。
+    \VAR{local-forms} 内部可见。返回 \retval{\VAR{form}s 的所有值}。
   }
 
   \IT{(\SO*{FUNCTION} \xorGOO{%
@@ -289,19 +289,19 @@
       (\kwd{setf } \VAR{function})}{\}} \OPn{\VAR{arg}} \VAR{args})}
   {
     用 \VAR{arg}s 及 \VAR{args} 的列表元素调用
-    \retval{\VAR{function} 的值}。若 \VAR{function} 为
+    \retval{\VAR{function} 的所有值}。若 \VAR{function} 为
     \FU{aref}、\FU{bit} 或 \FU{sbit}，则可 \kwd{setf}。
   }
 
   \IT{(\FU*{FUNCALL} \VAR{function} \OPn{arg})}
   {
-    用 \VAR{arg}s 调用 \retval{\VAR{function} 的值}。
+    用 \VAR{arg}s 调用 \retval{\VAR{function} 的所有值}。
   }
 
   \IT{(\SO*{MULTIPLE-VALUE-CALL} \VAR{function} \OPn{\VAR{form}})}
   {
     用每个 \VAR{form} 的所有值作为参数调用
-    \VAR{function}。返回 \retval{\VAR{function} 的返回值}。
+    \VAR{function}。返回 \retval{\VAR{function} 的返回所有值}。
   }
 
   \IT{(\FU*{VALUES-LIST} \VAR{list})}
@@ -317,7 +317,7 @@
 
   \IT{(\FU*{MULTIPLE-VALUE-LIST} \VAR{form})}
   {
-    \retval{\VAR{form} 值列表}。
+    \retval{\VAR{form} 所有值列表}。
   }
 
   \IT{(\MC*{NTH-VALUE} \VAR{n} \VAR{form})}
@@ -381,7 +381,7 @@
 
 \begin{flushleft}
   下文中，宏 lambda
-  列表（\OPn{\VAR{macro-$\lambda$}}）具有以下两种形式中的一种
+  列表（\OPn{\VAR{macro-$\lambda$}}）为以下两种形式中的一种
   \penalty-5
   (\Op{\kwd{\&whole} \VAR{var}}
   \penalty-5
@@ -511,7 +511,7 @@
         \OPn{(\kwd{declare } \OPn{\NEV{\VAR{decl}}})}\text{ }
         \Op{\NEV{\VAR{doc}}} \text{ } \PROGN{\VAR{form}}}{\}})
     \penalty-5
-  其中 defsetf lambda 列表（\OPn{\VAR{setf-$\lambda$}}）具有形式
+  其中 defsetf lambda 列表（\OPn{\VAR{setf-$\lambda$}}）的形式为
   \penalty-5
   (\OPn{\VAR{var}}
   \OP{\kwd{\&optional} \xorGOO{%
@@ -631,13 +631,13 @@
   \IT{(\SO*{IF} \VAR{test} \VAR{then} \Op{\VAR{else}\DF{\NIL}})}
   {
     若 \VAR{test} 返回 \T，则返回 \retval{\VAR{then}}
-    的值，否则返回 \retval{\VAR{else}} 的值。
+    的所有值，否则返回 \retval{\VAR{else}} 的所有值。
   }
 
   \IT{(\MC*{COND} \OPn{(\VAR{test} \PROGN{\VAR{then}}\DF{\VAR{test}})})}
   {
   返回第一个 \VAR{test} 返回 \T\ 的
-  \OPn{\VAR{then}} \retval{值}；若所有
+  \OPn{\VAR{then}} \retval{所有值}；若所有
   \VAR{test}s 均返回 \NIL，返回 \NIL。
   }
 
@@ -646,7 +646,7 @@
     \PROGN{\VAR{foo}})}
   {
     若 \VAR{test} 返回 \T\ 或 \NIL，对 \VAR{foo}s
-    求值并返回 \retval{其值}，否则返回 \retval{\NIL}。
+    求值并返回 \retval{其所有值}，否则返回 \retval{\NIL}。
   }
 
   \IT{(\MC*{CASE} \VAR{test} \OPn{(\xorGOO{(\OPn{\NEV{\VAR{key}}})\\
@@ -654,9 +654,9 @@
     \OP{(\xorGOO{\kwd*{OTHERWISE}\\
       \T}{\}} \PROGN{\VAR{bar}})\DF{\NIL}})}
   {
-    Return the \retval{values of the first \OPn{\VAR{foo}}} one of
-    whose \VAR{key}s is \kwd{eql} \VAR{test}. Return \retval{values of
-      \VAR{bar}s} if there is no matching \VAR{key}.
+    返回第一个其 \VAR{key}s 中有一 \kwd{eql} \VAR{test} 的
+    \retval{\OPn{\VAR{foo}} 值}。若无匹配 \VAR{key}，返回 \retval{\VAR{bar}s
+      的值}。
     % Keep \OPn{\VAR{foo}} instead of the otherwise preferable
     % \VAR{foo}s because we're talking about one set of foos out
     % of several.
@@ -667,10 +667,10 @@
     \OPn{(\xorGOO{(\OPn{\NEV{\VAR{key}}})\\
         \NEV{\VAR{key}}}{\}} \PROGN{\VAR{foo}})})}
   {
-    Return the \retval{values of the first \OPn{\VAR{foo}}} one of
-    whose \VAR{key}s is \kwd{eql} \VAR{test}.  Signal
-    non-correctable/correctable \kwd{type-error} if there is no
-    matching \VAR{key}.
+    返回第一个其 \VAR{key}s 中有一 \kwd{eql} \VAR{test} 的
+    \retval{\OPn{\VAR{foo}} 值}。若无匹配
+    \VAR{key}，产生不可纠正/可纠正的
+    \kwd{type-error}。
     % Keep \OPn{\VAR{foo}} instead of the otherwise preferable
     % \VAR{foo}s because we're talking about one set of foos out
     % of several.
@@ -678,23 +678,23 @@
 
   \IT{(\MC*{AND} \OPn{\VAR{form}}\DF{\T})}
   {
-    Evaluate \VAR{form}s from left to right. Immediately return
-    \retval{\NIL} if one \VAR{form}'s value is \NIL. Return
-    \retval{values of last \VAR{form}} otherwise.
+    从左至右求值 \VAR{form}s。若其一
+    \VAR{form} 值为 \NIL，立即返回 \retval{\NIL}，否则返回
+    \retval{最后一个\ \VAR{form} 的值}。
   }
 
   \IT{(\MC*{OR} \OPn{\VAR{form}}\DF{\NIL})}
   {
-    Evaluate \VAR{form}s from left to
-    right. Immediately return \retval{primary value} of first
-    non-\NIL-evaluating form, or \retval{all values} if last \VAR{form}
-    is reached. Return \retval{\NIL} if no \VAR{form} returns \T.
+    从左至右求值 \VAR{form}s。若其一
+    form 值非 \NIL，立即返回 \retval{其主值}，或返回
+    最后一个 \VAR{form} 的 \retval{所有值}。若无
+    \VAR{form} 返回 \T，返回 \retval{\NIL}。
   }
 
   \IT{(\SO*{PROGN} \OPn{\VAR{form}}\DF{\NIL})}
   {\label{:progn}
-    Evaluate \VAR{form}s sequentially. Return
-    \retval{values of last \VAR{form}}.
+    顺序求值 \VAR{form}s。返回
+    \retval{最后一个\ \VAR{form} 的所有值}。
   }
 
   \IT{\arrGOO{%
@@ -702,8 +702,8 @@
       (\MC*{PROG1} \VAR{ form-r} \OPn{\VAR{ form}})\\
       (\MC*{PROG2} \VAR{ form-a} \VAR{ form-r} \OPn{\VAR{ form}})}{.}}
   {
-  Evaluate forms in order. Return \retval{values/primary value},
-  respectively, of \VAR{form-r}. 
+  顺序求值 forms。返回 \VAR{form-r}
+  的 \retval{所有值/主值}。
   }
 
   \IT{(\xorGOO{\MC*{PROG}\\
@@ -714,62 +714,62 @@
     \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})} 
     \xorGOO{\NEV{\VAR{tag}}\\\VAR{form}}{\}^{\!\!*}})}
   {
-    Evaluate \SO{TAGBODY}-like body with \VAR{name}s lexically bound (in
-    parallel or sequentially, respectively) to \VAR{value}s. Return
-    \retval{\NIL} or explicitly \retval{\MC{return}ed values}.
-    Implicitly, the whole form is a \SO{block} named \NIL. 
+    将 \VAR{name}s （平行或顺序）词法绑定至 \VAR{value}s
+    并对类 \SO{TAGBODY} 体求值。返回
+    \retval{\NIL} 或显式 \retval{\MC{return} 值}。整个 form
+    包含于名为 \NIL 的隐式 \SO{block} 中。
   }
 
   \IT{(\SO*{UNWIND-PROTECT} \VAR{protected} \OPn{\VAR{cleanup}})}
   {
-    Evaluate \VAR{protected} and then, no matter how control leaves
-    \VAR{protected}, \VAR{cleanup}s. Return \retval{values of
-      \VAR{protected}}. 
+    求值 \VAR{protected}，无论控制流如何离开
+    \VAR{protected}，执行 \VAR{cleanup}。返回 \retval{\VAR{protected}
+      的值}。
   }
 
   \IT{(\SO*{BLOCK} \VAR{name} \PROGN{\VAR{form}})}
   { 
-    Evaluate \VAR{form}s in a lexical environment, and
-    return \retval{their values} unless interrupted by
-    \SO{RETURN-FROM}. 
+    在词法环境中对 \VAR{form}s 求值，返回
+    \retval{其所有值}，除非被
+    \SO{RETURN-FROM} 中断。
   }
 
   \IT{\arrGOO{(\SO*{RETURN-FROM } \VAR{foo } \Op{\VAR{result}\DF{\NIL}})\\
       (\MC*{RETURN } \Op{\VAR{result}\DF{\NIL}})}{.}}
   {
-    Have nearest enclosing \SO{block} named \VAR{foo}/named \NIL,
-    respectively, return with values of \VAR{result}.  
+    从最近名为 \VAR{foo}/\NIL 的 \SO{block}
+    中返回 \VAR{result} 的所有值。
   }
 
   \IT{(\SO*{TAGBODY} \Goos{\NEV{\VAR{tag}}\XOR\VAR{form}})}
   {
-    Evaluate \VAR{form}s in a lexical environment. \VAR{tag}s (symbols
-    or integers) have lexical scope and dynamic extent, and are
-    targets for \SO{GO}. Return \retval{\NIL}.
+    在词法环境中对 \VAR{form}s 求值。\VAR{tag}s
+    （符号或整数）有词法范围和动态范围，并且为
+    \SO{GO} 的目标。返回 \retval{\NIL}。
   }
 
   \IT{(\SO*{GO} \NEV{\VAR{tag}})}
   {
-    Within the innermost possible enclosing \SO{tagbody}, jump to a
-    tag \FU{eql} \VAR{tag}.
+    尽可能在最内的 \SO{tagbody} 跳转至
+    \FU{eql} \VAR{tag} 的标签处。
   }
 
   \IT{(\SO*{CATCH} \VAR{tag} \PROGN{\VAR{form}})}
   {
-    Evaluate \VAR{form}s and return \retval{their values} unless
-    interrupted by \SO{THROW}. 
+    求值 \VAR{form}s 并返回 \retval{其所有值}，除非被
+    \SO{THROW} 中断。
   }
 
   \IT{(\SO*{THROW} \VAR{tag} \VAR{form})}
   {
-    Have the nearest dynamically
-    enclosing \SO{CATCH} with a tag \FU{eq} \VAR{tag} return with the
-    values of \VAR{form}.
+    在有 \FU{eq} \VAR{tag}
+    的标签的最内动态 \SO{CATCH} 中返回
+    \VAR{form} 的所有值。
   }
 
   \IT{(\FU*{SLEEP} \VAR{n})}
   {
-    Wait \VAR{n} seconds; return \retval{\NIL}.
+    等待 \VAR{n} 秒，返回 \retval{\NIL}。
   }
 
 \end{LIST}
@@ -790,32 +790,32 @@
     \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})} 
     \xorGOO{\NEV{\VAR{tag}}\\\VAR{form}}{\}^{\!\!*}})}
   {
-    Evaluate \SO{TAGBODY}-like body with \VAR{var}s successively bound
-    according to the values of the corresponding \VAR{start} and
-    \VAR{step} forms. \VAR{var}s are bound in parallel/sequentially,
-    respectively. Stop iteration when \VAR{stop} is \T. Return
-    \retval{values of \OPn{\VAR{result}}}. Implicitly, the whole form
-    is a \SO{block} named \NIL.
+    平行/顺序将 \VAR{var}s 依次绑定至先
+    \VAR{start} 后 \VAR{step}
+    形式的值并对类 \SO{TAGBODY} 体求值。当
+    \VAR{stop} 为 \T 时停止迭代并返回
+    \retval{\OPn{\VAR{result}} 的所有值}。整个
+    form 包含于名为 \NIL 的隐式 \SO{block} 中。
   }
 
   \IT{(\MC*{DOTIMES} (\VAR{var} \VAR{i} \Op{\VAR{result}\DF{\NIL}})
     \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})}
     \Goos{\NEV{\VAR{tag}}\XOR\VAR{form}})}
   {
-    Evaluate \SO{TAGBODY}-like body with \VAR{var} successively bound
-    to integers from 0 to $i - 1$. Upon evaluation of
-    \retval{\VAR{result}}, \VAR{var} is \VAR{i}. Implicitly, the whole
-    form is a \SO{block} named \NIL. 
+    将 \VAR{var}s 依次绑定至 0 至 $i - 1$
+    的整数。在求值 \retval{\VAR{result}}
+    时，\VAR{var} 为 \VAR{i}。整个
+    form 包含于名为 \NIL 的隐式 \SO{block} 中。
   }
 
   \IT{(\MC*{DOLIST }(\VAR{var} \VAR{list} \Op{\VAR{result}\DF{\NIL}})
     \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})}
     \Goos{\NEV{\VAR{tag}}\XOR\VAR{form}})}
   {
-    Evaluate \SO{TAGBODY}-like body with \VAR{var} successively bound
-    to the elements of \VAR{list}. Upon evaluation of
-    \retval{\VAR{result}}, \VAR{var} is \NIL. Implicitly, the whole form
-    is a \SO{block} named \NIL. 
+    将 \VAR{var}s 依次绑定至 \VAR{list}
+    的元素。在求值 \retval{\VAR{result}}
+    时，\VAR{var} 为 \NIL。整个
+    form 包含于名为 \NIL 的隐式 \SO{block} 中。
   }
 
 
@@ -830,22 +830,22 @@
 
   \IT{(\MC*{LOOP} \OPn{\VAR{form}})} 
   {
-    \EM{Simple Loop. } If \VAR{form}s do not contain any atomic Loop
-    Facility keywords, evaluate them forever in an implicit \SO{block}
-    named \NIL.
+    \EM{简单 Loop。}若 \VAR{form}s 未包含任何原子 Loop
+    宏关键字，在名为 \NIL 的隐式 \SO{block}
+    中无限对其求值。
   }
 
   \IT{(\MC*{LOOP} \OPn{\VAR{clause}})}
   {
-    \EM{Loop Facility. } For Loop Facility keywords
-    see below and Figure \ref{loop-overview}.
+    \EM{Loop 宏。}Loop 宏关键字见下及图
+    \ref{loop-overview}。
   }
 
   \begin{LIST}{.5cm}
     
     \IT{\LKWD*{named} \VAR{n}\DF{\NIL}}
     {
-      Give \MC{loop}'s implicit \SO{block} a name.
+      为 \MC{loop} 的隐式 \SO{block} 指定名称。
     }
 
     \IT{\Goop{\LKWD*{with}
@@ -861,7 +861,7 @@
         \Op{\VAR{d-type}}
         \Op{\LKWD*{=} \VAR{bar}}}
       \penalty-10
-      where destructuring type specifier \VAR{d-type} has the form
+      其中解构类型说明符 \VAR{d-type} 的形式为
       \penalty-5
       \GOO{\kwd{fixnum}\XOR
       \kwd{float}\XOR
@@ -873,8 +873,8 @@
       (\OPn{\VAR{type}})}{\}}}}
     }
     {
-      Initialize (possibly trees of) local variables \VAR{var-s}
-      sequentially and \VAR{var-p} in parallel. 
+      顺序初始化局部变量（树）
+      \VAR{var-s}，平行初始化 \VAR{var-p}。
     }
 
     \begin{figure}%
@@ -1146,10 +1146,10 @@
           (\OPn{\VAR{var-p}})}{\}}
         \Op{\VAR{d-type}}}}
     {
-    Begin of iteration control clauses. Initialize and step (possibly
-    trees of) local variables \VAR{var-s} sequentially and \VAR{var-p}
-    in parallel. Destructuring type specifier \VAR{d-type} as with
-    \LKWD{with}.
+    迭代控制语句开头。顺序初始化局部变量（树）
+    \VAR{var-s}，平行初始化 \VAR{var-p}。解构类型说明符
+    \VAR{d-type} 类似
+    \LKWD{with}。
     }
 
     \begin{LIST}{.5cm}
@@ -1157,43 +1157,42 @@
       \IT{\Goo{\LKWD*{upfrom}\XOR\LKWD*{from}\XOR\LKWD*{downfrom}}
         \VAR{start}}
       {
-        Start stepping with \VAR{start}
+        以 \VAR{start} 为起始值。
       }
 
       \IT{\Goo{\LKWD*{upto}\XOR\LKWD*{downto}\XOR\LKWD*{to}\XOR\LKWD*{below}\XOR\LKWD*{above}}
         \VAR{form}}
       {
-        Specify \VAR{form} as the end value for stepping.
+        以 \VAR{form} 为终止值。
       }
 
       \IT{\Goo{\LKWD*{in}\XOR\LKWD*{on}} \VAR{list}}
       {
-        Bind \VAR{var} to successive elements/tails, respectively, of
-        \VAR{list}.
+        顺序将 \VAR{var} 绑定至
+        \VAR{list} 的元素/尾部。
       }
 
       \IT{\LKWD*{by} \Goo{\VAR{step}\DF{\LIT{1}}\XOR\VAR{function}\DF{\kwd{\#'cdr}}}}
       {
-        Specify the (positive) decrement or increment or the
-        \VAR{function} of one argument returning the next part of the
-        list.
+        指定（正）递减或递增量，或返回列表下一部分的单参
+        \VAR{function}。
       }
 
       \IT{\LKWD*{=} \VAR{foo} \Op{\LKWD*{then}
           \VAR{bar}\DF{\VAR{foo}}}}
       {
-        Bind \VAR{var} initially to \VAR{foo} and later to
-        \VAR{bar}.
+        将 \VAR{var} 先绑定至 \VAR{foo} 后绑定至
+        \VAR{bar}。
       }
 
       \IT{\LKWD*{across} \VAR{vector}}
       {
-        Bind \VAR{var} to successive elements of \VAR{vector}.
+        顺序将 \VAR{var} 绑定至 \VAR{vector} 的元素。
       }
 
       \IT{\LKWD*{being} \Goo{\LKWD*{the}\XOR\LKWD*{each}}}
       {
-        Iterate over a hash table or a package.
+        遍历散列表或包。
       }
 
       \begin{LIST}{.5cm}
@@ -1202,25 +1201,24 @@
           \Goo{\LKWD*{of}\XOR\LKWD*{in}} \VAR{hash-table}
           \Op{\LKWD*{using} (\LKWD*{hash-value} \VAR{value})}}
         {
-          Bind \VAR{var} successively to the keys of \VAR{hash-table};
-          bind \VAR{value} to corresponding values.
+          将 \VAR{var} 依次绑定至 \VAR{hash-table}
+          的键，将 \VAR{value} 绑定至对应的值。
         }
 
         \IT{\Goo{\LKWD*{hash-value}\XOR\LKWD*{hash-values}}
           \Goo{\LKWD*{of}\XOR\LKWD*{in}} \VAR{hash-table}
           \Op{\LKWD*{using} (\LKWD*{hash-key} \VAR{key})}}
         {
-          Bind \VAR{var} successively to the values of
-          \VAR{hash-table}; bind \VAR{key} to corresponding keys.
+          将 \VAR{var} 依次绑定至 \VAR{hash-table}
+          的值，将 \VAR{key} 绑定至对应的键。
         }
 
         \IT{\Goo{\LKWD*{symbol}\XOR\LKWD*{symbols}\XOR\LKWD*{present-symbol}\XOR\LKWD*{present-symbols}\XOR\LKWD*{external-symbol}\XOR\LKWD*{external-symbols}}
           \Op{\Goo{\LKWD*{of}\XOR\LKWD*{in}}
             \VAR{package}\DF{\V{\A package\A}}}}
         {
-          Bind \VAR{var} successively to the accessible symbols, or
-          the present symbols, or the external symbols respectively,
-          of \VAR{package}. 
+          将 \VAR{var} 依次绑定至 \VAR{package}
+          的可访问符号，或当前符号，或外部符号。
         }
 
       \end{LIST}
@@ -1228,7 +1226,7 @@
     
     \IT{\Goo{\LKWD*{do}\XOR\LKWD*{doing}} \RP{\VAR{form}}}
     {
-      Evaluate \VAR{form}s in every iteration.
+      每次迭代中求值 \VAR{form}s。
     }
 
     \IT{\Goo{\LKWD*{if}\XOR\LKWD*{when}\XOR\LKWD*{unless}} \VAR{ test}
@@ -1236,59 +1234,59 @@
         \VAR{j-clause}} \Op{\LKWD*{else} \VAR{k-clause} \Goos{\LKWD*{and} 
           \VAR{l-clause}}} \Op{\LKWD*{end}}} 
     {
-      If \VAR{test} returns \T, \T, or \NIL, respectively, evaluate
-      \VAR{i-clause} and \VAR{j-clause}s; otherwise, evaluate
-      \VAR{k-clause} and \VAR{l-clause}s.
+      若 \VAR{test} 返回 \T、\T、\NIL，求值
+      \VAR{i-clause} 及 \VAR{j-clause}s，否则求值
+      \VAR{k-clause} 及 \VAR{l-clause}s。
     }
 
     \begin{LIST}{.5cm}
       \IT{\LKWD*{it}}
       {
-        Inside \VAR{i-clause} or \VAR{k-clause}:
-        \retval{value of \VAR{test}}.
+        在 \VAR{i-clause} 或 \VAR{k-clause}
+        中：\retval{\VAR{test} 的值}。
       }
     \end{LIST}
 
     \IT{\LKWD*{return} \Goo{\VAR{form}\XOR\LKWD*{it}}}
     {
-      Return immediately, skipping any \LKWD{finally} parts, with
-      values of \VAR{form} or \LKWD{it}.
+      跳过 \LKWD{finally} 部分，立即返回
+      \VAR{form} 的所有值或 \LKWD{it}。
     }
 
     \IT{\Goo{\LKWD*{collect}\XOR\LKWD*{collecting}}
       \Goo{\VAR{form}\XOR\LKWD*{it}} \Op{\LKWD*{into} \VAR{list}}}
     {
-      Collect values of \VAR{form} or \LKWD{it} into \VAR{list}. If no
-      \VAR{list} is given, collect into an anonymous list which is
-      returned after termination.
+      收集 \VAR{form} 的值或 \LKWD{it} 至
+      \VAR{list} 中。若未给定
+      \VAR{list}，收集至匿名列表并在终止后返回。
     }
 
     \IT{\Goo{\LKWD*{append}\XOR\LKWD*{appending}\XOR\LKWD*{nconc}\XOR\LKWD*{nconcing}}
       \Goo{\VAR{form}\XOR\LKWD*{it}} \Op{\LKWD*{into}
         \VAR{list}}}
     {
-      Concatenate values of \VAR{form} or \LKWD{it}, which should be
-      lists, into \VAR{list} by the means of \FU{append} or \FU{nconc},
-      respectively.  If no \VAR{list} is given, collect into an
-      anonymous list which is returned after termination. 
+      以 \FU{append} 或 \FU{nconc} 的方式收集
+      \VAR{form} 的值或 \LKWD{it} 至
+      \VAR{list} 中，值应为列表。若未给定
+      \VAR{list}，收集至匿名列表并在终止后返回。
     }
 
     \IT{\Goo{\LKWD*{count}\XOR\LKWD*{counting}}
       \Goo{\VAR{form}\XOR\LKWD*{it}} \Op{\LKWD*{into}
         \VAR{n}} \Op{\VAR{type}}}
     {
-      Count the number of times the value of \VAR{form} or of \LKWD{it} is \T.
-      If no \VAR{n} is given, count into an anonymous variable
-      which is returned after termination.
+      计算 \VAR{form} 的值或 \LKWD{it} 为
+      \T\ 的次数。若未给定
+      \VAR{n}，计数至匿名变量并在终止后返回。
     }
 
     \IT{\Goo{\LKWD*{sum}\XOR\LKWD*{summing}}
       \Goo{\VAR{form}\XOR\LKWD*{it}} \Op{\LKWD*{into}
         \VAR{sum}} \Op{\VAR{type}}} 
     {
-      Calculate the sum of the primary values of \VAR{form} or of \LKWD{it}.
-      If no \VAR{sum} is given, sum into an anonymous variable
-      which is returned after termination.
+      计算 \VAR{form} 的主值或 \LKWD{it}
+      的总和。若未给定
+      \VAR{sum}，累加至匿名变量并在终止后返回。
     }
 
     \IT{\Goo{\LKWD*{maximize}\XOR\LKWD*{maximizing}\XOR
@@ -1296,49 +1294,48 @@
         \LKWD*{minimizing}} \Goo{\VAR{form}\XOR\LKWD*{it}} \Op{\LKWD*{into}
         \VAR{max-min}} \Op{\VAR{type}}} 
     {
-      Determine the maximum or minimum, respectively, of the primary values of
-      \VAR{form} or of \LKWD{it}. 
-      If no \VAR{max-min} is given, use an anonymous variable
-      which is returned after termination.
+      计算 \VAR{form} 的主值或 \LKWD{it}
+      的最大/最小值。若未给定
+      \VAR{max-min}，使用匿名变量并在终止后返回。
     }
 
     \IT{\Goo{\LKWD*{initially}\XOR\LKWD*{finally}} \RP{\VAR{form}}}
     {
-      Evaluate \VAR{form}s before begin, or after end, respectively,
-      of iterations.
+      在迭代开始前或结束后求值
+      \VAR{form}s。
     }
 
     \IT{\LKWD*{repeat} \VAR{num}}
     {
-      Terminate \MC{loop} after \VAR{num} iterations; \VAR{num} is
-      evaluated once.
+      在 \VAR{num} 次迭代后终止 \MC{loop}，\VAR{num}
+      只求值一次。
     }
 
     \IT{\Goo{\LKWD*{while}\XOR\LKWD*{until}} \VAR{test}}
     {
-      Continue iteration until \VAR{test} returns \NIL\ or \T,
-      respectively.
+      当 \VAR{test} 返回 \NIL\ 或
+      \T 时终止迭代。
     }
 
     \IT{\Goo{\LKWD*{always}\XOR\LKWD*{never}} \VAR{test}}
     {
-      Terminate \MC{loop} returning \NIL\ and skipping any
-      \LKWD{finally} parts as soon as \VAR{test} is \NIL\ or \T,
-      respectively. Otherwise continue \MC{loop} with its default
-      return value set to \T.
+      一旦 \VAR{test} 为 \NIL\ 或 \T，终止
+      \MC{loop} 并跳过任何 \LKWD{finally} 部分，返回
+      \NIL。否则继续 \MC{loop}，其默认返回值为
+      \T。
     }
 
     \IT{\LKWD*{thereis} \VAR{test}}
     {
-      Terminate \MC{loop} when \VAR{test} is \T\ and return value of
-      \VAR{test}, skipping any \LKWD{finally} parts. Otherwise
-      continue \MC{loop} with its default return value set to \NIL.
+      当 \VAR{test} 为 \T\ 时，终止 \MC{loop}
+      并跳过任何 \LKWD{finally} 部分，返回 \VAR{test}
+      的值。否则继续 \MC{loop}，其默认返回值为 \NIL。
     }
 
     \IT{(\MC*{loop-finish})}
     {
-      Terminate \MC{loop} immediately executing any \LKWD{finally}
-      clauses and returning any accumulated results.
+      立即终止 \MC{loop}，执行 \LKWD{finally}
+      语句，返回累积结果。
     }
   \end{LIST}
 \end{LIST}

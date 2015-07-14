@@ -40,11 +40,11 @@
       \xorGOO{\VAR{name}\\
       (\kwd{setf } \VAR{name})}{\}}\text{ }\Op{\VAR{definition}}}{\}})}
   {
-    Return \retval{compiled function} or replace \retval{\VAR{name}}'s
-    function definition with the compiled function. Return
-    \retvalii{\T} in case of \kwd{warning}s or \kwd{error}s, and
-    \retvaliii{\T} in case of \kwd{warning}s or \kwd{error}s excluding
-    \kwd{style-warning}s.
+    返回 \retval{已编译函数} 或用已编译函数替换
+    \retval{\VAR{name}} 的函数定义。若发生
+    \kwd{warning}s 或 \kwd{error}s，返回
+    \retvalii{\T}。若非 \kwd{style-warning}s 的
+    \kwd{warning}s 或 \kwd{error}s，返回 \retvaliii{\T}。
   }
 
   \IT{(\FU*{COMPILE-FILE} \VAR{file} 
@@ -54,17 +54,17 @@
       \kwd{:external-format} \VAR{
         file-format}\DF{\kwd{:default}}}{\}})}
   {
-    Write compiled contents of \VAR{file} to \VAR{out-path}.  Return
-    \retval{true output path} or \retval{\NIL}, \retvalii{\T} in case
-    of \kwd{warning}s or \kwd{error}s, \retvaliii{\T} in case of
-    \kwd{warning}s or \kwd{error}s excluding \kwd{style-warning}s.
+    将 \VAR{file} 的编译结果写入 \VAR{out-path}。返回
+    \retval{真实输出路径} 或 \retval{\NIL}。若发生 \kwd{warning}s 或
+    \kwd{error}s，返回 \retvalii{\T}。若非 \kwd{style-warning}s 的
+    \kwd{warning}s 或 \kwd{error}s，返回 \retvaliii{\T}。
   }
 
   \IT{(\FU*{COMPILE-FILE-PATHNAME} \VAR{file} \Op{\kwd{:output-file}
       \VAR{path}} \Op{\VAR{other-keyargs}})}
   {
-  \retval{Pathname} \FU{COMPILE-FILE} writes to if invoked with the
-  same arguments.
+  若以相同参数调用，\FU{COMPILE-FILE}
+  将写入的 \retval{路径名}。
   }
 
   \IT{(\FU*{LOAD} \VAR{path} 
@@ -74,8 +74,8 @@
       \kwd{:external-format} \VAR{
         file-format}\DF{\kwd{:default}}}{\}})}
   {
-  Load source file or compiled file into Lisp environment. Return
-  \retval{\T} if successful. 
+  加载源文件或编译文件入 Lisp 环境。若成功，返回
+  \retval{\T}。
   }
 
   \IT{\arrGOO{\V{\A compile-file}\\
@@ -83,7 +83,7 @@
     \xorGOO{\kwd{pathname\A}\DF{\NIL}\\
       \kwd{truename\A}\DF{\NIL}}{.}}
   {\index{*COMPILE-FILE-PATHNAME*@\A COMPILE-FILE-PATHNAME\A}\index{*COMPILE-FILE-TRUENAME*@\A COMPILE-FILE-TRUENAME\A}\index{*LOAD-PATHNAME*@\A LOAD-PATHNAME\A}\index{*LOAD-TRUENAME*@\A LOAD-TRUENAME\A}
-  Input file used by \FU{compile-file}/by \FU{load}.
+  \FU{compile-file}/\FU{load} 输入文件名。
   }
 
   \IT{\arrGOO{\V{\A compile}\\
@@ -91,7 +91,7 @@
     \xorGOO{\kwd{print\A}\\
       \kwd{verbose\A}}{.}}  
   {\index{*COMPILE-PRINT*@\A COMPILE-PRINT\A}\index{*COMPILE-VERBOSE*@\A COMPILE-VERBOSE\A}\index{*LOAD-PRINT*@\A LOAD-PRINT\A}\index{*LOAD-VERBOSE*@\A LOAD-VERBOSE\A}
-  Defaults used by \FU{compile-file}/by \FU{load}.
+  \FU{compile-file}/\FU{load} 默认值。
   }
 
   \IT{(\SO*{EVAL-WHEN} (%
@@ -99,33 +99,33 @@
       \Goo{\kwd{:load-toplevel}\XOR\kwd{load}}\\
       \Goo{\kwd{:execute}\XOR\kwd{eval}}}{\}}) \PROGN{\VAR{form}})} 
   {
-  Return \retval{values of \VAR{form}s} if
-  \SO{EVAL-WHEN} is in the top-level of a file being compiled, in the
-  top-level of a compiled file being loaded, or anywhere,
-  respectively. Return \retval{\NIL} if \VAR{form}s are not
-  evaluated. (\kwd{compile}, \kwd{load} and \kwd{eval} deprecated.) 
+  若 \SO{EVAL-WHEN}
+  位于正在编译的文件顶层，正在加载的文件顶层，或任意位置，返回
+  \retval{\VAR{form}s 的所有值}。若 \VAR{form}s
+  不求值，返回 \retval{\NIL}。（\kwd{compile}、\kwd{load}
+  及 \kwd{eval} 已废弃。）
   }
 
   \IT{(\SO*{LOCALLY} \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})}
     \PROGN{\VAR{form}})}
   {
-  Evaluate \VAR{form}s in a lexical environment with declarations
-  \VAR{decl} in effect. Return \retval{values of \VAR{form}s}. 
+  在 \VAR{decl} 有效的词法环境中求值
+  \VAR{form}s。返回 \retval{\VAR{form}s 的所有值}。
   }
 
   \IT{(\MC*{WITH-COMPILATION-UNIT} (\Op{\kwd{:override}
       \VAR{bool}\DF{\NIL}}) \PROGN{\VAR{form}})}
   {
-  Return \retval{values of \VAR{form}s}. Warnings deferred by the
-  compiler until end of compilation are deferred until the end of
-  evaluation of \VAR{form}s. 
+  返回 \retval{\VAR{form}s 的所有值}。由编译器延迟至编译结束的警告延迟至
+  \VAR{form}s
+  求值结束。
   }
 
   \IT{(\SO*{LOAD-TIME-VALUE} \VAR{form}
     \Op{\NEV{\VAR{read-only}}\DF{\NIL}})}
   {
-  Evaluate \VAR{form} at compile time and treat \retval{its value} as
-  literal at run time. 
+  编译时求值 \VAR{form}，运行时将
+  \retval{其值} 作为字面值。
   }
 
   \IT{(\SO*{QUOTE} \NEV{\VAR{foo}})}
@@ -165,7 +165,7 @@
   
   \IT{(\FU*{EVAL} \VAR{arg})}
   {
-  返回在全局环境中求 \retval{\VAR{arg} 的值所得到的值}。
+  返回在全局环境中求 \retval{\VAR{arg} 的值所得到的所有值}。
   }
 
 \end{LIST}
@@ -182,7 +182,7 @@
       \V*{/}\text{ }\XOR\text{ }\V*{//}\text{ }\XOR\text{ }\V*{///}}{.}}
   {\index{*@\A}\index{**@\A\A}\index{***@\A\A\A}
   最后、倒数第二、倒数第三个在 REPL
-  中求值的 \retval{形式}，或其 \retval{主值}，或其值之
+  中求值的 \retval{形式}，或其 \retval{主值}，或其所有值之
   \retval{列表}。
   }
 
@@ -193,12 +193,12 @@
 
   \IT{(\FU*{APROPOS} \VAR{string} \Op{\VAR{package}\DF{\NIL}})}
   {
-  Print interned symbols containing \VAR{string}.
+  打印包含 \VAR{string} 的已持有符号。
   }
 
   \IT{(\FU*{APROPOS-LIST} \VAR{string} \Op{\VAR{package}\DF{\NIL}})}
   {
-  \retval{List of interned symbols} containing \VAR{string}.
+  包含 \VAR{string} 的 \retval{已持有符号列表}。
   }
 
   \IT{(\FU*{DRIBBLE} \Op{\VAR{path}})}
@@ -266,7 +266,7 @@
   }
   \IT{(\FU*{INSPECT} \VAR{foo})}
   {
-    Interactively give information about \VAR{foo}.
+    交互式给出 \VAR{foo} 的信息。
   }
 
   \IT{(\FU*{DESCRIBE} \VAR{foo}
