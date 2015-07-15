@@ -127,7 +127,7 @@
   }
 \end{figure}
 
-对任何类，总有相同名称的对应类型。
+对任何类，总有对应的同名类型。
 
 \begin{LIST}{1cm}
 
@@ -139,15 +139,15 @@
   \IT{(\FU*{SUBTYPEP} \VAR{type-a} \VAR{type-b}
     \Op{\VAR{environment}})}
   {
-    Return \retval{\T} if \VAR{type-a} is a recognizable subtype of
-    \VAR{type-b}, and \retvalii{\NIL} if the relationship could not be
-    determined. 
+    若 \VAR{type-a} 为 \VAR{type-b}
+    的可识别子类型，返回 \retval{\T}，若关系无法确定，返回
+    \retvalii{\NIL}。
   }
 
   \IT{(\SO*{THE} \NEV{\VAR{type}} \VAR{form})}
   {
-    Declare \retval{values of \VAR{form}} to be of
-    \VAR{type}. 
+    声明 \retval{\VAR{form} 的所有值} 为
+    \VAR{type}。
   }
 
   \IT{(\FU*{COERCE} \VAR{object} \VAR{type})}
@@ -159,9 +159,9 @@
     \OP{(\xorGOO{\kwd*{OTHERWISE}\\
         \T}{\}} \PROGN{\VAR{b-form}\DF{\NIL}})})}
   {
-    Return \retval{values of the first \OPn{\VAR{a-form}}} whose \VAR{type} is
-    \VAR{foo} of. Return \retval{values of \VAR{b-form}s} if no
-    \VAR{type} matches.
+    返回第一个其 \VAR{type} 为 \VAR{foo} 的
+    \retval{\OPn{\VAR{a-form}} 的所有值}。若无 \VAR{type}
+    匹配，返回 \retval{\OPn{\VAR{b-form}s} 的所有值}。
     % Keep \OPn{\VAR{a-form}} instead of the otherwise preferable
     % \VAR{a-form}s because we're talking about one set of a-forms out
     % of several.
@@ -173,9 +173,9 @@
     \VAR{foo}
     \OPn{(\NEV{\VAR{type}} \PROGN{\VAR{form}})})}
   {
-    Return \retval{values of the first \OPn{\VAR{form}}} whose \VAR{type} is
-    \VAR{foo} of.  Signal non-correctable/correctable \kwd{type-error}
-    if no \VAR{type} matches.
+    返回第一个其 \VAR{type} 为 \VAR{foo} 的
+    \retval{\OPn{\VAR{a-form}} 的所有值}。若无 \VAR{type}
+    匹配，产生不可纠正/可纠正 \kwd{type-error}。
     % Keep \OPn{\VAR{form}} instead of the otherwise preferable
     % \VAR{form}s because we're talking about one set of forms out
     % of several.
@@ -189,8 +189,8 @@
   \IT{(\MC*{CHECK-TYPE} \VAR{place} \VAR{type}
     \Op{\VAR{string}\DF{\Goo{\LIT{a}\XOR\LIT{an}}\hspace{.3ex}\VAR{type}}})}
   {
-    Signal correctable \kwd{type-error} if \VAR{place} is
-    not of \VAR{type}. Return \retval{\NIL}.
+    若 \VAR{place} 非 \VAR{type}，产生可纠正
+    \kwd{type-error}。返回 \retval{\NIL}。
   }
 
   \IT{(\FU*{STREAM-ELEMENT-TYPE} \VAR{stream})}
@@ -206,27 +206,27 @@
   \IT{(\FU*{UPGRADED-ARRAY-ELEMENT-TYPE} \VAR{type}
     \Op{\VAR{environment}\DF{\NIL}})}
   {
-  \retval{Element type} of most specialized array capable of holding
-  elements of \VAR{type}. 
+  可包含 \VAR{type} 元素的最具体数组的
+  \retval{元素类型}。
   }
 
   \IT{(\MC*{DEFTYPE} \VAR{foo} (\OPn{\VAR{macro-$\lambda$}})
     \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})} \Op{\NEV{\VAR{doc}}} 
     \PROGN{\VAR{form}})}
   {
-  Define type \retval{\VAR{foo}} which when referenced as (\VAR{foo}
-  \OPn{\NEV{\VAR{arg}}}) (or as \VAR{foo} if \VAR{macro-$\lambda$}
-  doesn't contain any required parameters) applies expanded \VAR{form}s to \VAR{arg}s
-  returning the new type. For (\OPn{\VAR{macro-$\lambda$}}) see
-  page \pageref{section:宏} but with default value of \kwd{\A}
-  instead of \NIL. \VAR{form}s are enclosed in an implicit \SO{block}
-  named \VAR{foo}.
+  定义类型 \retval{\VAR{foo}}，当以 (\VAR{foo}
+  \OPn{\NEV{\VAR{arg}}})（或在 \VAR{macro-$\lambda$}
+  包含任何必要参数时以 \VAR{foo}）引用时，将展开的 \VAR{form}s 应用至 \VAR{arg}s
+  并返回新类型。对于 (\OPn{\VAR{macro-$\lambda$}}) 参见第
+  \pageref{section:宏} 页，但默认值为 \kwd{\A}，而不是
+  \NIL。\VAR{form}s 包含于名为 \VAR{foo}
+  的隐式 \SO{block} 中。
   }
 
   \IT{\arrGOO{(\kwd*{EQL } \VAR{foo})\\
       (\kwd*{MEMBER } \OPn{\VAR{foo}})}{.}}
   {
-  Specifier for a type comprising \VAR{foo} or \VAR{foo}s.
+  构成 \VAR{foo} 或 \VAR{foo}s 的类型的说明符。
   }
 
   \IT{(\kwd*{SATISFIES} \VAR{predicate})}
@@ -263,7 +263,7 @@
   \IT{\kwd{\A}}
   {
     \index{*@\A}%
-    As a type argument (cf.\ Figure \ref{data-types}): no restriction.
+    作为类型参数（参照图 \ref{data-types}）：无限制。
   }
   \end{LIST}
 

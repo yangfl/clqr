@@ -45,8 +45,8 @@
         \kwd{:type}\XOR
         \kwd{:version}\XOR\NIL}})}
   {
-    Return \retval{\T} if indicated component in \VAR{path} is
-    wildcard. (\NIL\ indicates any component.)
+    当 \VAR{path} 内指定的组件为通配符时返回
+    \retval{\T}。（\NIL\ 指定所有组件。）
   }
 
 \end{LIST}
@@ -61,15 +61,15 @@
   \IT{(\xorGOO{\FU*{Y-OR-N-P}\\
       \FU*{YES-OR-NO-P}}{\}} \Op{\VAR{control} \OPn{\VAR{arg}}})}
   {
-    Ask user a question and return \retval{\T} or \retval{\NIL}
-    depending on their answer. See page \pageref{section:Format},
-    \FU{format}, for \VAR{control} and \VAR{arg}s. 
+    询问用户，根据回答返回 \retval{\T} 或
+    \retval{\NIL}。关于 \VAR{control} 和 \VAR{arg}s，参见第
+    \pageref{section:Format} 页 \FU{format}。
   }
 
   \IT{(\MC*{WITH-STANDARD-IO-SYNTAX} \PROGN{\VAR{form}})}
   {
-    Evaluate \VAR{form}s with standard behaviour of reader and
-    printer. Return \retval{values of \VAR{form}s}.
+    以标准的读取打印行为求值 \VAR{form}s。返回
+    \retval{\VAR{form}s 的所有值}。
   }
 
   \IT{(\xorGOO{\FU*{READ}\\
@@ -78,7 +78,7 @@
       \OP{\VAR{eof-err}\DF{\T} 
         \Op{\VAR{eof-val}\DF{\NIL} \Op{\VAR{recursive}\DF{\NIL}}}}})}
   {
-    Read printed representation of \retval{object}.
+    读取 \retval{对象} 的打印形式。
   }
 
   \IT{(\FU*{READ-FROM-STRING} \VAR{string} 
@@ -89,23 +89,23 @@
             \kwd{:end}\VAR{ end}\DF{\NIL}\\
             \kwd{:preserve-whitespace}\VAR{ bool}\DF{\NIL}}{\}}}}})}
   {
-    Return \retval{object} read from string and zero-indexed \retvalii{position} of
-    next character.
+    从字符串中读取 \retval{对象}，返回零索引的下一字符
+    \retvalii{位置}。
   }
 
   \IT{(\FU*{READ-DELIMITED-LIST} \VAR{char}
     \OP{\DES{\VAR{stream}}\DF{\V{\A standard-input\A}}
       \Op{\VAR{recursive}\DF{\NIL}}})}
   {
-    Continue reading until encountering \VAR{char}. Return \retval{list}
-    of objects read. Signal error if no \VAR{char} is found in stream.
+    继续读取，直至遇到 \VAR{char}。返回已读取对象的
+    \retval{列表}。若 stream 中未发现 \VAR{char}，则产生错误。
   }
 
   \IT{(\FU*{READ-CHAR} \OP{\DES{\VAR{stream}}\DF{\V{\A standard-input\A}}
       \OP{\VAR{eof-err}\DF{\T} \Op{\VAR{eof-val}\DF{\NIL}
           \Op{\VAR{recursive}\DF{\NIL}}}}})}
   {
-    Return \retval{next character} from \VAR{stream}.
+    从 \VAR{stream} 读取 \retval{下一字符}。
   }
 
   \IT{(\FU*{READ-CHAR-NO-HANG}
@@ -113,8 +113,8 @@
       \OP{\VAR{eof-error}\DF{\T} \Op{\VAR{eof-val}\DF{\NIL}
           \Op{\VAR{recursive}\DF{\NIL}}}}})}
   {
-    \retval{Next character} from \VAR{stream} or \retval{\NIL} if none
-    is available.
+    \VAR{stream} 的 \retval{下一字节}，若无，返回
+    \retval{\NIL}。
   }
 
   \IT{(\FU*{PEEK-CHAR}
@@ -130,14 +130,14 @@
   \IT{(\FU*{UNREAD-CHAR} \VAR{character}
     \Op{\DES{\VAR{stream}}\DF{\V{\A standard-input\A}}})}
   {
-    Put last \FU{read-char}ed \VAR{character} back into \VAR{stream}; return
-    \retval{\NIL}. 
+    将最后 \FU{read-char} 的 \VAR{character} 放回 \VAR{stream}，返回
+    \retval{\NIL}。
   }
 
   \IT{(\FU*{READ-BYTE} \DES{\VAR{stream}} \OP{\VAR{eof-err}\DF{\T}
       \Op{\VAR{eof-val}\DF{\NIL}}})}
   {
-    Read \retval{next byte} from binary \VAR{stream}.
+    从二进制 \VAR{stream} 中读取 \retval{下一字节}。
   }
 
   \IT{(\FU*{READ-LINE} \OP{\DES{\VAR{stream}}\DF{\V{\A standard-input\A}}
@@ -167,7 +167,7 @@
   \IT{(\FU*{COPY-READTABLE} \OP{\VAR{from-readtable}\DF{\V{\A readtable\A}}
     \Op{\DES{\VAR{to-readtable}}\DF{\NIL}}})}
   {
-    Return \retval{copy of \VAR{from-readtable}}.
+    返回 \retval{\VAR{from-readtable} 副本}。
   }
 
   \IT{(\FU*{SET-SYNTAX-FROM-CHAR} \VAR{to-char} \VAR{from-char}
@@ -179,7 +179,7 @@
 
   \IT{\V{\A readtable\A}}
   {\index{*READTABLE*@\A READTABLE\A}
-    Current readtable.
+    当前 readtable。
   }
 
   \IT{\V{\A read-base\A}\DF{\LIT{10}}}
@@ -268,7 +268,7 @@
   
   \IT{\KWD*{(}\OPn{\VAR{foo}}\Op{ \KWD*{.} \VAR{bar}\DF{\NIL}}\KWD*{)}}
   {
-    List of \VAR{foo}s with the terminating cdr \VAR{bar}.
+    \VAR{foo}s 的列表，终止 cdr 为 \VAR{bar}。
   }
   
   \IT{\KWD{"}\qquad\qquad}
@@ -299,7 +299,7 @@
   \IT{\KWD*{\#b}\VAR{n}; \KWD*{\#o}\VAR{n}; \VAR{n}\kwd{.};
     \KWD*{\#x}\VAR{n}; \KWD{\#}\VAR{r}\KWD{R}\VAR{n}}
   {\index{\#R}%
-    整数，基数为 2、8、10、16，或 \VAR{r}; $2\le r \le 36$。
+    整数，基数为 2、8、10、16 或 \VAR{r}，$2\le r \le 36$。
   }
 
   \IT{\VAR{n}\kwd*{/}\VAR{d}\quad\qquad}
@@ -314,9 +314,9 @@
       \VAR{m}\OP{\kwd{.}\Op{\VAR{n}}}%
       \Goo{\KWD{S}\XOR\KWD{F}\XOR\KWD{D}\XOR\KWD{L}\XOR\KWD{E}}\VAR{x}}}
   {
-    $m.n\cdot10^x$ as \kwd*{short-float}, \kwd*{single-float},
-    \kwd*{double-float}, \kwd*{long-float}, or the type from \kwd{\A
-      read-default-float-format\A}.
+    $m.n\cdot10^x$，\kwd*{short-float}、\kwd*{single-float}、\kwd*{double-float}、\kwd*{long-float}
+    或 \kwd{\A
+      read-default-float-format\A} 定义的类型。
   }
 
   \IT{\KWD*{\#C(}\VAR{a b}\kwd{)}\qquad\qquad}
@@ -398,14 +398,14 @@
 
   \IT{\V{\A features\A}}
   {\index{*FEATURES*@\A FEATURES\A}
-    List of symbols denoting implementation-dependent features.
+    表示实现相关功能的符号列表。
   }
 
   \IT{\kwd{\boldmath$|$}\OPn{\VAR{c}}\kwd{\boldmath$|$};
     \kwd{\boldmath$\backslash$}\VAR{c}}
   {
     \index{{$"|$} {$"|$}}%
-    Treat arbitrary character(s) \VAR{c} as alphabetic preserving case.
+    保留字符 \VAR{c} 大小写。
   }
   \index{\@{$\backslash$}}%
 \end{LIST}
@@ -440,8 +440,8 @@
 
   \IT{(\GFU*{PRINT-OBJECT} \VAR{object} \DES{\VAR{stream}})}
   {
-    Print \retval{\VAR{object}} to \VAR{stream}. Called by the Lisp
-    printer. 
+    将 \retval{\VAR{object}} 打印至 \VAR{stream}。由 Lisp
+    打印器调用。
   }
 
   \IT{(\MC*{PRINT-UNREADABLE-OBJECT} (\VAR{foo} \DES{\VAR{stream}}
@@ -804,19 +804,17 @@
           \OP{\KWD{,'}\VAR{pad-char}\DF{\textvisiblespace}}}}
       \Op{\KWD{:}} \Op{\kwd{@}} \KWD{\$}}
     {\index{\~\$@$\sim$\$}%
-      \EM{Monetary Floating-Point. }
-      Print argument as fixed-format floating-point number. With \KWD{:},
-      put sign before any padding; with \KWD{@}, always prepend a
-      sign.
+      \EM{货币浮点}。将参数作为固定格式的浮点数打印。有
+      \KWD{:}，将符号放在填充字符前。有
+      \KWD{@}，总是在前面加上符号。
     }
     
     \IT{\Goo{\KWD{\TLD C}\XOR\KWD{\TLD :C}\XOR\KWD{\TLD
           @C}\XOR\KWD{\TLD @:C}}}
     {\index{\~C@$\sim$C}%
-      \EM{Character. }
-      Print, spell out, print in \kwd{\#$\backslash$} syntax, or tell
-      how to type, respectively, argument as (possibly non-printing)
-      character. 
+      \EM{字符。}将参数作为（可能为不可打印）字符并打印、指出、以
+      \kwd{\#$\backslash$}
+      语法打印、指出键入方法。
     }
 
     \IT{\Goo{%

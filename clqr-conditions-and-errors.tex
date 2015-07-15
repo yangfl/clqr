@@ -35,15 +35,15 @@
       (\kwd{:report } \xorGOO{\VAR{string}\\
         \VAR{report-function}}{\}})}{\}})}
   {
-    Define, as a subtype of \VAR{parent-type}s, condition type
-    \retval{\VAR{foo}}. In a new condition, a \VAR{slot}'s value
-    defaults to \VAR{form} unless set via \kwd{:}\VAR{initarg-name};
-    it is readable via (\VAR{reader} \VAR{i}) or (\VAR{accessor}
-    \VAR{i}), and writable via (\VAR{writer} \VAR{value} \VAR{i}) or
-    (\kwd{setf} (\VAR{accessor} \VAR{i}) \VAR{value}). With
-    \kwd{:allocation :class}, \VAR{slot} is shared by all conditions
-    of type \VAR{foo}. A condition is reported by \VAR{string} or by
-    \VAR{report-function} of arguments condition and stream.
+    作为 \VAR{parent-type}s 的子类型，定义状况类型
+    \retval{\VAR{foo}}。在新状况中，\VAR{slot} 的值默认为
+    \VAR{form}，或用 \kwd{:}\VAR{initarg-name}
+    设置。此值可通过 (\VAR{reader} \VAR{i}) 或 (\VAR{accessor}
+    \VAR{i}) 读取，(\VAR{writer} \VAR{value} \VAR{i}) 或
+    (\kwd{setf} (\VAR{accessor} \VAR{i}) \VAR{value}) 写入。带
+    \kwd{:allocation :class} 的 \VAR{slot} 在类型为 \VAR{foo}
+    的所有状况间共享。状况通过 \VAR{string} 或参数为状况及流的
+    \VAR{report-function} 报告。
   }
 
   \IT{(\FU*{MAKE-CONDITION} 
@@ -63,13 +63,13 @@
       \VAR{control}\text{ } \OPn{\VAR{arg}}%
     }{\}})}
   {
-    Unless handled, signal as \kwd{condition}, \kwd{warning} or
-    \kwd{error}, respectively, \VAR{condition} or a new instance of
-    \VAR{condition-type} or, with \FU{format} \VAR{control} and
-    \VAR{arg}s (see page \pageref{section:Format}),
-    \kwd{simple-condition}, \kwd{simple-warning}, or
-    \kwd{simple-error}, respectively.  From \FU{SIGNAL} and \FU{WARN},
-    return \retval{\NIL}.
+    除非被处理，分别产生 \kwd{condition}、\kwd{warning} 或
+    \kwd{error}，对象为 \VAR{condition}，或 \VAR{condition-type}
+    的新实例，或带 \VAR{control} 及 \VAR{arg}s（参见第
+    \pageref{section:Format} 页 \FU{format}）的
+    \kwd{simple-condition}、\kwd{simple-warning}、\kwd{simple-error}。对于
+    \FU{SIGNAL} 及 \FU{WARN}，返回
+    \retval{\NIL}。
   }
 
   \IT{(\FU*{CERROR} \VAR{continue-control}
@@ -79,12 +79,12 @@
       \VAR{control}\text{ } \OPn{\VAR{arg}}%
     }{\}})}
   {
-    Unless handled, signal as correctable \kwd{error} \VAR{condition}
-    or a new instance of \VAR{condition-type} or, with \FU{format}
-    \VAR{control} and \VAR{arg}s (see page \pageref{section:Format}),
-    \kwd{simple-error}. In the debugger, use \FU{format} arguments
-    \VAR{continue-control} and \VAR{continue-arg}s to tag the continue
-    option. Return \retval{\NIL}.
+    除非被处理，产生可纠正的 \kwd{error} \VAR{condition}，或
+    \VAR{condition-type} 的新实例，或带 \VAR{control} 及
+    \VAR{arg}s（参见第 \pageref{section:Format} 页 \FU{format}）的
+    \kwd{simple-error}。在调试器中，使用 \FU{format} 参数
+    \VAR{continue-control} 及 \VAR{continue-arg}s
+    以标记继续选项。返回 \retval{\NIL}。
   }
 
   \IT{(\MC*{IGNORE-ERRORS} \PROGN{\VAR{form}})}
@@ -106,13 +106,13 @@
           \Goos{\kwd{:}\VAR{initarg-name} \VAR{value}}\\
           \VAR{control}\text{ } \OPn{\VAR{arg}}}{\}}}})}
   {
-    If \VAR{test}, which may depend on \VAR{place}s, returns \NIL,
-    signal as correctable \kwd{error} \VAR{condition} or a new
-    instance of \VAR{condition-type} or, with \FU{format}
-    \VAR{control} and \VAR{arg}s (see page \pageref{section:Format}),
-    \kwd{error}. When using the debugger's continue option,
-    \VAR{place}s can be altered before re-evaluation of
-    \VAR{test}. Return \retval{\NIL}.
+    若 \VAR{test}（可能受 \VAR{place}s 影响）返回
+    \NIL，产生可纠正的 \kwd{error} \VAR{condition}，或
+    \VAR{condition-type} 的新实例，或带 \VAR{control} 及
+    \VAR{arg}s（参见第 \pageref{section:Format} 页 \FU{format}）的
+    \kwd{error}。在使用调试器继续选项时，可在再求值
+    \VAR{test} 前更改 \VAR{place}s。返回
+    \retval{\NIL}。
   }
 
   \IT{(\MC*{HANDLER-CASE} \VAR{foo} 
@@ -125,32 +125,32 @@
       \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})}
       \PROGN{\VAR{form}})})}
   {
-    If, on evaluation of \VAR{foo}, a condition of \VAR{type} is
-    signalled, evaluate matching \VAR{condition-form}s with \VAR{var}
-    bound to the condition, and return \retval{their values}. Without
-    a condition, bind \VAR{ord-$\lambda$}s to values of \VAR{foo} and
-    return \retval{values of  \VAR{form}s} or, without a
-    \kwd{:no-error} clause, return \retval{values of \VAR{foo}}. See
-    page \pageref{section:函数} for (\OPn{\VAR{ord-$\lambda$}}).
+    在求值 \VAR{foo} 时，若产生 \VAR{type}
+    状况，将 \VAR{var} 绑定至状况并对对应的 \VAR{condition-form}s
+    求值，返回 \retval{其所有值}。若无状况而有 \kwd{:no-error} 语句，将
+    \VAR{ord-$\lambda$}s 绑定至 \VAR{foo} 的所有值并返回
+    \retval{\VAR{form}s 的所有值}，否则返回
+    \retval{\VAR{foo} 的所有值}。对于 (\OPn{\VAR{ord-$\lambda$}})，参见第
+    \pageref{section:函数} 页。
   }
 
   \IT{(\MC*{HANDLER-BIND} (\OPn{(\VAR{condition-type}
       \VAR{handler-function})}) \PROGN{\VAR{form}})}
   {
-    Return \retval{values of \VAR{form}s} after evaluating them with
-    \VAR{condition-type}s dynamically bound to their respective
-    \VAR{handler-function}s of argument condition. 
+    将 \VAR{condition-type}s 动态绑定至各自的参数为状况的
+    \VAR{handler-function}s 并求值，返回
+    \retval{\VAR{form}s 的所有值}。
   }
 
   \IT{(\MC*{WITH-SIMPLE-RESTART} (\xorGOO{\VAR{restart}\\
       \NIL}{\}} \VAR{control}
     \OPn{\VAR{arg}}) \PROGN{\VAR{form}})}
   {
-    Return \retval{values of \VAR{form}s} unless \VAR{restart} is
-    called during their evaluation. In this case, describe
-    \VAR{restart} using \FU{format} \VAR{control} and \VAR{arg}s (see
-    page \pageref{section:Format}) and return \retval{\NIL} and
-    \retvalii{\T}.
+    返回 \retval{\VAR{form}s 的所有值}，除非在求值时调用了
+    \VAR{restart}。此种情况下，用 \VAR{control} 及
+    \VAR{arg}s（参见第 \pageref{section:Format}
+    页 \FU{format}）描述 \VAR{restart}，并返回 \retval{\NIL} 及
+    \retvalii{\T}。
   }
 
   \IT{(\MC*{RESTART-CASE} \VAR{form}
@@ -164,20 +164,20 @@
       \OPn{(\kwd{declare} \OPn{\NEV{\VAR{decl}}})}
       \PROGN{\VAR{restart-form}})})}
   {
-    Return \retval{values of \VAR{form}} or, if during evaluation of
-    \VAR{form} one of the dynamically established \VAR{restart}s is
-    called, the \retval{values of its \VAR{restart-form}s}.  A
-    \VAR{restart} is visible under \VAR{condition} if (\kwd{funcall}
-    \kwd{\#'}\VAR{test-function} \VAR{condition}) returns \T.  If
-    presented in the debugger, \VAR{restart}s are described by
-    \VAR{string} or by \kwd{\#'}\VAR{report-function} (of a stream).
-    A \VAR{restart} can be called by (\kwd{invoke-restart}
-    \VAR{restart} \OPn{\VAR{arg}}), where \VAR{arg}s match
-    \OPn{\VAR{ord-$\lambda$}}, or by
-    (\kwd{invoke-restart-interactively} \VAR{restart}) where a list of
-    the respective \VAR{arg}s is supplied by
-    \kwd{\#'}\VAR{arg-function}.  See page \pageref{section:函数}
-    for \OPn{\VAR{ord-$\lambda$}}.
+    返回 \retval{\VAR{form} 的所有值}，若在
+    \VAR{form} 求值时调用了某个动态建立的 \VAR{restart}s，则返回
+    \retval{其 \VAR{restart-form}s 的所有值}。若 (\kwd{funcall}
+    \kwd{\#'}\VAR{test-function} \VAR{condition}) 返回 \T，则
+    \VAR{restart} 在 \VAR{condition} 中可见。在调试器内，\VAR{restart}s
+    由 \VAR{string} 或（流的函数）\kwd{\#'}\VAR{report-function}
+    描述。调用 \VAR{restart}
+    可通过 (\kwd{invoke-restart}
+    \VAR{restart} \OPn{\VAR{arg}})，其中 \VAR{arg}s 匹配
+    \OPn{\VAR{ord-$\lambda$}}，或通过
+    (\kwd{invoke-restart-interactively} \VAR{restart})，其中由
+    \kwd{\#'}\VAR{arg-function}
+    提供对应的 \VAR{arg}s。对于
+    \OPn{\VAR{ord-$\lambda$}}，参见第 \pageref{section:函数} 页。
   }
 
   \IT{(\MC*{RESTART-BIND}
@@ -191,36 +191,36 @@
         \kwd{:test-function} \VAR{ test-function}}{\}})})
     \PROGN{\VAR{form}})}
   {
-    Return \retval{values of \VAR{form}s} evaluated with dynamically
-    established \VAR{restart}s whose \VAR{restart-function}s should
-    perform a non-local transfer of control.  A restart is visible
-    under \VAR{condition} if (\VAR{test-function} \VAR{condition})
-    returns \T.  If presented in the debugger, \VAR{restart}s are
-    described by \VAR{restart-function} (of a stream).  A
-    \VAR{restart} can be called by (\kwd{invoke-restart} \VAR{restart}
-    \OPn{\VAR{arg}}), where \VAR{arg}s must be suitable for the
-    corresponding \VAR{restart-function}, or by
-    (\kwd{invoke-restart-interactively} \VAR{restart}) where a list of
-    the respective \VAR{arg}s is supplied by \VAR{arg-function}.
+    动态建立 \VAR{restart}s，其 \VAR{restart-function}s
+    应执行控制流的非局部转移，求值并返回
+    \retval{\VAR{form}s 的所有值}。若
+    (\VAR{test-function} \VAR{condition}) 返回 \T，则
+    restart 在 \VAR{condition} 中可见。在调试器内，\VAR{restart}s
+    由（流的函数）\VAR{report-function} 描述。调用 \VAR{restart}
+    可通过 (\kwd{invoke-restart}
+    \VAR{restart} \OPn{\VAR{arg}})，其中 \VAR{arg}s 应适用于对应的
+    \VAR{restart-function}，或通过
+    (\kwd{invoke-restart-interactively} \VAR{restart})，其中由
+    \VAR{arg-function} 提供对应的 \VAR{arg}s。
   }
 
   \IT{\arrGOO{(\FU*{INVOKE-RESTART} \VAR{ restart} \OPn{\VAR{ arg}})\\
       (\FU*{INVOKE-RESTART-INTERACTIVELY} \VAR{ restart})}{.}}
   {
-    Call function associated with \VAR{restart} with arguments given
-    or prompted for, respectively. If \VAR{restart} function returns,
-    return \retval{its values}.
+    以给定或命令行输入的参数调用 \VAR{restart}
+    关联的函数。若 \VAR{restart} 函数返回，返回
+    \retval{其值}。
   }
 
   \IT{(\xorGOO{%
       \FU*{FIND-RESTART}\\
       \FU*{COMPUTE-RESTARTS} \VAR{ name}}{\}} \Op{\VAR{condition}})}
   {
-    Return innermost \retval{restart} \VAR{name}, or a \retval{list of
-      all restarts}, respectively, out of those either associated with
-    \VAR{condition} or un-associated at all; or, without
-    \VAR{condition}, out of all restarts. Return \retval{\NIL} if
-    search is unsuccessful.
+    返回最内名为 \VAR{name} 的 \retval{重启动} 或
+    \retval{所有重启动的列表}。有
+    \VAR{condition}，指定搜索范围为与 \VAR{condition}
+    关联或未关联任何状况的重启动，否则为所有重启动。若搜索失败，返回
+    \retval{\NIL}。
   }
 
   \IT{(\FU*{RESTART-NAME} \VAR{restart})}
@@ -297,13 +297,12 @@
 
   \IT{\V{\A break-on-signals\A}\DF{\NIL}}
   {\index{*BREAK-ON-SIGNALS*@\A BREAK-ON-SIGNALS\A}
-  Condition type debugger is to be invoked on.
+  调试器将于之上调用的状况类型。
   }
 
   \IT{\V{\A debugger-hook\A}\DF{\NIL}}
   {\index{*DEBUGGER-HOOK*@\A DEBUGGER-HOOK\A}
-    Function of condition and
-  function itself. Called before debugger.
+    状况的函数及函数自身。在调试器前调用。
   }
 
 \end{LIST}

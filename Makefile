@@ -34,25 +34,27 @@ DATE		= git log HEAD^..HEAD --date=short | awk '/Date:/{print $$2}' | tr -d '\n\
 
 all: a4-colorful
 
-a4-colorful: clqr.ind clqr-a4-colorful.pdf
+a4-colorful: clqr-a4-colorful.pdf
 
-a4-black: clqr.ind clqr-a4-black.pdf
+a4-black: clqr-a4-black.pdf
 
-letter-colorful: clqr.ind clqr-letter-colorful.pdf
+letter-colorful: clqr-letter-colorful.pdf
 
-letter-black: clqr.ind clqr-letter-black.pdf
+letter-black: clqr-letter-black.pdf
 
-clqr.ind: clqr.tex clqr-*.tex clqr.*.tex clqr-types-and-classes.1 paper-a4.flag release-revision.txt color-colorful.flag
+clqr.idx: clqr.tex clqr-*.tex clqr.*.tex clqr-types-and-classes.1 paper-a4.flag release-revision.txt color-colorful.flag
 	$(TOUCH) clqr.ind $(SEND-TO-LOG)
 	$(LATEX) clqr.tex $(SEND-TO-LOG)
-	$(MAKEINDEX) -s clqr.ist clqr.idx $(SEND-TO-LOG)
 	$(RM) clqr.pdf
 
-clqr-%-colorful.pdf: paper-%.flag color-colorful.flag
+clqr.ind: clqr.idx
+	$(MAKEINDEX) -s clqr.ist clqr.idx $(SEND-TO-LOG)
+
+clqr-%-colorful.pdf: clqr.ind paper-%.flag color-colorful.flag
 	$(LATEX) clqr.tex $(SEND-TO-LOG)
 	$(MV) clqr.pdf $@
 
-clqr-%-black.pdf: paper-%.flag color-black.flag
+clqr-%-black.pdf: clqr.ind paper-%.flag color-black.flag
 	$(LATEX) clqr.tex $(SEND-TO-LOG)
 	$(MV) clqr.pdf $@
 

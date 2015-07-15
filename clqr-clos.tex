@@ -175,10 +175,10 @@
        \VAR{value}} 
      \OPn{\VAR{other-keyarg}})}
   {
-    Fill the \VAR{initarg-slot}s of \VAR{instance} with the
-    corresponding \VAR{value}s, and fill those \VAR{initform-slots}
-    that are not \VAR{initarg-slot}s with the values of their
-    \kwd{:initform} forms.
+    设置 \VAR{instance} 的 \VAR{initarg-slot}s
+    为对应的 \VAR{value}s，设置非
+    \VAR{initarg-slot}s 的 \VAR{initform-slots}
+    为 \kwd{:initform} 形式的值。
   }
 
   \IT{\arrGOO{%
@@ -191,9 +191,9 @@
       \Op{\VAR{value}})\\
       (\GFU*{SLOT-UNBOUND } \VAR{class } \VAR{instance } \VAR{slot})}{.}}
   {
-    Called on attempted access to non-existing or unbound
-    \VAR{slot}. Default methods signal \kwd{error}/\kwd{unbound-slot},
-    respectively.  Not to be called by user.
+    当试图访问不存在/未绑定
+    \VAR{slot} 时调用。默认方法产生
+    \kwd{error}/\kwd{unbound-slot}。不应由用户调用。
 }
 
 \end{LIST}
@@ -231,12 +231,12 @@
       \VAR{ c-type}\DF{\kwd{standard}} \OPn{\VAR{ c-arg}})\\
       \OPn{(\kwd{:method} \VAR{ defmethod-args})}}{\}})}
   {
-    Define or modify \retval{generic function} \VAR{foo}.  Remove any
-    methods previously defined by defgeneric.  \VAR{gf-class} and the lambda
-    paramters \OPn{\VAR{required-var}} and \OPn{\VAR{var}} must be
-    compatible with existing methods.  \VAR{defmethod-args}
-    resemble those of \MC{defmethod}.  For \VAR{c-type} see section
-    \ref{section:方法组合类型}。
+    定义或修改 \retval{广义函数} \VAR{foo}。删除先前由
+    defgeneric 定义的方法。\VAR{gf-class}、lambda
+    参数 \OPn{\VAR{required-var}}、\OPn{\VAR{var}}
+    必须兼容已有方法。\VAR{defmethod-args} 与
+    \MC{defmethod} 中的类似。对于 \VAR{c-type}，参见第
+    \ref{section:方法组合类型} 节。
   }
 
   \IT{(\FU*{ENSURE-GENERIC-FUNCTION}
@@ -251,12 +251,12 @@
       \kwd{:lambda-list} \VAR{ lambda-list}\\
       \kwd{:environment} \VAR{ environment}}{\}})}
   {
-    Define or modify \retval{generic function}
-    \VAR{foo}. \VAR{gf-class} and \VAR{lambda-list}
-    must be compatible with a pre-existing generic function or with
-    existing methods, respectively. Changes to \VAR{method-class} do
-    not propagate to existing methods. For \VAR{c-type} see section
-    \ref{section:方法组合类型}。
+    定义或修改 \retval{广义函数}
+    \VAR{foo}。\VAR{gf-class} 和 \VAR{lambda-list}
+    必须分别兼容已有广义函数和方法。对
+    \VAR{method-class} 的更改不会传播到现有的方法。对于
+    \VAR{c-type}，参见第
+    \ref{section:方法组合类型} 节。
   }
 
   \IT{(\MC*{DEFMETHOD} 
@@ -285,48 +285,48 @@
       \NEV{\VAR{doc}}}{\}}
     \PROGN{\VAR{form}})}
   {
-    Define \retval{new method} for generic function
-    \VAR{foo}. \VAR{spec-var}s specialize to either being of \VAR{class}
-    or being \kwd{eql} \VAR{bar}, respectively. On invocation, \VAR{var}s and
-    \VAR{spec-var}s of the \retval{new method}
-    act like parameters of a function with body
-    \OPn{\VAR{form}}. \VAR{form}s are enclosed in an implicit \SO{block}
-    \VAR{foo}. Applicable \VAR{qualifier}s depend on the
-    \kwd{method-combination} type; see
-    section \ref{section:方法组合类型}。
+    为广义函数 \VAR{foo} 定义
+    \retval{新方法}。\VAR{spec-var}s 可特化为 \VAR{class}
+    或 \kwd{eql} \VAR{bar}。在调用时，\retval{新方法} 的
+    \VAR{var}s 和 \VAR{spec-var}s
+    如同函数的参数，其函数体为
+    \OPn{\VAR{form}}。\VAR{form}s 包含于隐式 \SO{block}
+    \VAR{foo} 中。可用的 \VAR{qualifier}s 取决于
+    \kwd{method-combination} 类型，参见第
+    \ref{section:方法组合类型} 节。
   }
 
   \IT{(\xorGOO{\GFU*{ADD-METHOD}\\
       \GFU*{REMOVE-METHOD}}{\}} \VAR{generic-function} \VAR{method})}
   {
-    Add (if necessary) or remove (if any) \VAR{method} to/from
-    \retval{\VAR{generic-function}}. 
+    在 \retval{\VAR{generic-function}}
+    中（若需要）添加/（若存在）删除 \VAR{method}。
   }
 
   \IT{(\GFU*{FIND-METHOD} \VAR{generic-function} \VAR{qualifiers}
     \VAR{specializers} \Op{\VAR{error}\DF{\T}})}
   {
-    返回合适的 \retval{方法}，或产生 \kwd{error}。
+    返回可用 \retval{方法}，或产生 \kwd{error}。
   }
 
   \IT{(\GFU*{COMPUTE-APPLICABLE-METHODS} \VAR{generic-function}
     \VAR{args})}
   {
-    \VAR{args} 合适的 \retval{方法列表}，最具体的在前。
+    \VAR{args} 可用 \retval{方法列表}，最具体的在前。
   }
 
   \IT{(\FU*{CALL-NEXT-METHOD} \OPn{\VAR{arg}}\DF{current args})}
   {
-    From within a method, call next method with \VAR{arg}s; return
-    \retval{its values}.
+    在方法内，以 \VAR{arg}s 调用下一方法，返回
+    \retval{其值}。
   }
 
   \IT{(\GFU*{NO-APPLICABLE-METHOD} \VAR{generic-function}
     \OPn{\VAR{arg}})}
   {
-    Called on invocation of \VAR{generic-function} on \VAR{arg}s if
-    there is no applicable method.  Default method signals
-    \kwd{error}.  Not to be called by user.
+    在以 \VAR{arg}s 调用 \VAR{generic-function}
+    而没有可用方法时调用。默认方法将产生
+    \kwd{error}。不应由用户调用。
   }
 
   \IT{(\xorGOO{%
@@ -334,23 +334,23 @@
       \FU*{METHOD-COMBINATION-ERROR}}{\}}
     \VAR{control} \OPn{\VAR{arg}})}
   {
-    Signal \kwd{error} on applicable method with invalid qualifiers, or
-    on method combination. For \VAR{control} and \VAR{arg}s see
-    \kwd{format}, page \pageref{section:Format}.
+    在可用方法的限定符/方法组合无效时产生
+    \kwd{error}。关于 \VAR{control} 及 \VAR{arg}s，参见第
+    \pageref{section:Format} 页 \kwd{format}。
   }
 
   \IT{(\GFU*{NO-NEXT-METHOD} \VAR{generic-function}
     \VAR{method} \OPn{\VAR{arg}})}
   {
-    Called on invocation of \kwd{call-next-method} when there is no next
-    method.  Default method signals \kwd{error}.  Not to be called by
-    user.
+    在调用 \kwd{call-next-method}
+    而没有可用方法时调用。默认方法将产生
+    \kwd{error}。不应由用户调用。
   }
 
   \IT{(\GFU*{FUNCTION-KEYWORDS} \VAR{method})}
   {
-    Return list of \retval{keyword parameters} of \VAR{method} and
-    \retvalii{\T} if other keys are allowed.
+    返回 \VAR{method} 的 \retval{关键字参数}
+    列表，若允许其他键，\retvalii{\T}。
   }
 
   \IT{(\GFU*{METHOD-QUALIFIERS} \VAR{method})}
@@ -369,16 +369,16 @@
 
   \IT{\kwd*{STANDARD}}
   {
-  Evaluate most specific \kwd{:around} method supplying the values of
-  the generic function. From within this method, \FU{call-next-method}
-  can call less specific \kwd{:around} methods if there are any. If
-  not, or if there are no \kwd{:around} methods at all, call all
-  \kwd{:before} methods, most specific first, and the most specific
-  primary method which supplies the values of the calling
-  \FU{call-next-method} if any, or of the generic function; and which
-  can call less specific primary methods via
-  \FU{call-next-method}. After its return, call all \kwd{:after}
-  methods, least specific first.
+  求值对广义函数参数最具体的 \kwd{:around}
+  方法。在此方法内，若存在，\FU{call-next-method}
+  可以调用较不具体的 \kwd{:around} 方法。若不存在，或无任何
+  \kwd{:around} 方法，调用所有
+  \kwd{:before} 方法，最具体的在前，
+  然后是对 \FU{call-next-method}
+  或广义函数参数最具体的主方法，其又可通过
+  \FU{call-next-method}
+  调用较不具体的主方法。在其返回后，调用所有 \kwd{:after}
+  方法，最不具体的在前。
   }
 
   \IT{\kwd*{AND}\XOR
@@ -390,10 +390,10 @@
       \kwd*{MIN}\XOR
       \kwd*{+}}
   {
-    Simple built-in \kwd{method-combination} types; have the same
-    usage as the
-    \VAR{c-type}s defined by the short form of
-    \MC{define-method-combination}. 
+    简单内置 \kwd{method-combination} 类型，与由
+    \MC{define-method-combination}
+    定义的短形式
+    \VAR{c-type}s 用法相同。
   }
 
   \IT{(\MC*{DEFINE-METHOD-COMBINATION} \VAR{c-type}
@@ -402,25 +402,25 @@
       \kwd{:identity-with-one-argument} \VAR{ bool}\DF{\NIL}\\
       \kwd{:operator} \VAR{ operator}\DF{\VAR{c-type}}}{\}})}
   {
-    \EM{Short Form. } Define new \kwd{method-combination}
-    \retval{\VAR{c-type}}. In a generic function using \VAR{c-type},
-    evaluate most specific \kwd{:around} method supplying the values of
-    the generic function. From within this method, \FU{call-next-method}
-    can call less specific \kwd{:around} methods if there are any.  If
-    not, or if there are no \kwd{:around} methods at all,
-    return from the calling \kwd{call-next-method} or from the
-    generic function, respectively, the
-    values of (\VAR{operator} \OPn{(\VAR{primary-method}
-      \OPn{\VAR{gen-arg}})}), \OPn{\VAR{gen-arg}} being the arguments of the
-    generic function.
-    The \VAR{primary-method}s are ordered
+    \EM{短形式。}定义新 \kwd{method-combination}
+    \retval{\VAR{c-type}}。在使用 \VAR{c-type}
+    的广义函数中，求值对广义函数参数最具体的 \kwd{:around}
+    方法。在此方法内，若存在，\FU{call-next-method}
+    可以调用较不具体的 \kwd{:around} 方法。若不存在，或无任何
+    \kwd{:around}
+    方法，返回调用
+    \kwd{call-next-method}/广义函数得到的值。其中在
+    (\VAR{operator} \OPn{(\VAR{primary-method}
+      \OPn{\VAR{gen-arg}})})
+    中，\OPn{\VAR{gen-arg}}
+    为广义函数的参数。\VAR{primary-method}s 的顺序为
     \OP{\xorGOO{%
         \kwd{:most-specific-first}\\
         \kwd{:most-specific-last}%
-      }{\}}\DF{\kwd{:most-specific-first}}}
-    (specified as \VAR{c-arg} in \MC{defgeneric}).
-    Using \VAR{c-type} as the \VAR{qualifier} in \MC{defmethod}
-    makes the method primary.
+      }{\}}\DF{\kwd{:most-specific-first}}}（由
+    \MC{defgeneric} 中的 \VAR{c-arg} 指定）。在
+    \MC{defmethod} 中以 \VAR{c-type} 作为
+    \VAR{qualifier} 将使该方法成为主方法。
   }
 
   \IT{(\MC*{DEFINE-METHOD-COMBINATION} \VAR{c-type}
@@ -442,20 +442,20 @@
       \NEV{\VAR{doc}}}{\}}
     \PROGN{\VAR{body}})}
   {
-    \EM{Long Form. } Define new \kwd{method-combination}
-    \retval{\VAR{c-type}}. A call to a generic function using
-    \VAR{c-type} will be equivalent to a call to the forms returned by
-    \OPn{\VAR{body}} with \OPn{\VAR{ord-$\lambda$}} bound to
-    \OPn{\VAR{c-arg}} (cf.\ \MC{DEFGENERIC}), with \VAR{symbol} bound to
-    the generic function, with \OPn{\VAR{method-combination-$\lambda$}}
-    bound to the arguments of the generic function, and with
-    \VAR{group}s bound to lists of methods. An applicable method becomes
-    a member of the leftmost \VAR{group} whose \VAR{predicate} or
-    \VAR{qualifier}s match. Methods can be called via
-    \MC{CALL-METHOD}. Lambda lists (\OPn{\VAR{ord-$\lambda$}}) and
-    (\OPn{\VAR{method-combination-$\lambda$}}) according to
-    \VAR{ord-$\lambda$} on page \pageref{section:函数}, the latter
-    enhanced by an optional \kwd{\&whole} argument.
+    \EM{长形式。}定义新 \kwd{method-combination}
+    \retval{\VAR{c-type}}。使用 \VAR{c-type}
+    调用广义函数等价于调用由 \OPn{\VAR{body}}
+    返回的形式，其中 \OPn{\VAR{ord-$\lambda$}} 绑定至
+    \OPn{\VAR{c-arg}}（参照 \MC{DEFGENERIC}），\VAR{symbol}
+    绑定至广义函数，\OPn{\VAR{method-combination-$\lambda$}}
+    绑定至广义函数的参数，\VAR{group}s
+    绑定至方法列表。当
+    \VAR{predicate} 或 \VAR{qualifier}s
+    匹配时，可用方法成为 \VAR{group} 的最左成员。可通过
+    \MC{CALL-METHOD} 调用方法。Lambda 列表 (\OPn{\VAR{ord-$\lambda$}}) 及
+    (\OPn{\VAR{method-combination-$\lambda$}}) 参见第
+    \pageref{section:函数} 页 \VAR{ord-$\lambda$}，其后者带可选的
+    \kwd{\&whole} 参数。
   }
 
   \IT{(\MC*{CALL-METHOD} \xorGOO{\NEV{\VAR{method}}\\
@@ -464,10 +464,10 @@
       \NEV{\VAR{next-method}}\\
       (\MC*{MAKE-METHOD}\text{ } \NEV{\VAR{form}})}{\}^{\!\!*}})})}
   {
-    From within an effective method form, call \VAR{method} with the
-    arguments of the generic function and
-    with information about its \VAR{next-method}s; return \retval{its
-      values}. 
+    在有效方法的形式内，以广义函数的参数及
+    \VAR{next-method}s 的信息调用
+    \VAR{method}，返回
+    \retval{其所有值}。
   }
 
 \end{LIST}
